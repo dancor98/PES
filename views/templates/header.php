@@ -1,21 +1,23 @@
-<nav class="navbar navbar-expand-lg  navbar-principal">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="/">
-            <img src="/build/img/logoCCM.png" alt="Logo CCM" class="navbar-logo">
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <i class="fa-solid fa-bars icon-menu"></i>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
-                    <a class="nav-link <?php echo pagina_actual('') ? 'dashboard__enlace--actual' : ''; ?>" aria-current="page" href="/">Inicio</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link <?php echo pagina_actual('/login') ? 'dashboard__enlace--actual' : ''; ?>" href="/login">Iniciar Sesion</a>
-                </li>
-
-            </ul>
+<div class="menu">
+    <nav class="navbar navbar-inicio navbar-expand-lg ">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img class="navbar-inicio-logo" src="/build/img/logo.png" alt="">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fa-solid fa-bars icono-menu"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav ms-auto">
+                    <a class="nav-link nav-link-menu" href="#">INICIO</a>
+                    <a class="nav-link nav-link-menu" href="#">NOSOTROS</a>
+                    <a class="nav-link nav-link-menu" href="#">EMPLEO</a>
+                </div>
+            </div>
         </div>
+    </nav>
+
+    <div class="texto-inicio">
+        <p>Distribuidor Oficial de Specialized Costa Rica.</p>
     </div>
-</nav>
+</div>
