@@ -59,7 +59,7 @@
     background-position: center; /* Centrar la imagen en el div */
     background-repeat: no-repeat; /* Evitar que la imagen se repita */
     border-radius: 0 0 2rem 2rem;
-    padding: 1.4rem 2rem;
+    padding: 1.4rem 3rem;
     display: flex;
     flex-direction: column; /* Apilar los elementos verticalmente */
     justify-content: space-between; /* Espacio entre los elementos */
@@ -114,7 +114,7 @@ color: white;
 .texto-inicio {
     background-color: #1e293bcd; /* Color de fondo semi-transparente */
     padding: 2rem ; /* Espaciado interno */
-    margin-bottom: 4rem;
+    margin-bottom: 5rem;
     border-radius: 1rem; /* Borde redondeado */
     color: v.$blanco;
     font-weight: v.$bold;

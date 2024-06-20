@@ -448,63 +448,92 @@ h3 {
   color: #FFFFFF;
 }
 
+.inicio {
+  background-color: rgb(0, 0, 0);
+}
+
 .contenedor-inicio {
-  margin: 0;
-  min-height: 20rem;
-  background-image: url("../img/CCM.png");
-  height: 40vh;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
+  padding: 3rem 2rem;
+  display: flex;
+  flex-wrap: wrap; /* Permitir que los elementos se envuelvan en dispositivos pequeños */
+  gap: 20px; /* Espacio entre las columnas */
 }
 @media (min-width: 768px) {
   .contenedor-inicio {
-    height: 80vh;
+    padding: 3rem 10rem;
   }
 }
 
-.contenedor-principal {
-  padding: 2rem;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  align-items: center;
-  margin: 3rem 1rem;
+.titulo-inicio {
+  width: 100%; /* Ancho completo en dispositivos pequeños */
+  text-align: left; /* Alinear el texto al centro */
+  margin-bottom: 20px; /* Margen inferior */
+  color: #FFFFFF;
+  text-transform: uppercase;
+  font-size: 2.7rem;
 }
-@media (min-width: 1024px) {
-  .contenedor-principal {
-    margin: 3rem 20rem;
+@media (min-width: 768px) {
+  .titulo-inicio {
+    font-size: 3.5rem;
   }
 }
 @media (min-width: 768px) {
-  .contenedor-principal {
-    margin: 3rem 5rem;
+  .titulo-inicio--2 {
+    text-align: right;
+    padding-right: 25rem;
   }
 }
-.contenedor-principal__left {
-  width: 100%;
+
+.columna {
+  flex: 1; /* Ocupa todo el espacio disponible */
+  padding: 0 2rem; /* Espaciado interno */
+  display: flex; /* Utilizar flexbox para el contenido interno */
+  flex-direction: column; /* Alinear el contenido en columna */
 }
-@media (min-width: 1024px) {
-  .contenedor-principal__left {
-    width: 40%;
-    padding: 3rem 0rem;
+@media (min-width: 768px) {
+  .columna {
+    width: 50%;
   }
 }
-.contenedor-principal__left__titulo {
-  text-align: center;
-}
-.contenedor-principal__right {
-  width: 100%;
-}
-@media (min-width: 1024px) {
-  .contenedor-principal__right {
-    width: 59%;
-    padding: 3rem 0rem;
-  }
-}
-.contenedor-principal__right__texto {
+
+.subtitulo-inicio {
+  color: #FFFFFF;
+  text-decoration: underline;
   font-size: 2.5rem;
-  text-align: justify;
+  text-align: left;
+}
+@media (min-width: 768px) {
+  .subtitulo-inicio {
+    font-size: 3rem;
+  }
+}
+
+.descripcion-inicio {
+  color: #FFFFFF;
+  font-size: 2rem;
+  line-height: 2.5;
+}
+
+.imagen-mapa {
+  width: 30rem; /* Ancho deseado */
+  height: auto; /* Mantener la proporción */
+}
+@media (min-width: 768px) {
+  .imagen-mapa {
+    width: 60rem;
+  }
+}
+
+.imagen-linea {
+  visibility: hidden;
+}
+@media (min-width: 768px) {
+  .imagen-linea {
+    visibility: visible;
+    height: auto;
+    width: 130rem;
+    padding: 10rem 0;
+  }
 }
 
 .formulario {
@@ -699,7 +728,7 @@ h3 {
   background-position: center; /* Centrar la imagen en el div */
   background-repeat: no-repeat; /* Evitar que la imagen se repita */
   border-radius: 0 0 2rem 2rem;
-  padding: 1.4rem 2rem;
+  padding: 1.4rem 3rem;
   display: flex;
   flex-direction: column; /* Apilar los elementos verticalmente */
   justify-content: space-between; /* Espacio entre los elementos */
@@ -757,7 +786,7 @@ h3 {
 .texto-inicio {
   background-color: rgba(30, 41, 59, 0.8039215686); /* Color de fondo semi-transparente */
   padding: 2rem; /* Espaciado interno */
-  margin-bottom: 4rem;
+  margin-bottom: 5rem;
   border-radius: 1rem; /* Borde redondeado */
   color: #FFFFFF;
   font-weight: 700;

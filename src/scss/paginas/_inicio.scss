@@ -1,61 +1,80 @@
 @use 'base/mixins' as m;
 @use 'base/variables' as v;
 
-.contenedor-inicio {
-
-    margin: 0;
-    min-height: 20rem;
-    background-image: url('../img/CCM.png');
-    height: 40vh;
-    background-repeat: no-repeat;
-    background-size:cover;
-    background-position: center ;
+.inicio{
+    background-color: rgb(0, 0, 0);
+}
+.contenedor-inicio{
+    padding: 3rem 2rem;
+    display: flex;
+        flex-wrap: wrap; /* Permitir que los elementos se envuelvan en dispositivos pequeños */
+        gap: 20px; /* Espacio entre las columnas */
     @include m.tablet {
-        height: 80vh;
+        padding: 3rem 10rem;
     }
 }
 
-
-
-.contenedor-principal {
-    padding: 2rem;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    align-items: center;
-    margin: 3rem 1rem;
-    // justify-content: center; 
-    @include m.desktop {
-        margin: 3rem 20rem;
-    }
-
+.titulo-inicio{
+    width: 100%; /* Ancho completo en dispositivos pequeños */
+    text-align: left; /* Alinear el texto al centro */
+    margin-bottom: 20px; /* Margen inferior */
+    color: v.$blanco;
+    text-transform: uppercase;
+    font-size: 2.7rem;
     @include m.tablet {
-        margin: 3rem 5rem;
+         font-size: 3.5rem;
     }
 
-    &__left {
-        width: 100%;
-        // background-color: aqua;
-        @include m.desktop {
-            width: 40%;
-            padding: 3rem 0rem;
-        }
-
-        &__titulo{
-            text-align: center;
+    &--2{
+        @include m.tablet {
+            text-align: right;
+            padding-right: 25rem; 
         }
     }
+}
 
-    &__right {
-        width: 100%;
-        // background-color: aquamarine;
-        @include m.desktop {
-            width: 59%;
-            padding: 3rem 0rem;
-        }
-        &__texto{
-            font-size: 2.5rem;
-            text-align: justify;
-        }
+.columna {
+    flex: 1; /* Ocupa todo el espacio disponible */
+    padding: 0 2rem; /* Espaciado interno */
+    display: flex; /* Utilizar flexbox para el contenido interno */
+        flex-direction: column; /* Alinear el contenido en columna */
+        // align-items: center; /* Centrar el contenido horizontalmente */
+        // justify-content: center; /* Centrar el contenido verticalmente */
+    @include m.tablet {
+         width: 50%; 
     }
+}
+
+.subtitulo-inicio{
+    color: v.$blanco;
+    text-decoration: underline;
+    font-size: 2.5rem;
+    text-align: left;
+    @include m.tablet {
+         font-size: 3rem; 
+    }
+    
+}
+
+.descripcion-inicio{
+    color: v.$blanco;
+    font-size: 2rem;
+    line-height: 2.5;
+}
+
+.imagen-mapa{
+    width: 30rem; /* Ancho deseado */
+height: auto; /* Mantener la proporción */
+@include m.tablet {
+     width: 60rem; 
+}
+}
+.imagen-linea{
+visibility: hidden;
+@include m.tablet {
+    visibility: visible;
+    height: auto;
+     width: 130rem; 
+     padding: 10rem 0;
+}
 }
