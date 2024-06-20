@@ -51,11 +51,11 @@ class Router
         //Utilizar el layout de acuerdo a la URL
         $url_actual = strtok($_SERVER['REQUEST_URI'], '?') ?? '/';
         if (str_contains($url_actual, '/admin')) {
-            include_once 'views/admin-layout.php';
+            include_once __DIR__ . '/views/admin-layout.php';
         } elseif (str_contains($url_actual, '/colaborador')) {
-            include_once 'views/colaborador-layout.php';
+            include_once __DIR__ . '/views/colaborador-layout.php';
         } else {
-            include_once 'views\layout.php';
+            include_once __DIR__ . '/views/layout.php';
         }
     }
 }
