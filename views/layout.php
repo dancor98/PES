@@ -28,7 +28,7 @@
 
 <body class="home">
     <?php
-    include_once __DIR__ . '/templates/header.php';
+    include_once '../views/templates/header.php';
     ?>
     <div class="home__contenido">
         <?php echo $contenido; ?>
@@ -36,7 +36,7 @@
 
 
     <?php
-    include_once __DIR__ . '/templates/footer.php';
+    include_once '../views/templates/footer.php';
     ?>
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
