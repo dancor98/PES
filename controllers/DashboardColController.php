@@ -113,10 +113,9 @@ class DashboardColController
     }
 
 
-    //funcion para editar un ponente
+    //funcion para editar un Colaborador
     public static function editar(Router $router)
     {
-
         $alertas = [];
 
         session_start();
@@ -126,15 +125,15 @@ class DashboardColController
             return;
         }
 
-        //Validar ID
+        // Validar ID
         $id = $_GET['id'];
-        $id = filter_var($id, FILTER_VALIDATE_INT); //vALIDA QUE REALMENTE SEA UN ENTERO
+        $id = filter_var($id, FILTER_VALIDATE_INT); // Valida que realmente sea un entero
 
         if (!$id) {
             header('Location: /colaborador/dashboard');
         }
 
-        //Obtener Ponente a Editar
+        // Obtener Ponente a Editar
         $colaborador = Colaboradores::find($id);
 
         if (!$colaborador) {
@@ -144,23 +143,23 @@ class DashboardColController
         $colaborador->imagen_actual = $colaborador->foto;
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
             session_start();
             // Validar que el usuario esté logueado y sea administrador
             if (!isset($_SESSION['admin']) || $_SESSION['admin']) {
                 header('Location: /login');
                 return;
             }
-            //Leer imagen 
+            // Leer imagen
             if (!empty($_FILES['foto']['tmp_name'])) {
-                $carpeta_imagenes = '../public/img/colaboradores'; //Direccion de carpeta
-                //Crear carpeta si no existe
+                $carpeta_imagenes = '../public/img/colaboradores'; // Dirección de carpeta
+                // Crear carpeta si no existe
                 if (!is_dir($carpeta_imagenes)) {
                     mkdir($carpeta_imagenes, 0755, true);
                 }
 
-                $imagen_png = Image::make($_FILES['foto']['tmp_name'])->fit(800, 800)->encode('png', 80);
-                $imagen_webp = Image::make($_FILES['foto']['tmp_name'])->fit(800, 800)->encode('webp', 80);
+                // Ajustar la orientación de la imagen
+                $imagen_png = Image::make($_FILES['foto']['tmp_name'])->orientate()->fit(800, 800)->encode('png', 80);
+                $imagen_webp = Image::make($_FILES['foto']['tmp_name'])->orientate()->fit(800, 800)->encode('webp', 80);
 
                 $nombre_imagen = md5(uniqid(rand(), true));
 
