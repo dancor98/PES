@@ -8,15 +8,15 @@
             <h2 class="auth__heading"> <?php echo $titulo; ?> </h2>
 
             <?php
-    require_once __DIR__ . '/../templates/alertas.php';
-    ?>
+            require_once __DIR__ . '/../templates/alertas.php';
+            ?>
 
             <form action="/login" method="POST" class="formulario">
                 <div class="formulario__campo">
                     <label for="correo_electronico" class="formulario__label formulario__label--login">Correo
                         Electronico:</label>
-                    <input type="correo_electronico" class="formulario__input" placeholder="Tu Email"
-                        id="correo_electronico" name="correo_electronico">
+                    <input type="email" class="formulario__input" placeholder="Tu Email" id="correo_electronico"
+                        name="correo_electronico">
                 </div>
                 <div class="formulario__campo">
                     <label for="contrasena" class="formulario__label formulario__label--login">Contrasena:</label>
