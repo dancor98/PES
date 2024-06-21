@@ -22,7 +22,7 @@ class DashboardController
         $solicitudvacacionesN = Vacaciones::totalVacacionesN();
 
         $router->render('admin/dashboard/index', [
-            'titulo' => 'Panel de Administraciones',
+            'titulo' => 'Modulos Disponibles',
             'colaboradoresTotal' => $colaboradoresTotal,
             'solicitudvacacionesN' => $solicitudvacacionesN
         ]);

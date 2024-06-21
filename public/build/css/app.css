@@ -778,7 +778,13 @@ h3 {
   background: #1E293B;
   border-radius: 2rem;
   padding: 2rem;
+  margin: 0.4rem 1rem;
   box-shadow: 0px 18px 33px -4px rgba(0, 0, 0, 0.65);
+}
+@media (min-width: 768px) {
+  .navbar-admin {
+    margin: 0.2rem 3rem;
+  }
 }
 
 .navbar-inicio-logo {
@@ -839,37 +845,6 @@ h3 {
   .boton-logout {
     padding-bottom: 0;
     margin-top: 6.6px;
-  }
-}
-
-.barra {
-  background-color: #007df4;
-}
-.barra__contenido {
-  max-width: 120rem;
-  width: 95%;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-}
-@media (min-width: 1024px) {
-  .barra__contenido {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-  }
-}
-.barra__logo {
-  color: #FFFFFF;
-  text-align: center;
-  margin-bottom: 2rem;
-  white-space: nowrap;
-  font-size: clamp(2rem, -0.8rem + 10vw, 3rem);
-}
-@media (min-width: 1024px) {
-  .barra__logo {
-    text-align: left;
-    margin: 0;
   }
 }
 
@@ -959,237 +934,67 @@ h3 {
   padding-right: 20px;
 }
 
-.dashboard {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  background-color: #F8FAFC;
+.contenedor-admin {
+  padding: 1rem 3rem;
 }
-.dashboard__heading {
+.contenedor-admin__fecha {
+  font-size: 2rem;
+  text-align: center;
+  color: #FFFFFF;
+}
+@media (min-width: 768px) {
+  .contenedor-admin {
+    padding: 1rem 4rem;
+  }
+}
+.contenedor-admin__titulo {
+  text-align: center;
+  text-decoration: underline;
+  padding-bottom: 1rem;
   font-size: 3rem;
 }
 @media (min-width: 768px) {
-  .dashboard__heading {
+  .contenedor-admin__titulo {
     font-size: 5rem;
   }
 }
-.dashboard__header {
-  background-color: #1E293B;
-  padding: 2rem;
-}
-.dashboard__header-grid {
-  display: flex;
-  flex-direction: column;
-}
-@media (min-width: 768px) {
-  .dashboard__header-grid {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-  }
-}
-.dashboard__logo {
-  width: 12rem;
-}
-@media (min-width: 768px) {
-  .dashboard__logo {
-    width: 18rem;
-  }
-}
-.dashboard__form {
-  padding-right: 2rem;
-}
-.dashboard__submit--logout {
-  all: unset;
-  color: #FFFFFF;
-  font-size: 1.4rem;
-  text-transform: uppercase;
-  font-weight: 700;
-}
-.dashboard__submit--logout:hover {
-  color: #007df4;
-  cursor: pointer;
-}
-.dashboard__grid {
-  display: flex;
-  flex: 1;
-  overflow-y: auto;
-}
-.dashboard__sidebar {
-  border: 2px solid #1E293B;
-  border-radius: 1rem;
-  width: 10rem;
-}
-@media (min-width: 768px) {
-  .dashboard__sidebar {
-    width: 50rem;
-    margin: 1rem;
-    padding: 2rem;
-  }
-}
-.dashboard__menu {
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-.dashboard__enlace {
-  color: #6f8ab6;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 2rem 6rem;
-  transition: 300ms background-color ease-in-out, 300ms color ease, 300ms border-radius ease;
-}
-.dashboard__enlace:hover {
-  background-color: #40587f;
-  color: #FFFFFF;
-  border-radius: 1rem;
-}
-.dashboard__enlace--actual {
-  -webkit-text-decoration: underline 2px;
-          text-decoration: underline 2px;
-}
-@media (min-width: 768px) {
-  .dashboard__enlace--actual {
-    border: 1px solid #FFFFFF;
-    color: #FFFFFF;
-    padding: 1rem 5rem;
-    border-radius: 1rem;
-    text-decoration: none;
-  }
-}
-.dashboard__icono {
-  font-size: 2.5rem;
-}
-.dashboard__menu-texto {
-  font-size: 1.1rem;
-  text-transform: uppercase;
-  font-weight: 700;
-  margin-top: 0.5rem;
-}
-.dashboard__contenido {
-  padding: 1rem 1rem 3rem 1rem;
-  width: 100%;
-  background-color: #F8FAFC;
-  overflow-y: scroll;
-}
-@media (min-width: 768px) {
-  .dashboard__contenido {
-    padding: 1rem 5rem 3rem 5rem;
-  }
-}
-.dashboard__contenedor-boton {
-  padding-bottom: 2rem;
-}
-@media (min-width: 768px) {
-  .dashboard__contenedor-boton {
-    display: flex;
-    justify-content: flex-end;
-    margin-bottom: 0;
-  }
-}
-.dashboard__boton {
-  background-color: #007df4;
-  padding: 1.5rem 4rem;
-  color: #FFFFFF;
-  font-size: 1.8rem;
-  font-weight: 700;
-  border: none;
-  transition-property: background-color;
-  transition-duration: 0.3s;
-  text-align: center;
-  width: 100%;
-  display: inline-block;
-  text-transform: uppercase;
-  font-size: 1.4rem;
-}
-.dashboard__boton:hover {
-  background-color: #0063c1;
-  cursor: pointer;
-}
-.dashboard__boton:hover {
-  background-color: #FFFFFF;
-  border: 1px solid #007df4;
-}
-@media (min-width: 768px) {
-  .dashboard__boton {
-    width: auto;
-  }
-}
-.dashboard__contenedor, .dashboard__formulario {
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
-  background-color: #FFFFFF;
-  padding: 2rem;
-  border-radius: 1rem;
-}
-.dashboard__formulario {
-  width: min(95%, 80rem);
-  margin: 0 auto;
+
+.icono-admin {
+  padding-right: 1rem;
 }
 
-.card-inicio {
-  padding-bottom: 2rem;
+.card-dashboard {
+  background-color: #1E293B;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+  padding: 0.1rem;
 }
 
 .card-admin {
-  padding: 2rem;
-  box-shadow: 6px 6px 5px 0px rgb(163, 180, 207);
-}
-.card-admin:hover {
-  background-color: #1E293B;
-}
-.card-admin:hover .card-title {
-  color: #FFFFFF;
-}
-
-.card-col {
-  padding: 2rem;
-  box-shadow: 6px 6px 5px 0px rgb(163, 180, 207);
-}
-.card-col:hover .card-title {
-  color: #1E293B;
-}
-
-.card-indicador {
-  padding: 0.3rem;
-  box-shadow: 6px 6px 5px 0px rgb(163, 180, 207);
-}
-.card-indicador__fecha {
-  background-color: rgba(255, 166, 0, 0.6039215686);
-  color: #FFFFFF;
-}
-.card-indicador__activos {
-  background-color: rgba(255, 217, 0, 0.5882352941);
-}
-.card-indicador__vacaciones {
-  background-color: rgba(255, 99, 71, 0.5607843137);
+  background-color: #c23535;
+  margin-bottom: 1rem;
+  padding: 3rem 0;
+  border-radius: 1rem;
 }
 
 .card-title {
-  font-size: 2.8rem;
   text-align: center;
-  font-weight: 900;
-  color: #64748B;
+  font-size: 2.4rem;
+  color: #FFFFFF;
+}
+@media (min-width: 768px) {
+  .card-title {
+    font-size: 3rem;
+  }
 }
 
-.card-title2 {
-  font-size: 2rem;
+.boton-acciones {
+  background-color: #1E293B;
+  padding: 1rem;
   text-align: center;
-  font-weight: 900;
-  color: #1E293B;
 }
-
-.card-numero {
-  font-size: 2rem;
-  text-align: center;
-  font-weight: 900;
-  color: #1E293B;
-}
-
-.navbar-toggler-icon {
-  width: 3rem;
-  height: 3rem;
+.boton-acciones__texto {
+  color: #FFFFFF;
 }
 
 .table-responsive {
