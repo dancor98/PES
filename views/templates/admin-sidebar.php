@@ -1,11 +1,19 @@
 <?php session_start(); ?>
 <aside class="Sidebar-colaborador">
-    <picture class="sidebar-colaborador--picture">
-        <source srcset="/../<?php echo $colaborador->foto; ?>.webp" type="image/webp">
-        <source srcset="/../<?php echo $colaborador->foto; ?>.png" type="image/png">
-        <img class="sidebar-colaborador--imagen" loading="lazy" width="200" height="300"
-            src="/../<?php echo $colaborador->foto; ?>.webp" alt="Imagen Ponente">
-    </picture>
+
+
+    <?php if ($colaborador->foto === "null") { ?>
+        <picture class="sidebar-colaborador--picture">
+            <source srcset="/../img/colaboradores/default.png" type="image/png">
+            <img class="colaborador-picture--imagen-carta" loading="lazy" width="200" height="300" src="/../img/colaboradores/default.png" alt="Imagen Ponente">
+        </picture>
+    <?php } else { ?>
+        <picture class="sidebar-colaborador--picture">
+            <source srcset="/../<?php echo $colaborador->foto; ?>.webp" type="image/webp">
+            <source srcset="/../<?php echo $colaborador->foto; ?>.png" type="image/png">
+            <img class="sidebar-colaborador--imagen" loading="lazy" width="200" height="300" src="/../<?php echo $colaborador->foto; ?>.webp" alt="Imagen Ponente">
+        </picture>
+    <?php } ?>
 
     <div class="sidebar-colaborador--contenido">
         <h3 class="colaborador">

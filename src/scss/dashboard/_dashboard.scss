@@ -1,0 +1,111 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+
+.contenedor-admin{
+    // padding: 1rem 3rem;
+    &__fecha{
+        font-size: 2rem;
+        text-align: center;
+        color: v.$blanco;
+    }
+    @include m.tablet {
+         padding: 1rem 4rem; 
+    }
+
+    &__titulo{
+        text-align: center;
+        text-decoration: underline;
+        padding-bottom: 1rem;
+        font-size: 3rem;
+        @include m.tablet {
+             font-size: 5rem; 
+        }
+    }
+}
+
+
+.icono-admin{
+    padding-right: 1rem;
+}
+
+.card-dashboard{
+    background-color: v.$gris-oscuro;
+    border-radius: 1rem;
+    margin-bottom: 1rem;
+    padding: 0.1rem;
+}
+
+.card-admin{
+    background-color: #c23535;
+    margin-bottom: 1rem;
+    padding: 3rem 0;
+    border-radius: 1rem;
+    &:hover{
+        background-color: v.$gris-claro;
+        border: 2px solid v.$gris-oscuro;
+        color: v.$gris-oscuro;
+    }
+}
+
+.card-title{
+    text-align: center;
+    font-size: 2rem;
+    color: v.$blanco;
+    @include m.tablet {
+         font-size: 3rem; 
+    }
+    &:hover{
+        color: v.$gris-oscuro;
+    }
+}
+
+
+.boton-acciones{
+    background-color: v.$gris-oscuro;
+    padding: 1rem 3rem;
+    text-align: center;
+
+    &__texto{
+        color: v.$blanco;
+    }
+}
+
+.botones-acciones{
+    margin-bottom: 2rem;
+}
+
+.card-col{
+    background-color: v.$gris-claro;
+    padding: 1rem;
+    border: 1px solid v.$gris-oscuro;
+    -webkit-box-shadow: 9px 10px 34px -1px rgba(30,41,59,1);
+-moz-box-shadow: 9px 10px 34px -1px rgba(30,41,59,1);
+box-shadow: 9px 10px 34px -1px rgba(30,41,59,1);
+
+}
+
+.icono-ver{
+    padding-left: 1rem;
+    color: v.$gris-oscuro;
+    &:hover{
+        color: v.$rojo;
+    }
+}
+
+.carta-titulo{
+    color: v.$gris-oscuro;
+    margin-bottom: 0;
+}
+
+.contenedor-formulario{
+    padding: 1rem 3rem;
+    margin: 2rem 0;
+    @include m.tablet {
+         padding: 1rem 30rem;
+    }
+}
+
+.boton-carta{
+    font-size: 2rem;
+}

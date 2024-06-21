@@ -2,7 +2,7 @@
 @use 'base/variables' as v;
 
 .contenedor-colaborador {
-    padding: 2rem;
+    padding: 4rem;
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
@@ -16,8 +16,8 @@
 box-shadow: 6px 6px 5px 0px rgba(163,180,207,1);
         border-radius: 1rem;
         @include m.tablet {
-            width: 26%;
-            padding: 3rem 2rem;
+            width: 27%;
+            padding: 3rem 1rem;
         }
     }
 
@@ -25,8 +25,7 @@ box-shadow: 6px 6px 5px 0px rgba(163,180,207,1);
         width: 100%;
         
         @include m.tablet {
-            width: 73%;
-            padding: 0 4rem;
+            width: 72%;
         }
     }
 }
@@ -116,11 +115,6 @@ box-shadow: 6px 6px 5px 0px rgba(163,180,207,1);
     }
 }
 
-.icono-opcion{
-    padding-right: 1rem;
-}
-
-
 .colaborador-picture {
     padding-top: 2rem;
     display: flex;
@@ -137,39 +131,5 @@ box-shadow: 6px 6px 5px 0px rgba(163,180,207,1);
         margin: auto;
     
         border-radius: 50%;
-    }
-}
-
-.carta-titulo{
-    font-size: 2rem;
-    padding-bottom: 1rem;
-}
-
-.carta-descripcion{
-    font-size: 1.3rem;
-    @include m.tablet {
-         font-size: 1.8rem; 
-    }
-}
-
-.boton-carta {
-    padding: 1rem 1rem;
-    border-radius: 1rem;
-    font-size: 1.5rem;
-    width: 100%; /* Ancho completo */
-    display: block; /* Para que el botón ocupe el ancho completo */
-    text-align: center; /* Opcional: Centrar el texto */
-    @include m.tablet {
-        padding: 1rem 1rem; 
-    }
-}
-
-.card{
-    &:hover{
-        background-color: white;
-        color: v.$gris-oscuro;
-        .carta-titulo{
-            color: v.$gris-oscuro;
-        }
     }
 }

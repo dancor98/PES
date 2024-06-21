@@ -934,67 +934,136 @@ h3 {
   padding-right: 20px;
 }
 
-.contenedor-admin {
-  padding: 1rem 3rem;
+.contenedor-colaborador {
+  padding: 4rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
-.contenedor-admin__fecha {
+.contenedor-colaborador__left {
+  width: 100%;
+  background-color: #f3f5f9;
+  border: 2px solid #F8FAFC;
+  box-shadow: 6px 6px 5px 0px rgb(163, 180, 207);
+  border-radius: 1rem;
+}
+@media (min-width: 768px) {
+  .contenedor-colaborador__left {
+    width: 27%;
+    padding: 3rem 1rem;
+  }
+}
+.contenedor-colaborador__right {
+  width: 100%;
+}
+@media (min-width: 768px) {
+  .contenedor-colaborador__right {
+    width: 72%;
+  }
+}
+
+.sidebar-colaborador {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+.sidebar-colaborador--picture {
+  padding-top: 2rem;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+}
+.sidebar-colaborador--imagen {
+  width: 20rem;
+  display: block;
+  margin: auto;
+  border-radius: 50%;
+}
+@media (min-width: 768px) {
+  .sidebar-colaborador--imagen {
+    width: 30rem;
+  }
+}
+.sidebar-colaborador--contenido {
+  width: 100%; /* Ensure the content takes full width */
+}
+.sidebar-colaborador--contenido h3 {
+  font-weight: 400;
+  line-height: 2rem;
+}
+@media (min-width: 768px) {
+  .sidebar-colaborador--contenido h3 {
+    line-height: 2rem;
+  }
+}
+.sidebar-colaborador--contenido .colaborador {
+  font-size: 2.5rem;
+  text-align: center;
+}
+.sidebar-colaborador--contenido .colaborador-puesto {
   font-size: 2rem;
   text-align: center;
-  color: #FFFFFF;
+}
+.sidebar-colaborador--contenido .colaborador-detalle {
+  text-align: left;
+  font-size: 1.8rem;
+  padding: 0 4rem;
 }
 @media (min-width: 768px) {
-  .contenedor-admin {
-    padding: 1rem 4rem;
+  .sidebar-colaborador--contenido .colaborador-detalle {
+    font-size: 2rem;
+    padding: 0 5rem;
   }
 }
-.contenedor-admin__titulo {
-  text-align: center;
-  text-decoration: underline;
-  padding-bottom: 1rem;
-  font-size: 3rem;
+.sidebar-colaborador--contenido hr {
+  height: 2px;
+  background-color: black;
+  border: 0;
+  width: 80%;
+  margin: 1rem auto;
 }
-@media (min-width: 768px) {
-  .contenedor-admin__titulo {
-    font-size: 5rem;
-  }
-}
-
-.icono-admin {
-  padding-right: 1rem;
-}
-
-.card-dashboard {
+.sidebar-colaborador--boton {
+  display: block; /* Ensure the button behaves as a block element */
+  width: calc(100% - 6rem); /* Adjust the width to provide margins */
+  margin: 2rem auto; /* Center the button with auto margins */
+  padding: 1rem; /* Add padding for better appearance */
+  text-align: center; /* Center the text inside the button */
   background-color: #1E293B;
-  border-radius: 1rem;
-  margin-bottom: 1rem;
-  padding: 0.1rem;
-}
-
-.card-admin {
-  background-color: #c23535;
-  margin-bottom: 1rem;
-  padding: 3rem 0;
-  border-radius: 1rem;
-}
-
-.card-title {
-  text-align: center;
-  font-size: 2.4rem;
-  color: #FFFFFF;
+  color: white; /* Ensure text color is visible */
+  text-decoration: none; /* Remove underline from the link */
+  border-radius: 0.5rem; /* Add some border radius for better appearance */
 }
 @media (min-width: 768px) {
-  .card-title {
-    font-size: 3rem;
+  .sidebar-colaborador--boton {
+    width: calc(100% - 10rem); /* Adjust the width for larger screens */
   }
 }
-
-.boton-acciones {
-  background-color: #1E293B;
-  padding: 1rem;
-  text-align: center;
+.sidebar-colaborador--boton i {
+  margin-right: 0.5rem; /* Add some space between the icon and text */
 }
-.boton-acciones__texto {
-  color: #FFFFFF;
+.sidebar-colaborador--boton:hover {
+  background-color: #f3f5f9;
+  border: 2px solid black;
+  color: black;
+}
+
+.colaborador-picture {
+  padding-top: 2rem;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+}
+.colaborador-picture--imagen-carta {
+  width: 15rem;
+  display: block;
+  margin: auto;
+  border-radius: 50%;
+}
+@media (min-width: 768px) {
+  .colaborador-picture--imagen-carta {
+    width: 20rem;
+  }
 }
 
 .table-responsive {
@@ -1116,201 +1185,109 @@ h3 {
   }
 }
 
-.listado-ponente {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  display: grid;
-  gap: 1rem;
-  grid-template-columns: repeat(1, 1fr);
-}
-.listado-ponente__ponente, .listado-ponente__ponente--seleccionado {
-  color: #007df4;
-  border: 1px solid #007df4;
-  padding: 1rem;
-  border-radius: 1rem;
-  text-align: center;
-  list-style: none;
-  margin-bottom: 1rem;
-}
-.listado-ponente__ponente:hover, .listado-ponente__ponente--seleccionado:hover {
-  cursor: pointer;
-}
-.listado-ponente__ponente--seleccionado {
-  background-color: #007df4;
-  color: #FFFFFF;
-}
-
-.contenedor-colaborador {
-  padding: 2rem;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-.contenedor-colaborador__left {
-  width: 100%;
-  background-color: #f3f5f9;
-  border: 2px solid #F8FAFC;
-  box-shadow: 6px 6px 5px 0px rgb(163, 180, 207);
-  border-radius: 1rem;
-}
-@media (min-width: 768px) {
-  .contenedor-colaborador__left {
-    width: 26%;
-    padding: 3rem 2rem;
-  }
-}
-.contenedor-colaborador__right {
-  width: 100%;
-}
-@media (min-width: 768px) {
-  .contenedor-colaborador__right {
-    width: 73%;
-    padding: 0 4rem;
-  }
-}
-
-.sidebar-colaborador {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-}
-.sidebar-colaborador--picture {
-  padding-top: 2rem;
-  display: flex;
-  justify-content: center;
-  overflow: hidden;
-}
-.sidebar-colaborador--imagen {
-  width: 20rem;
-  display: block;
-  margin: auto;
-  border-radius: 50%;
-}
-@media (min-width: 768px) {
-  .sidebar-colaborador--imagen {
-    width: 30rem;
-  }
-}
-.sidebar-colaborador--contenido {
-  width: 100%; /* Ensure the content takes full width */
-}
-.sidebar-colaborador--contenido h3 {
-  font-weight: 400;
-  line-height: 2rem;
-}
-@media (min-width: 768px) {
-  .sidebar-colaborador--contenido h3 {
-    line-height: 2rem;
-  }
-}
-.sidebar-colaborador--contenido .colaborador {
-  font-size: 2.5rem;
-  text-align: center;
-}
-.sidebar-colaborador--contenido .colaborador-puesto {
+.contenedor-admin__fecha {
   font-size: 2rem;
   text-align: center;
-}
-.sidebar-colaborador--contenido .colaborador-detalle {
-  text-align: left;
-  font-size: 1.8rem;
-  padding: 0 4rem;
+  color: #FFFFFF;
 }
 @media (min-width: 768px) {
-  .sidebar-colaborador--contenido .colaborador-detalle {
-    font-size: 2rem;
-    padding: 0 5rem;
+  .contenedor-admin {
+    padding: 1rem 4rem;
   }
 }
-.sidebar-colaborador--contenido hr {
-  height: 2px;
-  background-color: black;
-  border: 0;
-  width: 80%;
-  margin: 1rem auto;
-}
-.sidebar-colaborador--boton {
-  display: block; /* Ensure the button behaves as a block element */
-  width: calc(100% - 6rem); /* Adjust the width to provide margins */
-  margin: 2rem auto; /* Center the button with auto margins */
-  padding: 1rem; /* Add padding for better appearance */
-  text-align: center; /* Center the text inside the button */
-  background-color: #1E293B;
-  color: white; /* Ensure text color is visible */
-  text-decoration: none; /* Remove underline from the link */
-  border-radius: 0.5rem; /* Add some border radius for better appearance */
+.contenedor-admin__titulo {
+  text-align: center;
+  text-decoration: underline;
+  padding-bottom: 1rem;
+  font-size: 3rem;
 }
 @media (min-width: 768px) {
-  .sidebar-colaborador--boton {
-    width: calc(100% - 10rem); /* Adjust the width for larger screens */
+  .contenedor-admin__titulo {
+    font-size: 5rem;
   }
-}
-.sidebar-colaborador--boton i {
-  margin-right: 0.5rem; /* Add some space between the icon and text */
-}
-.sidebar-colaborador--boton:hover {
-  background-color: #f3f5f9;
-  border: 2px solid black;
-  color: black;
 }
 
-.icono-opcion {
+.icono-admin {
   padding-right: 1rem;
 }
 
-.colaborador-picture {
-  padding-top: 2rem;
-  display: flex;
-  justify-content: center;
-  overflow: hidden;
+.card-dashboard {
+  background-color: #1E293B;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+  padding: 0.1rem;
 }
-.colaborador-picture--imagen-carta {
-  width: 15rem;
-  display: block;
-  margin: auto;
-  border-radius: 50%;
+
+.card-admin {
+  background-color: #c23535;
+  margin-bottom: 1rem;
+  padding: 3rem 0;
+  border-radius: 1rem;
+}
+.card-admin:hover {
+  background-color: #F8FAFC;
+  border: 2px solid #1E293B;
+  color: #1E293B;
+}
+
+.card-title {
+  text-align: center;
+  font-size: 2rem;
+  color: #FFFFFF;
 }
 @media (min-width: 768px) {
-  .colaborador-picture--imagen-carta {
-    width: 20rem;
+  .card-title {
+    font-size: 3rem;
   }
+}
+.card-title:hover {
+  color: #1E293B;
+}
+
+.boton-acciones {
+  background-color: #1E293B;
+  padding: 1rem 3rem;
+  text-align: center;
+}
+.boton-acciones__texto {
+  color: #FFFFFF;
+}
+
+.botones-acciones {
+  margin-bottom: 2rem;
+}
+
+.card-col {
+  background-color: #F8FAFC;
+  padding: 1rem;
+  border: 1px solid #1E293B;
+  box-shadow: 9px 10px 34px -1px rgb(30, 41, 59);
+}
+
+.icono-ver {
+  padding-left: 1rem;
+  color: #1E293B;
+}
+.icono-ver:hover {
+  color: rgb(169, 0, 0);
 }
 
 .carta-titulo {
-  font-size: 2rem;
-  padding-bottom: 1rem;
+  color: #1E293B;
+  margin-bottom: 0;
 }
 
-.carta-descripcion {
-  font-size: 1.3rem;
+.contenedor-formulario {
+  padding: 1rem 3rem;
+  margin: 2rem 0;
 }
 @media (min-width: 768px) {
-  .carta-descripcion {
-    font-size: 1.8rem;
+  .contenedor-formulario {
+    padding: 1rem 30rem;
   }
 }
 
 .boton-carta {
-  padding: 1rem 1rem;
-  border-radius: 1rem;
-  font-size: 1.5rem;
-  width: 100%; /* Ancho completo */
-  display: block; /* Para que el botón ocupe el ancho completo */
-  text-align: center; /* Opcional: Centrar el texto */
-}
-@media (min-width: 768px) {
-  .boton-carta {
-    padding: 1rem 1rem;
-  }
-}
-
-.card:hover {
-  background-color: white;
-  color: #1E293B;
-}
-.card:hover .carta-titulo {
-  color: #1E293B;
+  font-size: 2rem;
 }
 /*# sourceMappingURL=app.css.map */

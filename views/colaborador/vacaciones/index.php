@@ -1,15 +1,19 @@
-<h2 class="dashboard__heading"> <?php echo $titulo; ?> </h2>
+<h1 class="contenedor-admin__titulo"><?php echo $titulo; ?></h1>
 
 <?php include_once __DIR__ . '/../../templates/alertas.php'; ?>
 
 
-<div class="dashboard__contenedor">
+<div class="contenedor-admin contenedor-admin__info">
 
-    <div class="dashboard__contenedor-boton">
-        <a href="/colaborador/vacaciones/crear" class="dashboard__boton">
-            <i class="fa-solid fa-circle-plus"></i>
-            Solicitar Vacaciones
-        </a>
+    <div class="row justify-content-end botones-acciones">
+        <div class="col-12 col-md-auto mb-2 mb-md-0">
+            <div class="boton-acciones">
+                <a href="/colaborador/vacaciones/crear" class="boton-acciones__texto">
+                    <i class="fa-solid fa-circle-plus icono-admin"></i>
+                    Crear Vacaciones
+                </a>
+            </div>
+        </div>
     </div>
     <?php if (!empty($vacaciones)) { ?>
 

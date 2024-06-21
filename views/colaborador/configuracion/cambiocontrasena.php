@@ -1,12 +1,13 @@
-<h2 class="dashboard__heading"> <?php echo $titulo; ?> </h2>
-
-<div class="dashboard__formulario">
-
-    <div class="dashboard__contenedor-boton">
-        <a href="/colaborador/configuracion" class="dashboard__boton">
-            <i class="fa-solid fa-circle-arrow-left"></i>
-            Volver
-        </a>
+<div class="contenedor-formulario">
+    <div class="row justify-content-end botones-acciones">
+        <div class="col-12 col-md-auto mb-2 mb-md-0">
+            <div class="boton-acciones">
+                <a href="/colaborador/configuracion" class="boton-acciones__texto">
+                    <i class="fa-solid fa-rotate-left icono-admin"></i>
+                    Volver
+                </a>
+            </div>
+        </div>
     </div>
 
     <?php include_once __DIR__ . '/../../templates/alertas.php'; ?>
@@ -18,8 +19,7 @@
 
             <div class="formulario__campo">
                 <label for="contrasena" class="formulario__label">Contrasena Nuenva:</label>
-                <input type="password" class="formulario__input" name="contrasena" id="contrasena"
-                    placeholder="Nueva Contrasena" value="">
+                <input type="password" class="formulario__input" name="contrasena" id="contrasena" placeholder="Nueva Contrasena" value="">
             </div>
         </fieldset>
 
