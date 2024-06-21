@@ -2,81 +2,42 @@
 @use 'base/mixins' as m;
 
 
-// .navbar{
-//     background-color: v.$gris-oscuro;
-//     padding: 2rem;
-// }
-// .navbar-principal{
-//     background-color: #1a1b15;
-//     padding: 2rem;
-// }
-
-// button.navbar-toggler{
-//     color: v.$blanco;
-// }
-
-// // .nav-link{
-// //     all: unset;
-// //     color: v.$blanco;
-// //     &:hover{
-// //         background-color: v.$gris-claro;
-// //         padding: 1rem;
-// //         border-radius: 1rem;
-// //         color: v.$gris-oscuro;
-// //     }
-// // }
-
-// .nav-item{
-//     padding-right: 2rem;
-//     margin: 2rem 0;
-// }
-
-// input.nav-link{
-//     all: unset;
-//     color: v.$blanco;
-// }
-
-
-// .icon-menu{
-//     font-size: 3rem;
-// }
-
-// .navbar-logo{
-//     width: 13rem;
-// }
-
-
-
-
-
 ////////////////////////////////////////////////
 
 .menu{
-    width: 100%; /* Ancho del div */
-    height: 60vh; /* Altura del div */
-    background-image: url('../img/CCM.png'); /* Ruta a la imagen */
-    background-size: cover; /* Escalar la imagen para cubrir el div */
-    background-position: center; /* Centrar la imagen en el div */
-    background-repeat: no-repeat; /* Evitar que la imagen se repita */
-    border-radius: 0 0 2rem 2rem;
-    padding: 1.4rem 3rem;
-    display: flex;
-    flex-direction: column; /* Apilar los elementos verticalmente */
-    justify-content: space-between; /* Espacio entre los elementos */
-    @include m.desktop {
-         height: 90vh; 
+    padding: 2rem 3rem;
+    &__admin{
+        padding: 2rem 1rem;
     }
 }
 
+.menu-top{
+    padding: 2rem 3rem;
+    position: fixed; /* Fija el div en la pantalla */
+    top: 0; /* Posición en la parte superior */
+    left: 0; /* Posición en la parte izquierda */
+    width: 100%; /* Ancho del div para que ocupe toda la pantalla */
+    z-index: 1000; /* Asegura que el div esté por encima de otros elementos */
+}
+
 .navbar-inicio{
-background-color: #1e293b6f;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.1));
 border-radius: 2rem;
 padding: 2rem;
--webkit-box-shadow: 0px 18px 33px -4px rgba(255,0,0,0.65);
--moz-box-shadow: 0px 18px 33px -4px rgba(255,0,0,0.65);
-box-shadow: 0px 18px 33px -4px rgba(255,0,0,0.65);
-
+-webkit-box-shadow: 0px 18px 33px -4px rgba(0, 0, 0, 0.65);
+-moz-box-shadow: 0px 18px 33px -4px rgba(0, 0, 0, 0.65);
+box-shadow: 0px 18px 33px -4px rgba(0, 0, 0, 0.65);
 }
+.navbar-admin{
+    background: v.$gris-oscuro;
+border-radius: 2rem;
+padding: 2rem;
+-webkit-box-shadow: 0px 18px 33px -4px rgba(0, 0, 0, 0.65);
+-moz-box-shadow: 0px 18px 33px -4px rgba(0, 0, 0, 0.65);
+box-shadow: 0px 18px 33px -4px rgba(0, 0, 0, 0.65);
+}
+
+
 
 .navbar-inicio-logo {
 width: 120px; /* Ancho deseado */
@@ -93,12 +54,12 @@ padding-left: 1rem;
 
 .nav-link-menu{
 font-size: 1.5rem;
-color: white;
+color: v.$blanco;
 margin-right: 2rem;
 font-weight: v.$bold;
 padding-bottom: 2rem;
 &:hover{
-    color: v.$blanco;
+    color: v.$gris-claro;
     text-decoration: underline;
 }
 @include m.tablet {
@@ -108,29 +69,27 @@ padding-bottom: 2rem;
 
 .icono-menu{
 font-size: 1.7rem;
-color: white;
-}
-
-.texto-inicio {
-    background-color: #1e293bcd; /* Color de fondo semi-transparente */
-    padding: 2rem ; /* Espaciado interno */
-    margin-bottom: 5rem;
-    border-radius: 1rem; /* Borde redondeado */
-    color: v.$blanco;
-    font-weight: v.$bold;
-    text-align: center;
-    font-size: 2rem;
-    @include m.desktop {
-         font-size: 4rem;
-         margin-right: 70%; 
-         text-align: left;
-    }
-    @include m.tablet {
-         margin-right: 60%; 
-    }
-
+color: v.$blanco;
 }
 
 .navbar-toggler{
     border: none;
+}
+
+.boton-logout{
+    font-size: 1.5rem;
+    color: v.$blanco;
+    margin-right: 2rem;
+    font-weight: v.$bold;
+    padding-bottom: 2rem;
+    background-color: v.$gris-oscuro;
+    border: none;
+    &:hover{
+        color: v.$gris-claro;
+        text-decoration: underline;
+    }
+    @include m.tablet {
+         padding-bottom: 0; 
+         margin-top: 6.6px;
+    }
 }
