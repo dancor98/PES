@@ -13,6 +13,12 @@ class PaginasController
             'titulo' => 'inicio',
         ]);
     }
+    public static function nosotros(Router $router)
+    {
+        $router->render('paginas/nosotros', [
+            'titulo' => 'Nosotros',
+        ]);
+    }
 
     public static function error(Router $router)
     {

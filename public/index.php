@@ -84,6 +84,7 @@ $router->post('/admin/boletaspagos/cargar', [BoletasPagoController::class, 'carg
 
 //Area publica
 $router->get('/', [PaginasController::class, 'index']);
+$router->get('/nosotros', [PaginasController::class, 'nosotros']);
 $router->get('/404', [PaginasController::class, 'error']);
 
 //Area de Colaboradores ---correcto

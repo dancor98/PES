@@ -7,30 +7,24 @@
     
     background-image: url('../img/hero.webp'); /* Ruta a la imagen */
     background-size: cover; /* Escalar la imagen para cubrir el div */
-    background-position: center center; /* Centrar la imagen en el div */
+    background-position: top center; /* Centrar la imagen en el div */
     background-repeat: no-repeat; /* Evitar que la imagen se repita */
     border-radius: 0 0 2rem 2rem;
     @include m.tablet {
-         height: 80vh; 
+         height: 90vh; 
     }
     
 }
-.contenedor-inicio{
+.contenedor-paginas{
     padding: 3rem 2rem;
     display: flex;
         flex-wrap: wrap; /* Permitir que los elementos se envuelvan en dispositivos pequeños */
-        gap: 20px; /* Espacio entre las columnas */
+        gap: 10px; /* Espacio entre las columnas */
     @include m.tablet {
         padding: 3rem 10rem;
     }
 }
 
-.contenedor-inicio-1{
-    padding: 3rem 3rem;
-    @include m.tablet {
-         padding: 3rem 10rem; 
-    }
-}
 
 .titulo-inicio{
     width: 100%; /* Ancho completo en dispositivos pequeños */
@@ -43,15 +37,19 @@
     }
 }
 
-.columna {
+.columnas {
     flex: 1; /* Ocupa todo el espacio disponible */
-    padding: 0 2rem; /* Espaciado interno */
+    padding: 1rem 1rem; /* Espaciado interno */
     display: flex; /* Utilizar flexbox para el contenido interno */
         flex-direction: column; /* Alinear el contenido en columna */
         // align-items: center; /* Centrar el contenido horizontalmente */
-        // justify-content: center; /* Centrar el contenido verticalmente */
+        justify-content: center; /* Centrar el contenido verticalmente */
     @include m.tablet {
          width: 50%; 
+    }
+
+    &__grid{
+        background-color: aqua;
     }
 }
 
@@ -97,3 +95,57 @@ visibility: hidden;
     font-weight: lighter;
     text-align: right !important;
 }
+
+.video{
+    width: auto;
+    height: 50rem;
+}
+
+
+.columnas-1{
+    background-color: v.$gris-claro;
+    padding: 0;
+    -webkit-box-shadow: 13px 17px 26px -11px rgb(0, 0, 0);
+-moz-box-shadow: 13px 17px 26px -11px rgb(0, 0, 0);
+box-shadow: 13px 17px 26px -11px rgb(0, 0, 0);
+
+}
+
+.contenido-carta-inicio{
+    padding: 2rem 1rem 4rem 1rem;
+}
+
+
+.boton-carta-inicio{
+    background-color: v.$gris-oscuro;
+    padding: 1rem 4rem;
+    margin-bottom: 4rem;
+    border-radius: 1rem;
+    color: white;
+    font-weight: v.$bold;
+    text-align: center;
+    
+
+    @include m.tablet {
+        width: 40%;
+    }
+
+    &:hover{
+        border: 2px solid v.$gris-oscuro;
+        color: v.$gris-oscuro;
+        background-color: v.$gris-claro;
+    }
+}
+
+.titulo-carta-inicio{
+    font-size: 2rem;
+    text-align: center;
+    @include m.tablet {
+         font-size: 3rem; 
+         text-align: left;
+    }
+}
+
+
+
+

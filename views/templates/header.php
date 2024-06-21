@@ -10,7 +10,7 @@
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav ms-auto">
                     <a class="nav-link nav-link-menu" href="/">INICIO</a>
-                    <a class="nav-link nav-link-menu" href="#">NOSOTROS</a>
+                    <a class="nav-link nav-link-menu" href="/nosotros">NOSOTROS</a>
                     <a class="nav-link nav-link-menu" href="#">PRODUCTO Y SERVICIOS</a>
                     <a class="nav-link nav-link-menu" href="#">LOCALIDADES</a>
                     <a class="nav-link nav-link-menu" href="#">CARRERAS</a>
