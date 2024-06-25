@@ -19,6 +19,24 @@ class PaginasController
             'titulo' => 'Nosotros',
         ]);
     }
+    public static function productosServicios(Router $router)
+    {
+        $router->render('paginas/productos-servicios', [
+            'titulo' => 'Productos y Servicios',
+        ]);
+    }
+    public static function localidades(Router $router)
+    {
+        $router->render('paginas/localidades', [
+            'titulo' => 'Localidades',
+        ]);
+    }
+    public static function carreras(Router $router)
+    {
+        $router->render('paginas/carreras', [
+            'titulo' => 'Carreras',
+        ]);
+    }
 
     public static function error(Router $router)
     {
