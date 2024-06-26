@@ -53,8 +53,8 @@
             <div class="card-admin">
                 <a href="/admin/incapacidades">
                     <div class="card-body">
-                        <h5 class="card-title"><i class="fa-solid fa-hospital-user icono-admin"></i>Boletas de
-                            Incapacidad
+                        <h5 class="card-title"><i class="fa-solid fa-hospital-user icono-admin"></i>
+                            Incapacidades
                         </h5>
                     </div>
                 </a>
@@ -64,8 +64,7 @@
             <div class="card-admin">
                 <a href="/admin/vacaciones">
                     <div class="card-body">
-                        <h5 class="card-title"><i class="fa-solid fa-plane-departure icono-admin"></i>Vacaciones
-                            Solicitadas</h5>
+                        <h5 class="card-title"><i class="fa-solid fa-plane-departure icono-admin"></i>Solicitudes</h5>
                     </div>
                 </a>
             </div>

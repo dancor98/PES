@@ -1,12 +1,14 @@
-<h2 class="dashboard__heading"> <?php echo $titulo; ?> </h2>
-
-
-<div class="dashboard__formulario">
-    <div class="dashboard__contenedor-boton">
-        <a href="/admin/empresas" class="dashboard__boton">
-            <i class="fa-solid fa-circle-arrow-left"></i>
-            Volver
-        </a>
+<div class="contenedor-formulario">
+    <h2 class="dashboard__heading"> <?php echo $titulo; ?> </h2>
+    <div class="row justify-content-end botones-acciones">
+        <div class="col-12 col-md-auto mb-2 mb-md-0">
+            <div class="boton-acciones">
+                <a href="/admin/empresas" class="boton-acciones__texto">
+                    <i class="fa-solid fa-rotate-left icono-admin"></i>
+                    Volver
+                </a>
+            </div>
+        </div>
     </div>
 
 

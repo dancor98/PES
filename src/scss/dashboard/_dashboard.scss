@@ -3,14 +3,14 @@
 
 
 .contenedor-admin{
-    // padding: 1rem 3rem;
+    padding: 1rem 5rem;
     &__fecha{
         font-size: 2rem;
         text-align: center;
         color: v.$blanco;
     }
-    @include m.tablet {
-         padding: 1rem 4rem; 
+    @include m.desktop {
+         padding: 1rem 20rem; 
     }
 
     &__titulo{
@@ -42,7 +42,7 @@
     padding: 3rem 0;
     border-radius: 1rem;
     &:hover{
-        background-color: v.$gris-claro;
+        background-color: #c2353593;
         border: 2px solid v.$gris-oscuro;
         color: v.$gris-oscuro;
     }

@@ -30,13 +30,13 @@
                         <a href="/nosotros" class="nav-link-footer">NOSOTROS</a>
                     </p>
                     <p>
-                        <a href="/nosotros" class="nav-link-footer">PRODUCTOS Y SERVICIOS</a>
+                        <a href="/productos-servicios" class="nav-link-footer">PRODUCTOS Y SERVICIOS</a>
                     </p>
                     <p>
-                        <a href="/nosotros" class="nav-link-footer">LOCALIDADES</a>
+                        <a href="/localidades" class="nav-link-footer">LOCALIDADES</a>
                     </p>
                     <p>
-                        <a href="/nosotros" class="nav-link-footer">CARRERAS</a>
+                        <a href="/carreras" class="nav-link-footer">CARRERAS</a>
                     </p>
                 </div>
                 <!-- Grid column -->
