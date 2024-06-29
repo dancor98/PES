@@ -50,60 +50,69 @@
 
     <div class="row">
         <div class="col-sm-4 ">
-            <div class="card-admin">
-                <a href="/admin/incapacidades">
+            <a href="/admin/incapacidades">
+                <div class="card-admin">
                     <div class="card-body">
                         <h5 class="card-title"><i class="fa-solid fa-hospital-user icono-admin"></i>
                             Incapacidades
                         </h5>
                     </div>
-                </a>
-            </div>
+                </div>
+            </a>
         </div>
         <div class="col-sm-4 ">
-            <div class="card-admin">
-                <a href="/admin/vacaciones">
+            <a href="/admin/vacaciones">
+                <div class="card-admin">
                     <div class="card-body">
                         <h5 class="card-title"><i class="fa-solid fa-plane-departure icono-admin"></i>Solicitudes</h5>
                     </div>
-                </a>
-            </div>
+                </div>
+            </a>
         </div>
         <div class="col-sm-4 ">
-            <div class="card-admin">
-                <a href="/admin/colaboradores">
+            <a href="/admin/colaboradores">
+                <div class="card-admin">
                     <div class="card-body">
                         <h5 class="card-title"><i class="fa-solid fa-users-line icono-admin"></i>Colaboradores</h5>
                     </div>
-                </a>
-            </div>
+                </div>
+            </a>
         </div>
         <div class="col-sm-4 ">
-            <div class="card-admin">
-                <a href="/admin/boletaspagos">
+            <a href="/admin/boletaspagos">
+                <div class="card-admin">
                     <div class="card-body">
                         <h5 class="card-title"><i class="fa-solid fa-money-check-dollar icono-admin"></i>Salarios</h5>
                     </div>
-                </a>
-            </div>
+                </div>
+            </a>
         </div>
         <div class="col-sm-4 ">
-            <div class="card-admin">
-                <a href="/admin/departamentos">
+            <a href="/admin/departamentos">
+                <div class="card-admin">
                     <div class="card-body">
                         <h5 class="card-title"><i class="fa-solid fa-building-user icono-admin"></i>Departamentos</h5>
                     </div>
-                </a>
-            </div>
+                </div>
+            </a>
         </div>
         <div class="col-sm-4 ">
-            <div class="card-admin">
-                <a href="/admin/empresas">
+            <a href="/admin/empresas">
+                <div class="card-admin">
                     <div class="card-body">
                         <h5 class="card-title"><i class="fa-solid fa-building icono-admin"></i>Empresas</h5>
                     </div>
-                </a>
-            </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-sm-4 ">
+            <a href="/admin/empresas">
+                <div class="card-admin">
+                    <div class="card-body">
+                        <h5 class="card-title"><i class="fa-regular fa-file icono-admin"></i>Postulaciones</h5>
+                    </div>
+                </div>
+            </a>
         </div>
     </div>
 

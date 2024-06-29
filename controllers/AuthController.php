@@ -209,7 +209,7 @@ class AuthController
 
 
         $router->render('auth/confirmar', [
-            'titulo' => 'Confirma tu cuenta DevWebcamp',
+            'titulo' => 'Confirma tu cuenta Grupo CCM',
             'alertas' => Colaboradores::getAlertas()
         ]);
     }

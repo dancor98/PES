@@ -1,4 +1,4 @@
-<div class="contenedor-admin">
+<div class="contenedor-colab">
     <div class="row">
         <div class="col-sm-3">
             <div class="card-dashboard">

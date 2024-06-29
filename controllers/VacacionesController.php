@@ -189,7 +189,7 @@ class VacacionesController
                 $resultado = $vacacion->guardar();
                 $colaborador = Colaboradores::find($_SESSION['id']);
                 // Enviar email
-                $email = new Email($colaborador->correo_electronico, $colaborador->nombre, '');
+                $email = new Email($colaborador->correo_electronico, $colaborador->nombre . " " . $colaborador->apellido_paterno . " " . $colaborador->apellido_materno, '');
                 $email->enviarSolicitud();
 
                 if ($resultado) {

@@ -3,7 +3,7 @@
 <?php include_once __DIR__ . '/../../templates/alertas.php'; ?>
 
 
-<div class="contenedor-admin contenedor-admin__info">
+<div class="contenedor-colab contenedor-admin__info">
 
     <div class="row justify-content-end botones-acciones">
         <div class="col-12 col-md-auto mb-2 mb-md-0">

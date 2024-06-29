@@ -28,17 +28,21 @@
 
 .titulo-inicio{
     width: 100%; /* Ancho completo en dispositivos pequeños */
-    text-align: left; /* Alinear el texto al centro */
+    text-align: center; /* Alinear el texto al centro */
     text-transform: uppercase;
     font-size: 2.7rem;
     @include m.tablet {
+        text-align: left;
          font-size: 3.5rem;
          padding-top: 5rem;
     }
 
     &--2{
-        text-align: right;
-        padding-right: 20rem;
+        text-align: center;
+        @include m.tablet {
+            text-align: right;
+            padding-right: 20rem; 
+        }
     }
 }
 
@@ -49,6 +53,7 @@
         flex-direction: column; /* Alinear el contenido en columna */
         // align-items: center; /* Centrar el contenido horizontalmente */
         justify-content: center; /* Centrar el contenido verticalmente */
+    width: 100%;
     @include m.tablet {
          width: 50%; 
     }
@@ -71,6 +76,9 @@
 .descripcion-inicio{
     font-size: 2rem;
     line-height: 2.5;
+    &--2{
+        line-height: 2;
+    }
 }
 
 .imagen-mapa{
@@ -157,6 +165,7 @@ box-shadow: 13px 17px 26px -11px rgb(0, 0, 0);
     display: flex;
         flex-wrap: wrap; /* Permitir que los elementos se envuelvan en dispositivos pequeños */
         gap: 10px; /* Espacio entre las columnas */
+        width: 100%;
     @include m.tablet {
         padding: 5rem 10rem;
     }

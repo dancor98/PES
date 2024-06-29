@@ -12,7 +12,7 @@ class Email
     public $token;
 
 
-    public function __construct($email, $nombre, $token,)
+    public function __construct($email, $nombre, $token)
     {
         $this->email = $email;
         $this->nombre = $nombre;
@@ -48,7 +48,7 @@ class Email
 
         //Enviar el mail
         $mail->send();
-    }
+    } //Envio Correo al nuevo colaborador para que confirme la cuenta
 
     public function enviarInstrucciones()
     {
@@ -79,7 +79,7 @@ class Email
 
         //Enviar el mail
         $mail->send();
-    }
+    } //Envia las instrucciones para cambiar la contrasena en caso de olvido de la misma
 
     public function enviarConfirmacionBoleta()
     {
@@ -108,7 +108,7 @@ class Email
 
         //Enviar el mail
         $mail->send();
-    }
+    } //Notifica al colaborador que ya se genero la boleta de pago del mes
 
     public function enviarEstadoVacaciones()
     {
@@ -123,7 +123,7 @@ class Email
 
         $mail->setFrom('bot@specialized.co.cr', 'Bot');
         $mail->addAddress($this->email, $this->nombre);
-        $mail->Subject = 'Estado de Solicitud de Vacaciones Actualizado';
+        $mail->Subject = 'Actualizacion de estado en solicitud';
 
         // Set HTML
         $mail->isHTML(TRUE);
@@ -136,7 +136,7 @@ class Email
 
         //Enviar el mail
         $mail->send();
-    }
+    } //Notifica al colaborador que ya se actualizo el estado de la solicitud de vacaciones
 
 
     public function enviarSolicitud()
@@ -152,7 +152,7 @@ class Email
 
         $mail->setFrom('bot@specialized.co.cr', 'Bot');
         $mail->addAddress($this->email, $this->nombre);
-        $mail->Subject = 'Nuenva Solicitud de Vacaciones';
+        $mail->Subject = 'Nueva Solicitud de Vacaciones';
 
         // Set HTML
         $mail->isHTML(TRUE);
@@ -165,5 +165,5 @@ class Email
 
         //Enviar el mail
         $mail->send();
-    }
+    } // Notifica al administrador que un colaborador solicito vacaciones
 }

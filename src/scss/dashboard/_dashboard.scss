@@ -24,6 +24,31 @@
     }
 }
 
+.contenedor-colab{
+    padding: 1rem 5rem;
+    &__fecha{
+        font-size: 2rem;
+        text-align: center;
+        color: v.$blanco;
+    }
+    @include m.desktop {
+         padding: 1rem 5rem; 
+    }
+
+    &__titulo{
+        text-align: center;
+        text-decoration: underline;
+        padding-bottom: 1rem;
+        font-size: 3rem;
+        @include m.tablet {
+             font-size: 5rem; 
+        }
+    }
+}
+
+
+
+
 
 .icono-admin{
     padding-right: 1rem;
@@ -102,7 +127,7 @@ box-shadow: 9px 10px 34px -1px rgba(30,41,59,1);
     padding: 1rem 3rem;
     margin: 2rem 0;
     @include m.tablet {
-         padding: 1rem 30rem;
+         padding: 3rem 30rem;
     }
 }
 

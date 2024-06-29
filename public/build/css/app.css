@@ -482,19 +482,25 @@ h3 {
 
 .titulo-inicio {
   width: 100%; /* Ancho completo en dispositivos pequeños */
-  text-align: left; /* Alinear el texto al centro */
+  text-align: center; /* Alinear el texto al centro */
   text-transform: uppercase;
   font-size: 2.7rem;
 }
 @media (min-width: 768px) {
   .titulo-inicio {
+    text-align: left;
     font-size: 3.5rem;
     padding-top: 5rem;
   }
 }
 .titulo-inicio--2 {
-  text-align: right;
-  padding-right: 20rem;
+  text-align: center;
+}
+@media (min-width: 768px) {
+  .titulo-inicio--2 {
+    text-align: right;
+    padding-right: 20rem;
+  }
 }
 
 .columnas {
@@ -503,6 +509,7 @@ h3 {
   display: flex; /* Utilizar flexbox para el contenido interno */
   flex-direction: column; /* Alinear el contenido en columna */
   justify-content: center; /* Centrar el contenido verticalmente */
+  width: 100%;
 }
 @media (min-width: 768px) {
   .columnas {
@@ -527,6 +534,9 @@ h3 {
 .descripcion-inicio {
   font-size: 2rem;
   line-height: 2.5;
+}
+.descripcion-inicio--2 {
+  line-height: 2;
 }
 
 .imagen-mapa {
@@ -613,6 +623,7 @@ h3 {
   display: flex;
   flex-wrap: wrap; /* Permitir que los elementos se envuelvan en dispositivos pequeños */
   gap: 10px; /* Espacio entre las columnas */
+  width: 100%;
 }
 @media (min-width: 768px) {
   .contenedor-paginas-nosotros {
@@ -1270,6 +1281,31 @@ footer {
   }
 }
 
+.contenedor-colab {
+  padding: 1rem 5rem;
+}
+.contenedor-colab__fecha {
+  font-size: 2rem;
+  text-align: center;
+  color: #FFFFFF;
+}
+@media (min-width: 1024px) {
+  .contenedor-colab {
+    padding: 1rem 5rem;
+  }
+}
+.contenedor-colab__titulo {
+  text-align: center;
+  text-decoration: underline;
+  padding-bottom: 1rem;
+  font-size: 3rem;
+}
+@media (min-width: 768px) {
+  .contenedor-colab__titulo {
+    font-size: 5rem;
+  }
+}
+
 .icono-admin {
   padding-right: 1rem;
 }
@@ -1346,7 +1382,7 @@ footer {
 }
 @media (min-width: 768px) {
   .contenedor-formulario {
-    padding: 1rem 30rem;
+    padding: 3rem 30rem;
   }
 }
 
