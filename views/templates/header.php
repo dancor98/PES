@@ -11,10 +11,10 @@
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav ms-auto">
                     <a class="nav-link nav-link-menu" href="/">INICIO</a>
-                    <a class="nav-link nav-link-menu" href="/nosotros">NOSOTROS</a>
-                    <a class="nav-link nav-link-menu" href="/productos-servicios">PRODUCTO Y SERVICIOS</a>
-                    <a class="nav-link nav-link-menu" href="/localidades">LOCALIDADES</a>
-                    <a class="nav-link nav-link-menu" href="/carreras">CARRERAS</a>
+                    <a class="nav-link nav-link-menu" href="/nosotros#nosotros">NOSOTROS</a>
+                    <a class="nav-link nav-link-menu" href="/productos-servicios#productos">PRODUCTO Y SERVICIOS</a>
+                    <a class="nav-link nav-link-menu" href="/localidades#localidades">LOCALIDADES</a>
+                    <a class="nav-link nav-link-menu" href="/carreras#carreras">CARRERAS</a>
                 </div>
             </div>
         </div>

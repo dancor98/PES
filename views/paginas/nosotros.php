@@ -1,7 +1,7 @@
 <div class="hero">
 </div>
 
-<div class="contenedor-paginas-nosotros">
+<div class="contenedor-paginas-nosotros" id="nosotros">
     <h1 class="titulo-inicio">Nuentra Historia</h1>
     <div>
         <p class="descripcion-inicio">✔ Nuestro negocio empezó en 2001 con una tienda llamada Bikestation.</p>

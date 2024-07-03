@@ -1,7 +1,7 @@
 <div class="hero">
 </div>
 
-<div class="contenedor-paginas-nosotros">
+<div class="contenedor-paginas-nosotros" id="carreras">
     <h1 class="titulo-inicio">Nuentra Historia</h1>
 
     <div>
