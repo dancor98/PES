@@ -212,7 +212,7 @@ class BoletasPagoController
         }
 
         $router->render('colaborador/boletapago/index', [
-            'titulo' => 'Boletas de pago creadas',
+            'titulo' => 'Mis boletas de pago',
             'boletaspagos' => $boletaspagos,
             'paginacion' => $paginacion->paginacion(),
             'colaborador' => $colaborador

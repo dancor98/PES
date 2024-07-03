@@ -10,7 +10,7 @@
             <div class="boton-acciones">
                 <a href="/colaborador/incapacidades/crear" class="boton-acciones__texto">
                     <i class="fa-solid fa-circle-plus icono-admin"></i>
-                    Crear Boletas de Pago
+                    Cargar Incapacidad
                 </a>
             </div>
         </div>
