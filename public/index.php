@@ -14,6 +14,7 @@ use Controllers\DashboardColController;
 use Controllers\DepartamentosController;
 use Controllers\EmpresasController;
 use Controllers\IncapacidadesController;
+use Controllers\PostulacionesController;
 use Controllers\ReservasController;
 use Controllers\VacacionesController;
 
@@ -77,10 +78,11 @@ $router->post('/admin/vacaciones/editar', [VacacionesController::class, 'editar'
 $router->get('/admin/boletaspagos', [BoletasPagoController::class, 'index']);
 $router->get('/admin/boletaspagos/crear', [BoletasPagoController::class, 'crear']);
 $router->post('/admin/boletaspagos/crear', [BoletasPagoController::class, 'crear']);
-
 $router->get('/admin/boletaspagos/cargar', [BoletasPagoController::class, 'cargarDesdeCSV']);
 $router->post('/admin/boletaspagos/cargar', [BoletasPagoController::class, 'cargarDesdeCSV']);
 
+$router->get('/admin/postulaciones', [PostulacionesController::class, 'index']);
+$router->get('/admin/postulaciones/ver', [PostulacionesController::class, 'observar']);
 
 //Area publica
 $router->get('/', [PaginasController::class, 'index']);

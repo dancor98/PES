@@ -45,7 +45,7 @@ class PaginasController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             $carrera->sincronizar($_POST);
-            $alertas = $carrera->comprobar();
+            $alertas = $carrera->validar();
 
 
 
@@ -91,8 +91,8 @@ class PaginasController
 
         $router->render('paginas/carreras', [
             'titulo' => 'Postularme',
-            'departamentos' => $departamentos,
             'alertas' => $alertas,
+            'departamentos' => $departamentos,
             'carrera' => $carrera
         ]);
     }

@@ -19,7 +19,8 @@ class Carreras extends ActiveRecord
         'departamento_id',
         'pretencion_salarial',
         'mensaje',
-        'cv'
+        'cv',
+        'fecha_postulacion'
 
     ];
 
@@ -36,6 +37,7 @@ class Carreras extends ActiveRecord
     public $pretencion_salarial;
     public $mensaje;
     public $cv;
+    public $fecha_postulacion;
 
 
     public function __construct($args = [])
@@ -53,10 +55,11 @@ class Carreras extends ActiveRecord
         $this->pretencion_salarial = $args['pretencion_salarial'] ?? '';
         $this->mensaje = $args['mensaje'] ?? '';
         $this->cv = $args['cv'] ?? '';
+        $this->fecha_postulacion = $args['fecha_postulacion'] ?? '';
     }
 
     //Mensajes de Validacion
-    public function comprobar()
+    public function validar()
     {
         if (!$this->nombre) {
             self::$alertas['error'][] = 'El nombre es obligatorio';
@@ -64,14 +67,11 @@ class Carreras extends ActiveRecord
         if (preg_match('/[0-9]/', $this->nombre)) {
             self::$alertas['error'][] = 'El nombre no debe contener números';
         }
-        if (!$this->apellido_paterno) {
-            self::$alertas['error'][] = 'El apellido paterno es obligatorio';
+        if (!$this->apellido_paterno || !$this->apellido_materno) {
+            self::$alertas['error'][] = 'Los apellidos son obligatorios';
         }
         if (preg_match('/[0-9]/', $this->apellido_paterno)) {
             self::$alertas['error'][] = 'El apellido paterno no debe contener números';
-        }
-        if (!$this->apellido_materno) {
-            self::$alertas['error'][] = 'El apellido materno es obligatorio';
         }
         if (preg_match('/[0-9]/', $this->apellido_materno)) {
             self::$alertas['error'][] = 'El apellido materno no debe contener números';
@@ -84,6 +84,30 @@ class Carreras extends ActiveRecord
         }
         if (strlen($this->cedula) < 9) {
             self::$alertas['error'][] = 'La cedula tiene que tener un minimo de 9 digitos, verifique que no existan espacios';
+        }
+
+        if (!$this->telefono) {
+            self::$alertas['error'][] = 'El telefono es obligatorio';
+        }
+        if (!preg_match('/^[0-9]+$/', $this->telefono)) {
+            self::$alertas['error'][] = 'El telefono debe contener solo números';
+        }
+        if (strlen($this->telefono) < 8 || strlen($this->telefono) > 8) {
+            self::$alertas['error'][] = 'El telefono debe de tener 8 digitos';
+        }
+
+        if (!$this->correo) {
+            self::$alertas['error'][] = 'El correo es obligatorio';
+        } elseif (!filter_var($this->correo, FILTER_VALIDATE_EMAIL)) {
+            self::$alertas['error'][] = 'El correo no es válido';
+        }
+
+        if (!$this->pretencion_salarial) {
+            self::$alertas['error'][] = 'Debe indicar su pretencion salarial';
+        }
+
+        if (!$this->mensaje) {
+            self::$alertas['error'][] = 'Debe indicar el mensaje para el reclutador';
         }
 
         return self::$alertas;

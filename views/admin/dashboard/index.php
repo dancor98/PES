@@ -106,7 +106,7 @@
             </a>
         </div>
         <div class="col-sm-4 ">
-            <a href="/admin/empresas">
+            <a href="/admin/postulaciones">
                 <div class="card-admin">
                     <div class="card-body">
                         <h5 class="card-title"><i class="fa-regular fa-file icono-admin"></i>Postulaciones</h5>
