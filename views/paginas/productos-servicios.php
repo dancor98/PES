@@ -2,8 +2,43 @@
 </div>
 
 
+<div class="contenedor espacio" id="productos">
 
-<div class="contenedor">
+    <h1 class="titulo-inicio titulo-inicio--3">Nuestras Marcas</h1>
+
+    <div class="principal-container">
+        <div class="columna1">
+            <img class="img-marcas" src="build/img/specialized.png" alt="">
+        </div>
+        <div class="columna2">
+            <img class="img-marcas" src="build/img/castelli.png" alt="">
+        </div>
+        <div class="columna1">
+            <img class="img-marcas" src="build/img/100perc.png" alt="">
+        </div>
+        <div class="columna2">
+            <img class="img-marcas" src="build/img/ceramicspeed_logo.png" alt="">
+        </div>
+    </div>
+    <br>
+    <div class="principal-container">
+        <div class="columna1">
+            <img class="img-marcas" src="build/img/sram.png" alt="">
+        </div>
+        <div class="columna2">
+            <img class="img-marcas" src="build/img/amp.png" alt="">
+        </div>
+        <div class="columna1">
+            <img class="img-marcas" src="build/img/unior.png" alt="">
+        </div>
+        <div class="columna2">
+            <img class="img-marcas" src="build/img/retul_logo.png" alt="">
+        </div>
+    </div>
+
+
+
+
 
     <h1 class="titulo-inicio titulo-inicio--3">Servicios</h1>
     <div class="principal-container">

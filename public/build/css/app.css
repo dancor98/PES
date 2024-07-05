@@ -450,7 +450,7 @@ h3 {
 
 .hero {
   width: 100%; /* Ancho del div */
-  height: 70vh; /* Altura del div */
+  height: 50vh; /* Altura del div */
   background-image: url("../img/hero.webp"); /* Ruta a la imagen */
   background-size: cover; /* Escalar la imagen para cubrir el div */
   background-position: top center; /* Centrar la imagen en el div */
@@ -460,32 +460,6 @@ h3 {
 @media (min-width: 768px) {
   .hero {
     height: 90vh;
-  }
-}
-
-.contenedor-paginas {
-  padding: 3rem 4rem;
-  display: flex;
-  flex-wrap: wrap; /* Permitir que los elementos se envuelvan en dispositivos pequeños */
-  gap: 10px; /* Espacio entre las columnas */
-}
-@media (min-width: 768px) {
-  .contenedor-paginas {
-    padding: 3rem 15rem;
-  }
-}
-
-.columnas {
-  flex: 1; /* Ocupa todo el espacio disponible */
-  padding: 1rem; /* Espaciado interno */
-  display: flex; /* Utilizar flexbox para el contenido interno */
-  flex-direction: column; /* Alinear el contenido en columna */
-  justify-content: center; /* Centrar el contenido verticalmente */
-  width: 100%;
-}
-@media (min-width: 768px) {
-  .columnas {
-    width: 50%;
   }
 }
 
@@ -500,12 +474,28 @@ h3 {
   }
 }
 
+.subtitulo-tiendas {
+  text-decoration: underline;
+  font-size: 2rem;
+  text-align: left;
+}
+@media (min-width: 768px) {
+  .subtitulo-tiendas {
+    font-size: 2rem;
+  }
+}
+
 .descripcion-inicio {
   font-size: 2rem;
   line-height: 2.5;
 }
 .descripcion-inicio--2 {
   line-height: 2;
+}
+
+.descripcion-tiendas {
+  font-size: 1.8rem;
+  line-height: 1.5;
 }
 
 .imagen-mapa {
@@ -542,81 +532,14 @@ h3 {
 }
 
 .video {
-  width: auto;
+  width: 40rem;
   height: 50rem;
 }
-
-.columnas-1 {
-  background-color: #F8FAFC;
-  padding: 0;
-  box-shadow: 13px 17px 26px -11px rgb(0, 0, 0);
-}
-
-.contenido-carta-inicio {
-  padding: 2rem 1rem 4rem 1rem;
-}
-
-.boton-carta-inicio {
-  background-color: #1E293B;
-  margin-top: 2rem;
-  padding: 1rem 4rem;
-  margin-bottom: 4rem;
-  border-radius: 1rem;
-  color: white;
-  font-weight: 700;
-  text-align: center;
-}
 @media (min-width: 768px) {
-  .boton-carta-inicio {
-    width: 40%;
+  .video {
+    height: 50rem;
+    width: 60rem;
   }
-}
-.boton-carta-inicio:hover {
-  border: 2px solid #1E293B;
-  color: #1E293B;
-  background-color: #F8FAFC;
-}
-
-.titulo-carta-inicio {
-  font-size: 2rem;
-  text-align: center;
-}
-@media (min-width: 768px) {
-  .titulo-carta-inicio {
-    font-size: 3rem;
-    text-align: left;
-  }
-}
-
-.contenedor-paginas-nosotros {
-  padding: 3rem 4rem;
-  display: flex;
-  flex-wrap: wrap; /* Permitir que los elementos se envuelvan en dispositivos pequeños */
-  gap: 10px; /* Espacio entre las columnas */
-  width: 100%;
-}
-@media (min-width: 768px) {
-  .contenedor-paginas-nosotros {
-    padding: 3rem 10rem;
-  }
-}
-
-.contenedor-paginas-nosotros1 {
-  padding: 2rem 4rem;
-}
-@media (min-width: 768px) {
-  .contenedor-paginas-nosotros1 {
-    padding: 0rem 10rem 4rem 10rem;
-    margin-right: 50rem;
-  }
-}
-
-.empresas {
-  padding: 1rem 0;
-}
-
-.colum {
-  border: 1px solid #1E293B;
 }
 
 .contenedor {
@@ -624,6 +547,16 @@ h3 {
 }
 @media (min-width: 768px) {
   .contenedor {
+    padding: 2rem 15rem;
+  }
+}
+
+.contenedor-postulacion {
+  margin: 20rem;
+  padding: 2rem 4rem;
+}
+@media (min-width: 768px) {
+  .contenedor-postulacion {
     padding: 2rem 15rem;
   }
 }
@@ -637,7 +570,7 @@ h3 {
 @media (min-width: 768px) {
   .principal-container {
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
   }
 }
 
@@ -651,16 +584,70 @@ h3 {
   }
 }
 
+.columna0 {
+  margin: 1rem 0 2rem;
+}
+@media (min-width: 768px) {
+  .columna0 {
+    margin: 0 3rem;
+  }
+}
+
 @media (min-width: 768px) {
   .columna1__invertir {
     order: 2;
   }
+}
+.columna1--card {
+  border: 1px solid #F8FAFC;
+  border-radius: 1rem;
+  padding-bottom: 1rem;
+  box-shadow: 10px 10px 26px -5px rgba(0, 0, 0, 0.75);
 }
 
 @media (min-width: 768px) {
   .columna2__invertir {
     order: 1;
   }
+}
+
+.imagen-card {
+  border-radius: 1rem 1rem 0 0;
+}
+
+.titulo-card {
+  font-size: 2rem;
+  text-align: center;
+}
+
+.botones-contenedor {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.botones-ver {
+  display: block;
+  padding: 1rem 2rem; /* Espaciado interno del botón */
+  background-color: #1E293B; /* Color de fondo del botón */
+  color: #fff; /* Color del texto del botón */
+  text-decoration: none; /* Elimina el subrayado del enlace */
+  border-radius: 5px; /* Borde redondeado */
+  font-size: 16px; /* Tamaño del texto */
+  text-align: center; /* Centra el texto horizontalmente */
+  transition: background-color 0.3s ease; /* Transición suave para el cambio de color de fondo */
+}
+@media (min-width: 768px) {
+  .botones-ver {
+    display: inline-block;
+    justify-content: center;
+  }
+}
+.botones-ver:hover {
+  background-color: #F8FAFC;
+  border: 2px solid #1E293B;
+  color: #1E293B;
+  font-weight: bold;
 }
 
 .botones-opciones {
@@ -677,26 +664,30 @@ h3 {
 @media (min-width: 768px) {
   .botones-opciones {
     display: inline-block;
+    justify-content: center;
   }
 }
-
 .botones-opciones:hover {
-  background-color: #0056b3; /* Cambia el color de fondo al pasar el ratón por encima */
+  background-color: #F8FAFC;
+  border: 2px solid #1E293B;
+  color: #1E293B;
+  font-weight: bold;
 }
 
 .titulo-inicio {
   width: 100%; /* Ancho completo en dispositivos pequeños */
-  padding: 1rem 3rem;
+  padding: 2rem 0;
   text-align: center; /* Alinear el texto al centro */
   text-transform: uppercase;
   font-size: 2.7rem;
-  margin: 0;
+  margin: 1rem 0 3rem;
 }
 @media (min-width: 768px) {
   .titulo-inicio {
     text-align: left;
     font-size: 3.5rem;
-    padding-top: 5rem;
+    padding: 5rem 0;
+    margin: 0 3rem;
   }
 }
 .titulo-inicio--2 {
@@ -705,6 +696,7 @@ h3 {
 @media (min-width: 768px) {
   .titulo-inicio--2 {
     text-align: right;
+    padding-right: 10rem;
   }
 }
 .titulo-inicio--3 {
@@ -719,6 +711,48 @@ h3 {
 
 .img-servicios {
   border-radius: 20% 0 20% 0;
+}
+
+.img-empresas {
+  border-radius: 50%;
+}
+
+.img-marcas {
+  width: 20rem;
+  border-radius: 50%;
+  box-shadow: 10px 10px 26px -5px rgba(0, 0, 0, 0.75);
+}
+@media (min-width: 768px) {
+  .img-marcas {
+    width: 25rem;
+  }
+}
+
+.espacio {
+  margin: 5rem 0;
+}
+@media (min-width: 768px) {
+  .espacio {
+    margin: 10rem 0;
+  }
+}
+
+.espacio-2 {
+  padding-bottom: 0;
+}
+@media (min-width: 768px) {
+  .espacio-2 {
+    padding-bottom: 3rem;
+  }
+}
+
+.espacio-3 {
+  margin-bottom: 3rem;
+}
+
+.postulacion {
+  border-radius: 1rem;
+  box-shadow: 10px 10px 26px -5px rgba(0, 0, 0, 0.75);
 }
 
 .formulario {
