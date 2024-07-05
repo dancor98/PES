@@ -1,4 +1,4 @@
-<div class="contenedor-admin contenedor-admin__config">
+<div class="contenedor-colab contenedor-admin__config">
     <h2 class="dashboard__heading"><?php echo $titulo; ?></h2>
 
     <div class="row">

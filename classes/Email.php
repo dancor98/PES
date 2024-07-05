@@ -151,7 +151,7 @@ class Email
         $mail->Password = $_ENV['EMAIL_PASS'];
 
         $mail->setFrom('bot@specialized.co.cr', 'Bot');
-        $mail->addAddress($this->email, $this->nombre);
+        $mail->addAddress('bot@specialized.co.cr', 'Admin');
         $mail->Subject = 'Nueva Solicitud de Vacaciones';
 
         // Set HTML

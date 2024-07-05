@@ -1475,6 +1475,20 @@ footer {
   color: #1E293B;
 }
 
+.card-titulo {
+  text-align: center;
+  font-size: 2rem;
+  color: #1E293B;
+}
+@media (min-width: 768px) {
+  .card-titulo {
+    font-size: 3rem;
+  }
+}
+.card-titulo:hover {
+  color: #1E293B;
+}
+
 .boton-acciones {
   background-color: #1E293B;
   padding: 1rem 3rem;

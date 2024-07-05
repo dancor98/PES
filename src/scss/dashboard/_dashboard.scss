@@ -84,6 +84,17 @@
         color: v.$gris-oscuro;
     }
 }
+.card-titulo{
+    text-align: center;
+    font-size: 2rem;
+    color: v.$gris-oscuro;
+    @include m.tablet {
+         font-size: 3rem; 
+    }
+    &:hover{
+        color: v.$gris-oscuro;
+    }
+}
 
 
 .boton-acciones{
