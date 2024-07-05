@@ -7,11 +7,11 @@ footer{
 
 
 .opciones-footer{
-    font-size: 1.8rem;
+    font-size: 1.6rem;
 }
 
 .nav-link-footer{
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     color: v.$blanco;
     text-decoration: underline;
 }
@@ -20,4 +20,12 @@ footer{
     font-size: 3rem;
     color: v.$blanco;
     padding-right: 1rem;
+}
+
+.footer-descripcion{
+    font-size: 1.5rem;
+}
+
+.copy{
+    font-size: 1rem;
 }

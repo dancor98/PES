@@ -24,9 +24,6 @@ img {
 .home{
     &__contenido{
         margin: 0;
-        @include m.tablet {
-              margin: 0 0rem;
-        }
     }
 }
 

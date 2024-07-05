@@ -11,7 +11,7 @@
                         <img class="navbar-inicio-logo" src="/build/img/logo.png" alt="">
 
                     </h6>
-                    <p>
+                    <p class="footer-descripcion">
                         Somos el distribuidor oficial de Specialized, la marca líder mundial en bicicletas y accesorios
                         de alta calidad.
                     </p>
@@ -59,9 +59,10 @@
 
                 <!-- Grid column -->
                 <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
-                    <h6 class="text-uppercase mb-4 font-weight-bold opciones-footer">Contact</h6>
-                    <p class="nav-link-footer"><i class="fas fa-home mr-3"></i> DE LA ESQUINA NORESTE DE LA BASILICA 170
-                        METROS NORTE A MANO DERECHA HEREDIA SANTO DOMINGO, CENTRO, 40301</p>
+                    <h6 class="text-uppercase mb-4 font-weight-bold opciones-footer">Contacto</h6>
+                    <p class="nav-link-footer"><i class="fas fa-home mr-3"></i>
+                        De la esquina noroeste de la basilica 170 metros norte a mano derecha en Heredia, Santo Domingo.
+                    </p>
                     <p class="nav-link-footer"><i class="fas fa-envelope mr-3"></i> info@gmail.com</p>
                     <p class="nav-link-footer"><i class="fas fa-phone mr-3"></i> +506 4111 7309</p>
                 </div>
@@ -79,9 +80,9 @@
                 <!-- Grid column -->
                 <div class="col-md-7 col-lg-8 text-center text-md-start">
                     <!-- Copyright -->
-                    <div class="p-3">
+                    <div class="p-3 copy">
                         © <?php echo date('Y'); ?> Copyright:
-                        <a class="text-white" href="">CCM SOLUCIONES EN SERVICIOS</a>
+                        <a class="text-white" href="">GRUPO CCM</a>
                     </div>
                     <!-- Copyright -->
                 </div>

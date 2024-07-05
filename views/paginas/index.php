@@ -15,17 +15,19 @@
     </div>
 </div>
 
-<div class="contenedor-paginas">
 
-    <div class="columnas">
+
+<div class="principal-container">
+    <div class="columna1">
         <img src="build/img/imagen1.webp" alt="">
         <h2 class="titulo-carta-inicio"> CONOCE NUESTRA HISTORIA </h2>
-        <a href="" class="boton-carta-inicio">CONOCER MAS</a>
+        <a href="/nosotros#nosotros" class="botones-opciones">CONOCER MAS</a>
     </div>
-    <div class="columnas">
+    <div class="columna2">
+
         <img src="build/img/imagen1.webp" alt="">
         <h2 class="titulo-carta-inicio"> NUESTROS PRODUCTOS Y SERVICIOS </h2>
-        <a href="" class="boton-carta-inicio">VER MAS</a>
-    </div>
+        <a href="productos-servicios#productos" class="botones-opciones">CONOCER MAS</a>
 
+    </div>
 </div>

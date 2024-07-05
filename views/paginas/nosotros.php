@@ -28,37 +28,6 @@
     </div>
 
 
-    <h1 class="titulo-inicio">Empresas del Grupo CCM</h1>
-
-    <div class="columnas">
-        <h2 class="subtitulo-inicio">CCM Soluciones en Servicios</h2>
-        <p class="descripcion-inicio descripcion-inicio--2">✔ CCM Soluciones en Servicios, actualmente es la encargada
-            de
-            la distribucion a
-            nivel nacional de la marca Specialized. </p>
-        <a href="" class="boton-carta-inicio">VER MAS</a>
-
-        <h2 class="subtitulo-inicio">HCS</h2>
-        <p class="descripcion-inicio descripcion-inicio--2">✔ HCS es la encargada de la distribucion a nivel nacional de
-            CERAMICSPEED, CASTELLI, APM, 100% y UNIOR a nivel de centroamerica.</p>
-        <a href="" class="boton-carta-inicio">VER MAS</a>
-
-        <h2 class="subtitulo-inicio">Tiendas Bikestation</h2>
-        <p class="descripcion-inicio descripcion-inicio--2">✔ CCM Soluciones en Servicios, actualmente es la encargada
-            de
-            la distribucion a
-            nivel nacional de la marca Specialized. </p>
-        <a href="" class="boton-carta-inicio">VER MAS</a>
-
-        <h2 class="subtitulo-inicio">BSR Eventos</h2>
-        <p class="descripcion-inicio descripcion-inicio--2">✔ BSR EVENTOS son los encargados de realizar eventos tanto
-            masivos como rides de cominidad, en eventos masivos somos los que realizamos Volcano 100 que es la carrera
-            mas grande de MTB y tambien organizamos El Gran Fondo Guanacaste</p>
-        <a href="" class="boton-carta-inicio">VER MAS</a>
-    </div>
-    <div class="columnas">
-    </div>
-
     <h1 class="titulo-inicio titulo-inicio">Social</h1>
     <div class="">
         <h2 class="subtitulo-inicio">Nuestra Meta</h2>
@@ -98,6 +67,40 @@
             de la población.</p>
         <p class="descripcion-inicio">✔ contamos con una red de más de 50 tiendas en el resto del país para garantizar
             el posicionamiento y la distribución.</p>
+    </div>
+
+</div>
+
+
+<div class="contenedor-paginas-nosotros1">
+    <h1 class="titulo-inicio">Empresas del Grupo CCM</h1>
+
+    <div class="empresas">
+        <h2 class="subtitulo-inicio">CCM Soluciones en Servicios</h2>
+        <p class="descripcion-inicio descripcion-inicio--2">✔ CCM Soluciones en Servicios, actualmente es la encargada
+            de
+            la distribucion a
+            nivel nacional de la marca Specialized. </p>
+    </div>
+
+    <div class="empresas">
+        <h2 class="subtitulo-inicio">HCS</h2>
+        <p class="descripcion-inicio descripcion-inicio--2">✔ HCS es la encargada de la distribucion a nivel nacional de
+            CERAMICSPEED, CASTELLI, APM, 100% y UNIOR a nivel de centroamerica.</p>
+    </div>
+
+    <div class="empresas">
+        <h2 class="subtitulo-inicio">Tiendas Bikestation</h2>
+        <p class="descripcion-inicio descripcion-inicio--2">
+            ✔ CCM Soluciones en Servicios, actualmente es la encargada
+            de la distribucion a nivel nacional de la marca Specialized. </p>
+    </div>
+
+    <div class="empresas">
+        <h2 class="subtitulo-inicio">BSR Eventos</h2>
+        <p class="descripcion-inicio descripcion-inicio--2">✔ BSR EVENTOS son los encargados de realizar eventos tanto
+            masivos como rides de cominidad, en eventos masivos somos los que realizamos Volcano 100 que es la carrera
+            mas grande de MTB y tambien organizamos El Gran Fondo Guanacaste</p>
     </div>
 
 </div>
