@@ -82,7 +82,7 @@ class Colaboradores extends ActiveRecord
         $this->meses_trabajados = $args['meses_trabajados'] ?? 0;
         $this->confirmado = $args['confirmado'] ?? 0;
         $this->nombre_emergencia = $args['nombre_emergencia'] ?? '';
-        $this->telefono_emergencia = $args['telefono_emergencia'] ?? 0;
+        $this->telefono_emergencia = $args['telefono_emergencia'] ?? null;
     }
 
     //validar el login de Usuarios

@@ -197,7 +197,7 @@ class ColaboradoresController
             header('Location: /admin/colaboradores');
         }
 
-        // $departamentos = Departamentos::all('ASC');
+        $departamentos = Departamentos::all('ASC');
         $empresas = Empresas::all('ASC');
 
         //Obtener Colaborador a Editar
@@ -210,34 +210,13 @@ class ColaboradoresController
             header('Location: /admin/colaboradores');
         }
 
-        // if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
-        //     session_start();
-        //     // Validar que el usuario esté logueado y sea administrador
-        //     if (!isset($_SESSION['admin']) || !$_SESSION['admin']) {
-        //         header('Location: /login');
-        //         return;
-        //     }
-
-        //     $colaborador->sincronizar($_POST);
-        //     $alertas = $colaborador->validar();
-
-        //     if (empty($alertas)) {
-
-        //         $resultado = $colaborador->guardar();
-
-        //         if ($resultado) {
-        //             header('Location: /admin/colaboradores');
-        //         }
-        //     }
-        // }
 
         $router->render('admin/colaboradores/observar', [
             'titulo' => 'Observar Colaborador',
             'alertas' => $alertas,
             'colaborador' => $colaborador,
-            'departamento' => $departamento,
-            'empresa' => $empresa
+            'departamento' => $departamentos,
+            'empresa' => $empresas
         ]);
     }
 

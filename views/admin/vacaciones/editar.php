@@ -3,7 +3,7 @@
     <div class="row justify-content-end botones-acciones">
         <div class="col-12 col-md-auto mb-2 mb-md-0">
             <div class="boton-acciones">
-                <a href="/admin/incapacidades" class="boton-acciones__texto">
+                <a href="/admin/vacaciones" class="boton-acciones__texto">
                     <i class="fa-solid fa-rotate-left icono-admin"></i>
                     Volver
                 </a>
@@ -20,37 +20,34 @@
             <div class="row row-campo">
                 <div class="col">
                     <label for="desde" class="formulario__label">desde:</label>
-                    <input type="date" class="form-control formulario__input" id="desde" name="desde"
-                        value="<?php echo $vacacion->desde; ?>" readonly>
+                    <input type="date" class="form-control formulario__input" id="desde" name="desde" value="<?php echo $vacacion->desde; ?>" readonly>
                 </div>
                 <div class="col">
                     <label for="hasta" class="formulario__label">hasta:</label>
-                    <input type="date" class="form-control formulario__input" id="hasta" name="hasta"
-                        value="<?php echo $vacacion->hasta; ?>" readonly>
+                    <input type="date" class="form-control formulario__input" id="hasta" name="hasta" value="<?php echo $vacacion->hasta; ?>" readonly>
                 </div>
             </div>
 
             <div class="formulario__campo">
                 <label for="detalle" class="formulario__label">Detalle:</label>
-                <textarea name="detalle" id="detalle" class="formulario__textarea"
-                    readonly><?php echo $vacacion->detalle; ?></textarea>
+                <textarea name="detalle" id="detalle" class="formulario__textarea" readonly><?php echo $vacacion->detalle; ?></textarea>
             </div>
 
             <div class="formulario__campo">
                 <label for="estado" class="formulario__label">Estado:</label>
                 <select class="formulario__select" id="estado" name="estado">
                     <?php if (strpos($vacacion->estado, 'Pendiente') !== false) : ?>
-                    <option value="" disabled selected><?php echo $vacacion->estado; ?></option>
-                    <option value="En Revision">En Revision</option>
-                    <option value="Aprobadas">Aprobadas</option>
-                    <option value="Rechazadas">Rechazadas</option>
+                        <option value="" disabled selected><?php echo $vacacion->estado; ?></option>
+                        <option value="En Revision">En Revision</option>
+                        <option value="Aprobadas">Aprobadas</option>
+                        <option value="Rechazadas">Rechazadas</option>
                     <?php elseif (strpos($vacacion->estado, 'En Revision') !== false) : ?>
-                    <option value="" disabled selected><?php echo $vacacion->estado; ?></option>
-                    <option value="Aprobadas">Aprobadas</option>
-                    <option value="Rechazadas">Rechazadas</option>
+                        <option value="" disabled selected><?php echo $vacacion->estado; ?></option>
+                        <option value="Aprobadas">Aprobadas</option>
+                        <option value="Rechazadas">Rechazadas</option>
                     <?php elseif (strpos($vacacion->estado, 'Aprobadas') !== false || strpos($vacacion->estado, 'Rechazadas') !== false) : ?>
-                    <option value="" disabled selected><?php echo $vacacion->estado; ?></option>
-                    <option value="Rebajadas">Rebajadas</option>
+                        <option value="" disabled selected><?php echo $vacacion->estado; ?></option>
+                        <option value="Rebajadas">Rebajadas</option>
                     <?php endif; ?>
                 </select>
             </div>
@@ -58,8 +55,7 @@
             <div class="formulario__campo">
                 <label for="comentario" class="formulario__label">Comentario (En caso de Rechazo o querer agregar algun
                     comentario visible para el colaborador):</label>
-                <textarea name="comentario" id="comentario"
-                    class="formulario__textarea"><?php echo $vacacion->comentario; ?></textarea>
+                <textarea name="comentario" id="comentario" class="formulario__textarea"><?php echo $vacacion->comentario; ?></textarea>
             </div>
 
         </fieldset>

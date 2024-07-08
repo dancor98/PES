@@ -3,7 +3,7 @@
     <div class="row justify-content-end botones-acciones">
         <div class="col-12 col-md-auto mb-2 mb-md-0">
             <div class="boton-acciones">
-                <a href="/admin/incapacidades" class="boton-acciones__texto">
+                <a href="/admin/postulaciones" class="boton-acciones__texto">
                     <i class="fa-solid fa-rotate-left icono-admin"></i>
                     Volver
                 </a>

@@ -1,14 +1,13 @@
-<h1 class="contenedor-admin__titulo"><?php echo $titulo; ?></h1>
-
 <?php include_once __DIR__ . '/../../templates/alertas.php'; ?>
 
 
 <div class="contenedor-admin contenedor-admin__info">
+    <h1 class="contenedor-admin__titulo"><?php echo $titulo; ?></h1>
 
     <?php if (!empty($incapacidades)) { ?>
     <div class="row">
         <?php foreach ($incapacidades as $incapacidad) { ?>
-        <div class="col-md-4 col-sm-6 col-xs-12 mb-4">
+        <div class="col-xl-4 col-md-6 col-xs-12 mb-4">
             <div class="card-col">
                 <a href="/admin/incapacidades/observar?id=<?php echo $incapacidad->id; ?>">
                     <i class="fa-regular fa-eye icon-eye icono-ver"></i>

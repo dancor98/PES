@@ -15,44 +15,50 @@
             </div>
         </div>
     </div>
+
     <?php if (!empty($empresas)) { ?>
 
-    <div class="row">
-        <?php foreach ($empresas as $empresa) { ?>
-        <div class="col-md-4 col-sm-6 col-xs-12 mb-4">
-            <div class="card-col">
-                <div class="card-body">
-                    <h5 class="card-title carta-titulo">
-                        <?php echo $empresa->nombre; ?></h5>
-                    <p class="card-text carta-descripcion">Cedula: <?php echo $empresa->cedula; ?></p>
-
-                    <a href="/admin/empresas/editar?id=<?php echo $empresa->id; ?>"
-                        class="btn boton-carta btn-secondary mb-2 w-100">
-                        <i class="fa-solid fa-user-pen"></i>
-                        Editar
-                    </a>
-                    <form method="POST" action="/admin/empresas/eliminar">
-                        <input type="hidden" name="id" value="<?php echo $empresa->id; ?>">
-                        <button class="btn boton-carta btn-danger mb-2 w-100" type="submit">
-                            <i class="fa-solid fa-circle-xmark"></i>
-                            Eliminar
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <?php }; ?>
-
+    <div class="table-responsive">
+        <table class="table">
+            <thead class="table__thead">
+                <tr>
+                    <th class="table__th" scope="col">ID</th>
+                    <th class="table__th" scope="col">Empresa</th>
+                    <th class="table__th" scope="col">Cedula</th>
+                    <th class="table__th" scope="col"></th>
+                </tr>
+            </thead>
+            <tbody class="table__tbody">
+                <?php foreach ($empresas as $empresa) { ?>
+                <tr class="table__tr">
+                    <td class="table__td">
+                        <?php echo $empresa->id; ?>
+                    </td>
+                    <td class="table__td">
+                        <?php echo $empresa->nombre; ?>
+                    </td>
+                    <td class="table__td">
+                        <?php echo $empresa->cedula; ?>
+                    </td>
+                    <td class="table__td table__td--acciones">
+                        <form method="POST" action="/admin/empresas/eliminar">
+                            <input type="hidden" name="id" value="<?php echo $empresa->id; ?>">
+                            <button class="btn boton-carta btn-danger mb-2 w-100" type="submit">
+                                <i class="fa-solid fa-circle-xmark"></i>
+                                Eliminar
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+                <?php }; ?>
+            </tbody>
+        </table>
     </div>
-
-
-
-
-
 
     <?php } else { ?>
     <p class="text-center">No hay Empresas Activos</p>
     <?php } ?>
+
     <?php
     echo $paginacion;
     ?>

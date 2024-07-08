@@ -1,6 +1,6 @@
 <div class="contenedor-admin">
     <div class="row">
-        <div class="col-sm-3">
+        <div class="col-xl-3 col-md-6">
             <div class="card-dashboard">
                 <h2 class="contenedor-admin__fecha">
                     <i class="fa-solid fa-calendar-days icono-admin"></i>
@@ -11,7 +11,7 @@
                 </h2>
             </div>
         </div>
-        <div class="col-sm-3">
+        <div class="col-xl-3 col-md-6">
             <div class="card-dashboard">
                 <h2 class="contenedor-admin__fecha">
                     <i class="fa-solid fa-plane-departure icono-admin"></i>
@@ -22,7 +22,7 @@
                 </h2>
             </div>
         </div>
-        <div class="col-sm-3">
+        <div class="col-xl-3 col-md-6">
             <div class="card-dashboard">
                 <h2 class="contenedor-admin__fecha">
                     <i class="fa-solid fa-users-line icono-admin"></i>
@@ -33,7 +33,7 @@
                 </h2>
             </div>
         </div>
-        <div class="col-sm-3">
+        <div class="col-xl-3 col-md-6">
             <div class="card-dashboard">
                 <h2 class="contenedor-admin__fecha">
                     <i class="fa-solid fa-file icono-admin"></i>
@@ -49,7 +49,7 @@
     <h2 class="contenedor-admin__titulo"><?php echo $titulo; ?></h2>
 
     <div class="row">
-        <div class="col-sm-4 ">
+        <div class="col-xl-6 col-md-6 ">
             <a href="/admin/incapacidades">
                 <div class="card-admin">
                     <div class="card-body">
@@ -60,7 +60,7 @@
                 </div>
             </a>
         </div>
-        <div class="col-sm-4 ">
+        <div class="col-xl-6 col-md-6 ">
             <a href="/admin/vacaciones">
                 <div class="card-admin">
                     <div class="card-body">
@@ -69,7 +69,7 @@
                 </div>
             </a>
         </div>
-        <div class="col-sm-4 ">
+        <div class="col-xl-6 col-md-6 ">
             <a href="/admin/colaboradores">
                 <div class="card-admin">
                     <div class="card-body">
@@ -78,7 +78,7 @@
                 </div>
             </a>
         </div>
-        <div class="col-sm-4 ">
+        <div class="col-xl-6 col-md-6 ">
             <a href="/admin/boletaspagos">
                 <div class="card-admin">
                     <div class="card-body">
@@ -87,7 +87,7 @@
                 </div>
             </a>
         </div>
-        <div class="col-sm-4 ">
+        <div class="col-xl-6 col-md-6 ">
             <a href="/admin/departamentos">
                 <div class="card-admin">
                     <div class="card-body">
@@ -96,7 +96,7 @@
                 </div>
             </a>
         </div>
-        <div class="col-sm-4 ">
+        <div class="col-xl-6 col-md-6 ">
             <a href="/admin/empresas">
                 <div class="card-admin">
                     <div class="card-body">
@@ -105,7 +105,7 @@
                 </div>
             </a>
         </div>
-        <div class="col-sm-4 ">
+        <div class="col-xl-6 col-md-6 ">
             <a href="/admin/postulaciones">
                 <div class="card-admin">
                     <div class="card-body">

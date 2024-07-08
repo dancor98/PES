@@ -18,34 +18,41 @@
 
     <?php if (!empty($departamentos)) { ?>
 
-        <div class="row">
-            <?php foreach ($departamentos as $departamento) { ?>
-                <div class="col-md-4 col-sm-6 col-xs-12 mb-4">
-                    <div class="card-col">
-                        <div class="card-body">
-                            <h5 class="card-title carta-titulo">
-                                <?php echo $departamento->nombre; ?></h5>
-
-                            <a href="/admin/departamentos/editar?id=<?php echo $departamento->id; ?>" class="btn boton-carta btn-secondary mb-2 w-100">
-                                <i class="fa-solid fa-user-pen"></i>
-                                Editar
-                            </a>
-                            <form method="POST" action="/admin/departamentos/eliminar">
-                                <input type="hidden" name="id" value="<?php echo $departamento->id; ?>">
-                                <button class="btn boton-carta btn-danger mb-2 w-100" type="submit">
-                                    <i class="fa-solid fa-circle-xmark"></i>
-                                    Eliminar
-                                </button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            <?php }; ?>
-
-        </div>
+    <div class="table-responsive">
+        <table class="table">
+            <thead class="table__thead">
+                <tr>
+                    <th class="table__th" scope="col">ID</th>
+                    <th class="table__th" scope="col">Departamento</th>
+                    <th class="table__th" scope="col"></th>
+                </tr>
+            </thead>
+            <tbody class="table__tbody">
+                <?php foreach ($departamentos as $departamento) { ?>
+                <tr class="table__tr">
+                    <td class="table__td">
+                        <?php echo $departamento->id; ?>
+                    </td>
+                    <td class="table__td">
+                        <?php echo $departamento->nombre; ?>
+                    </td>
+                    <td class="table__td table__td--acciones">
+                        <form method="POST" action="/admin/departamentos/eliminar">
+                            <input type="hidden" name="id" value="<?php echo $departamento->id; ?>">
+                            <button class="btn boton-carta btn-danger mb-2 w-100" type="submit">
+                                <i class="fa-solid fa-circle-xmark"></i>
+                                Eliminar
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+                <?php }; ?>
+            </tbody>
+        </table>
+    </div>
 
     <?php } else { ?>
-        <p class="text-center">No hay Departamentos Activos</p>
+    <p class="text-center">No hay Departamentos Activos</p>
     <?php } ?>
 
     <?php

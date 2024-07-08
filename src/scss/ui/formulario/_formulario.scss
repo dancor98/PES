@@ -120,3 +120,30 @@
     display: none;
     margin-top: 0.5rem;
 }
+
+.contenedor-formulario{
+    padding: 1rem 3rem;
+    margin: 2rem 0;
+    @include m.desktop {
+         padding: 3rem 30rem;
+    }
+}
+
+.boton-carta{
+    font-size: 1.7rem;
+    padding: 1rem 4rem;
+    background-color: v.$gris-oscuro;
+    border: none;
+    color: v.$gris-claro;
+    @include m.tablet {
+         font-size: 2rem; 
+    }
+    &:hover{
+        color: v.$gris-claro;
+        background-color:v.$gris;
+    }
+
+    &--eliminar{
+        background-color: rgb(131, 38, 38);
+    }
+}
