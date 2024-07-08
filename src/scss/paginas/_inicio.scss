@@ -1,6 +1,10 @@
 @use 'base/mixins' as m;
 @use 'base/variables' as v;
 
+.contenedor-login{
+    width: 100%;
+}
+
 .hero{
     width: 100%; /* Ancho del div */
     height: 50vh; /* Altura del div */
@@ -81,14 +85,20 @@ visibility: hidden;
          height: 50rem;
          width: 60rem;
     }
+
 }
 
 .contenedor{
     padding: 2rem 4rem;
     @include m.tablet {
-         padding: 2rem 15rem; 
+         padding: 2rem 4rem; 
+    }
+
+    @include m.desktop {
+        padding: 2rem 15rem; 
     }
 }
+
 .contenedor-postulacion{
     margin: 20rem;
     padding: 2rem 4rem;
@@ -103,7 +113,7 @@ visibility: hidden;
     justify-content: center;
     align-items: center;
 
-    @include m.tablet {
+    @include m.desktop {
         flex-direction: row;
         justify-content: center; //
     }
@@ -111,7 +121,7 @@ visibility: hidden;
 
 .columna1, .columna2{
     margin: 1rem 0 2rem;
-    @include m.tablet {
+    @include m.desktop {
         flex: 1;
         margin: 0 3rem;
     }
@@ -264,8 +274,8 @@ box-shadow: 10px 10px 26px -5px rgba(0,0,0,0.75);
 }
 
 .espacio{
-    margin: 5rem 0;
-    @include m.tablet {
+    margin: 2rem 0;
+    @include m.desktop {
          margin: 10rem 0; 
     }
 }
@@ -286,3 +296,5 @@ box-shadow: 10px 10px 26px -5px rgba(0,0,0,0.75);
     -moz-box-shadow: 10px 10px 26px -5px rgba(0,0,0,0.75);
     box-shadow: 10px 10px 26px -5px rgba(0,0,0,0.75);
 }
+
+

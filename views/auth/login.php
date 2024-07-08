@@ -1,5 +1,5 @@
 <div class="contenedor-login">
-    <div class="columna columna1">
+    <div class="columna">
         <div class="login">
             <h2 class="login__heading"> <?php echo $titulo; ?> </h2>
             <?php

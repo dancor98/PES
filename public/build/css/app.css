@@ -448,6 +448,10 @@ h3 {
   color: #FFFFFF;
 }
 
+.contenedor-login {
+  width: 100%;
+}
+
 .hero {
   width: 100%; /* Ancho del div */
   height: 50vh; /* Altura del div */
@@ -547,6 +551,11 @@ h3 {
 }
 @media (min-width: 768px) {
   .contenedor {
+    padding: 2rem 4rem;
+  }
+}
+@media (min-width: 1024px) {
+  .contenedor {
     padding: 2rem 15rem;
   }
 }
@@ -567,7 +576,7 @@ h3 {
   justify-content: center;
   align-items: center;
 }
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
   .principal-container {
     flex-direction: row;
     justify-content: center;
@@ -577,7 +586,7 @@ h3 {
 .columna1, .columna2 {
   margin: 1rem 0 2rem;
 }
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
   .columna1, .columna2 {
     flex: 1;
     margin: 0 3rem;
@@ -729,9 +738,9 @@ h3 {
 }
 
 .espacio {
-  margin: 5rem 0;
+  margin: 2rem 0;
 }
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
   .espacio {
     margin: 10rem 0;
   }
