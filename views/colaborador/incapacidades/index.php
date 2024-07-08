@@ -16,37 +16,43 @@
         </div>
     </div>
     <?php if (!empty($incapacidades)) { ?>
-        <table class="table">
-            <thead class="table__thead">
-                <tr>
-                    <th class="table__th" scope="col">Colaborador</th>
-                    <th class="table__th" scope="col">Cedula</th>
-                    <th class="table__th" scope="col">Fecha Ingreso</th>
-                    <th class="table__th" scope="col">Acciones</th>
-                </tr>
-            </thead>
-            <tbody class="table__tbody">
-                <?php foreach ($incapacidades as $incapacidad) { ?>
-                    <tr class="table__tr">
-                        <td class="table__td">
-                            <?php echo $incapacidad->colaborador->nombre . ' ' . $incapacidad->colaborador->apellido_paterno; ?>
-                        </td>
-                        <td class="table__td">
-                            <?php echo $incapacidad->colaborador->cedula; ?>
-                        </td>
-                        <td class="table__td">
-                            <?php echo $incapacidad->fecha; ?>
-                        </td>
-                        <td class="table__td--acciones">
-                            <a class="table__accion table__accion--editar" href="/../<?php echo $incapacidad->boleta; ?>" download="Boleta Incapacidad <?php echo $incapacidad->colaborador->nombre . ' ' . $incapacidad->colaborador->apellido_paterno; ?>">
-                                <i class="fa-solid fa-download"></i>
-                                Descargar
-                            </a>
-                        </td>
+        <div class="table-responsive">
+            <table class="table">
+                <thead class="table__thead">
+                    <tr>
+                        <th class="table__th" scope="col">Colaborador</th>
+                        <th class="table__th" scope="col">Cedula</th>
+                        <th class="table__th" scope="col">Creada</th>
+                        <th class="table__th" scope="col">Cant de Dias</th>
+                        <th class="table__th" scope="col"></th>
                     </tr>
-                <?php }; ?>
-            </tbody>
-        </table>
+                </thead>
+                <tbody class="table__tbody">
+                    <?php foreach ($incapacidades as $incapacidad) { ?>
+                        <tr class="table__tr">
+                            <td class="table__td">
+                                <?php echo $incapacidad->colaborador->nombre . ' ' . $boletapago->colaborador->apellido_paterno; ?>
+                            </td>
+                            <td class="table__td">
+                                <?php echo $incapacidad->colaborador->cedula; ?>
+                            </td>
+                            <td class="table__td">
+                                <?php echo $incapacidad->fecha; ?>
+                            </td>
+                            <td class="table__td">
+                                <?php echo $incapacidad->cantidad_dias; ?>
+                            </td>
+                            <td class="table__td">
+                                <a class="table__accion table__accion--editar" href="/../<?php echo $incapacidad->boleta; ?>" download="Boleta incapacidad <?php echo $incapacidad->colaborador->nombre . ' ' . $incapacidad->colaborador->apellido_paterno . '-' . $incapacidad->fecha; ?>">
+                                    <i class="fa-solid fa-download"></i>
+                                    Descargar
+                                </a>
+                            </td>
+                        </tr>
+                    <?php }; ?>
+                </tbody>
+            </table>
+        </div>
     <?php } else { ?>
         <p class="text-center">No hay Incapacidades Registradas</p>
     <?php } ?>

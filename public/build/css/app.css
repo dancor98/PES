@@ -1152,7 +1152,7 @@ footer {
   box-shadow: 6px 6px 5px 0px rgb(163, 180, 207);
   border-radius: 1rem;
 }
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
   .contenedor-colaborador__left {
     width: 27%;
     padding: 3rem 1rem;
@@ -1161,7 +1161,7 @@ footer {
 .contenedor-colaborador__right {
   width: 100%;
 }
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
   .contenedor-colaborador__right {
     width: 72%;
   }
@@ -1185,7 +1185,7 @@ footer {
   margin: auto;
   border-radius: 50%;
 }
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
   .sidebar-colaborador--imagen {
     width: 30rem;
   }
@@ -1197,7 +1197,7 @@ footer {
   font-weight: 400;
   line-height: 2rem;
 }
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
   .sidebar-colaborador--contenido h3 {
     line-height: 2rem;
   }
@@ -1215,7 +1215,7 @@ footer {
   font-size: 1.8rem;
   padding: 0 4rem;
 }
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
   .sidebar-colaborador--contenido .colaborador-detalle {
     font-size: 2rem;
     padding: 0 5rem;
@@ -1239,7 +1239,7 @@ footer {
   text-decoration: none; /* Remove underline from the link */
   border-radius: 0.5rem; /* Add some border radius for better appearance */
 }
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
   .sidebar-colaborador--boton {
     width: calc(100% - 10rem); /* Adjust the width for larger screens */
   }
@@ -1265,7 +1265,7 @@ footer {
   margin: auto;
   border-radius: 50%;
 }
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
   .colaborador-picture--imagen-carta {
     width: 20rem;
   }
@@ -1401,7 +1401,7 @@ footer {
 }
 
 .contenedor-colab {
-  padding: 1rem 5rem;
+  padding: 1rem 2rem;
 }
 .contenedor-colab__fecha {
   font-size: 2rem;

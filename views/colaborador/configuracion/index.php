@@ -2,7 +2,7 @@
     <h2 class="dashboard__heading"><?php echo $titulo; ?></h2>
 
     <div class="row">
-        <div class="col-sm-6 card-inicio">
+        <div class="col-xl-6 card-inicio">
             <div class="card-admin">
                 <a href="/colaborador/configuracion/cambiocontrasena?id=<?php echo $_SESSION['id']; ?>">
                     <div class="card-body">
@@ -11,7 +11,7 @@
                 </a>
             </div>
         </div>
-        <div class="col-sm-6 card-inicio">
+        <div class="col-xl-6 card-inicio">
             <div class="card-admin">
                 <a href="/colaborador/configuracion/editarinfo?id=<?php echo $_SESSION['id']; ?>">
                     <div class="card-body">

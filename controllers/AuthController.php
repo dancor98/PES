@@ -50,14 +50,14 @@ class AuthController
                                 $dia_ingreso = $fecha_ingreso->format('d');
                                 $dia_actual = date('d');
                                 //Valida si el dia de ingreso es igual al dia actual
-                                if ($dia_actual == $dia_ingreso) {
 
-                                    $diferencia = $fecha_ingreso->diff(new DateTime());
-                                    $mesesDiferencia = ($diferencia->y * 12) + $diferencia->m;
-                                    $colaborador->meses_trabajados = $mesesDiferencia;
 
-                                    $resultado = $colaborador->guardar();
-                                }
+                                $diferencia = $fecha_ingreso->diff(new DateTime());
+                                $mesesDiferencia = ($diferencia->y * 12) + $diferencia->m;
+                                $colaborador->meses_trabajados = $mesesDiferencia;
+
+                                $resultado = $colaborador->guardar();
+
                                 header('Location: /colaborador/dashboard');
                             }
                         }

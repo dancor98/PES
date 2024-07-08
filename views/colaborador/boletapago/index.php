@@ -7,35 +7,47 @@
 
     <?php if (!empty($boletaspagos)) { ?>
 
-    <div class="row">
-        <?php foreach ($boletaspagos as $boletapago) { ?>
-        <div class="col-md-4 col-sm-6 col-xs-12 mb-4">
-            <div class="card-col">
-                <div class="card-body">
-                    <h5 class="card-titulo carta-descripcion">
-                        <?php echo $boletapago->colaborador->nombre . " " . $boletapago->colaborador->apellido_paterno; ?>
-                    </h5>
-                    <p class="card-text carta-descripcion">Cedula: <?php echo $boletapago->colaborador->cedula; ?></p>
-                    <p class="card-text carta-descripcion">Periodo: <?php echo $boletapago->periodo; ?></p>
-                    <p class="card-text carta-descripcion">Empresa: <?php echo $boletapago->empresa->nombre; ?></p>
-
-                    <div class="row  botones-acciones">
-                        <div class="col-12 col-md-auto mb-2 mb-md-0">
-                            <div class="boton-acciones">
-                                <a href="/../<?php echo $boletapago->archivo_pdf; ?>"
-                                    download="Boleta Incapacidad <?php echo $boletapago->colaborador->nombre . ' ' . $boletapago->colaborador->apellido_paterno . '-' . $boletapago->fecha; ?>"
-                                    class="boton-acciones__texto">
-                                    <i class="fa-solid fa-download icono-admin"></i>
-                                    Descargar
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <?php }; ?>
-
+    <div class="table-responsive">
+        <table class="table">
+            <thead class="table__thead">
+                <tr>
+                    <th class="table__th" scope="col">Colaborador</th>
+                    <th class="table__th" scope="col">Cedula</th>
+                    <th class="table__th" scope="col">Fecha Creacion</th>
+                    <th class="table__th" scope="col">Periodo</th>
+                    <th class="table__th" scope="col">Empresa</th>
+                    <th class="table__th" scope="col"></th>
+                </tr>
+            </thead>
+            <tbody class="table__tbody">
+                <?php foreach ($boletaspagos as $boletapago) { ?>
+                <tr class="table__tr">
+                    <td class="table__td">
+                        <?php echo $boletapago->colaborador->nombre . ' ' . $boletapago->colaborador->apellido_paterno; ?>
+                    </td>
+                    <td class="table__td">
+                        <?php echo $boletapago->colaborador->cedula; ?>
+                    </td>
+                    <td class="table__td">
+                        <?php echo $boletapago->fecha; ?>
+                    </td>
+                    <td class="table__td">
+                        <?php echo $boletapago->periodo; ?>
+                    </td>
+                    <td class="table__td">
+                        <?php echo $boletapago->empresa->nombre; ?>
+                    </td>
+                    <td class="table__td">
+                        <a class="table__accion table__accion--editar" href="/../<?php echo $incapacidad->boleta; ?>"
+                            download="Boleta incapacidad <?php echo $incapacidad->colaborador->nombre . ' ' . $incapacidad->colaborador->apellido_paterno . '-' . $incapacidad->fecha; ?>">
+                            <i class="fa-solid fa-download"></i>
+                            Descargar
+                        </a>
+                    </td>
+                </tr>
+                <?php }; ?>
+            </tbody>
+        </table>
     </div>
 
 

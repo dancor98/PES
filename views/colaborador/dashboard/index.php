@@ -1,6 +1,6 @@
 <div class="contenedor-colab">
     <div class="row">
-        <div class="col-sm-3">
+        <div class="col-xl-3 col-md-12">
             <div class="card-dashboard">
                 <h2 class="contenedor-admin__fecha">
                     <i class="fa-solid fa-calendar-days icono-admin"></i>
@@ -16,7 +16,7 @@
     <h2 class="contenedor-admin__titulo"><?php echo $titulo; ?></h2>
 
     <div class="row">
-        <div class="col-sm-4 ">
+        <div class="col-xl-6 ">
             <div class="card-admin">
                 <a href="/colaborador/incapacidades">
                     <div class="card-body">
@@ -27,7 +27,7 @@
                 </a>
             </div>
         </div>
-        <div class="col-sm-4 ">
+        <div class="col-xl-6 ">
             <div class="card-admin">
                 <a href="/colaborador/vacaciones">
                     <div class="card-body">
@@ -36,7 +36,7 @@
                 </a>
             </div>
         </div>
-        <div class="col-sm-4 ">
+        <div class="col-xl-6 ">
             <div class="card-admin">
                 <a href="/colaborador/boletapago">
                     <div class="card-body">
