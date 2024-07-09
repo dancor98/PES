@@ -44,17 +44,20 @@ class AuthController
                             if ($usuario->admin) {
                                 header('Location: /admin/dashboard');
                             } else {
-                                //crea variable con la fecha de ingreso de cada colaborador
-                                $fecha_ingreso = new DateTime($colaborador->fecha_ingreso);
-                                //Extrae el dia de ingreso de cada colaborador
-                                $dia_ingreso = $fecha_ingreso->format('d');
-                                $dia_actual = date('d');
-                                //Valida si el dia de ingreso es igual al dia actual
 
+                                //crea variable con la fecha de ingreso de cada colaborador y la fecha actual
+                                $fecha_actual = date('y-m-d');
+                                $fecha_ingreso = $_SESSION['fecha_ingreso'];
 
-                                $diferencia = $fecha_ingreso->diff(new DateTime());
-                                $mesesDiferencia = ($diferencia->y * 12) + $diferencia->m;
-                                $colaborador->meses_trabajados = $mesesDiferencia;
+                                $date1 = new \DateTime($fecha_ingreso);
+                                $date2 = new \DateTime($fecha_actual);
+
+                                $interval = $date1->diff($date2);
+
+                                $months = $interval->y * 12 + $interval->m;
+
+                                $colaborador->meses_trabajados = $months;
+
 
                                 $resultado = $colaborador->guardar();
 

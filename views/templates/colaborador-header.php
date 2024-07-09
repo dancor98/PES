@@ -4,15 +4,12 @@
             <a class="navbar-brand" href="/colaborador/dashboard">
                 <img class="navbar-inicio-logo" src="/build/img/logo.png" alt="">
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
-                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="fa-solid fa-bars icono-menu"></i>
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav ms-auto">
-                    <?php if ($_SESSION['admin'] == 1) { ?>
-                    <a class="nav-link nav-link-menu" href="/admin/dashboard">CAMBIAR A ADMINISTRADOR</a>
-                    <?php }; ?>
+                    <a class="nav-link nav-link-menu" href="/colaborador/dashboard">INICIO</a>
                     <a class="nav-link nav-link-menu" href="/colaborador/incapacidades">INCAPACIDADES</a>
                     <a class="nav-link nav-link-menu" href="/colaborador/vacaciones">VACACIONES</a>
                     <a class="nav-link nav-link-menu" href="/colaborador/boletapago">BOLETAS DE PAGO</a>

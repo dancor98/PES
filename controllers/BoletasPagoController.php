@@ -302,8 +302,9 @@ class BoletasPagoController
     public static function indexColaborador(Router $router)
     {
         session_start();
+
         // Validar que el usuario esté logueado y sea administrador
-        if (!$_SESSION) {
+        if (!$_SESSION || $_SESSION['admin'] === "1") {
             header('Location: /login');
             return;
         }
