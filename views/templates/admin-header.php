@@ -9,11 +9,12 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav ms-auto">
-                    <a class="nav-link nav-link-menu" href="/admin/dashboard">INICIO</a>
+                    <a class="nav-link nav-link-menu" href="/colaborador/dashboard">CAMBIAR A COLABORADOR</a>
                     <a class="nav-link nav-link-menu" href="/admin/incapacidades">INCAPACIDADES</a>
                     <a class="nav-link nav-link-menu" href="/admin/vacaciones">VACACIONES</a>
                     <a class="nav-link nav-link-menu" href="/admin/colaboradores">COLABORADORES</a>
                     <a class="nav-link nav-link-menu" href="/admin/boletaspagos">BOLETAS DE PAGO</a>
+
                     <form method="POST" action="/logout">
                         <input type="submit" value="LOGOUT" class="boton-logout">
                     </form>

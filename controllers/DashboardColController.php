@@ -14,7 +14,7 @@ class DashboardColController
     {
         session_start();
         // Validar que el usuario esté logueado y sea administrador
-        if (!isset($_SESSION['admin']) || $_SESSION['admin']) {
+        if (!$_SESSION) {
             header('Location: /login');
             return;
         }
@@ -33,7 +33,7 @@ class DashboardColController
     {
         session_start();
         // Validar que el usuario esté logueado y sea administrador
-        if (!isset($_SESSION['admin']) || $_SESSION['admin']) {
+        if (!$_SESSION) {
             header('Location: /login');
             return;
         }
@@ -56,7 +56,7 @@ class DashboardColController
 
         session_start();
         // Validar que el usuario esté logueado y sea administrador
-        if (!isset($_SESSION['admin']) || $_SESSION['admin']) {
+        if (!$_SESSION) {
             header('Location: /login');
             return;
         }
@@ -80,7 +80,7 @@ class DashboardColController
 
             session_start();
             // Validar que el usuario esté logueado y sea administrador
-            if (!isset($_SESSION['admin']) || $_SESSION['admin']) {
+            if (!$_SESSION) {
                 header('Location: /login');
                 return;
             }
@@ -120,7 +120,7 @@ class DashboardColController
 
         session_start();
         // Validar que el usuario esté logueado y sea administrador
-        if (!isset($_SESSION['admin']) || $_SESSION['admin']) {
+        if (!$_SESSION) {
             header('Location: /login');
             return;
         }
@@ -133,7 +133,7 @@ class DashboardColController
             header('Location: /colaborador/dashboard');
         }
 
-        // Obtener Ponente a Editar
+        // Obtener Colaborador a Editar
         $colaborador = Colaboradores::find($id);
 
         if (!$colaborador) {
@@ -145,7 +145,7 @@ class DashboardColController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             session_start();
             // Validar que el usuario esté logueado y sea administrador
-            if (!isset($_SESSION['admin']) || $_SESSION['admin']) {
+            if (!$_SESSION) {
                 header('Location: /login');
                 return;
             }

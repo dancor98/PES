@@ -91,7 +91,7 @@ class IncapacidadesController
     {
         session_start();
         // Validar que el usuario esté logueado y sea administrador
-        if (!isset($_SESSION['admin']) || $_SESSION['admin']) {
+        if (!$_SESSION) {
             header('Location: /login');
             return;
         }
@@ -131,7 +131,7 @@ class IncapacidadesController
     {
         session_start();
         // Validar que el usuario esté logueado y sea administrador
-        if (!isset($_SESSION['admin']) || $_SESSION['admin']) {
+        if (!$_SESSION) {
             header('Location: /login');
             return;
         }
@@ -142,7 +142,7 @@ class IncapacidadesController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             session_start();
             // Validar que el usuario esté logueado y sea administrador
-            if (!isset($_SESSION['admin']) || $_SESSION['admin']) {
+            if (!$_SESSION) {
                 header('Location: /login');
                 return;
             }

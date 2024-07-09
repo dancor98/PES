@@ -10,7 +10,9 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav ms-auto">
-                    <a class="nav-link nav-link-menu" href="/colaborador/dashboard">INICIO</a>
+                    <?php if ($_SESSION['admin'] == 1) { ?>
+                    <a class="nav-link nav-link-menu" href="/admin/dashboard">CAMBIAR A ADMINISTRADOR</a>
+                    <?php }; ?>
                     <a class="nav-link nav-link-menu" href="/colaborador/incapacidades">INCAPACIDADES</a>
                     <a class="nav-link nav-link-menu" href="/colaborador/vacaciones">VACACIONES</a>
                     <a class="nav-link nav-link-menu" href="/colaborador/boletapago">BOLETAS DE PAGO</a>
