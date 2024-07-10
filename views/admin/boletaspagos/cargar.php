@@ -14,19 +14,59 @@
 
     <?php include_once __DIR__ . '/../../templates/alertas.php'; ?>
 
-    <form method="POST" action="/admin/boletaspagos/cargar" enctype="multipart/form-data" class="formulario">
+    <form method="POST" action="/admin/boletaspagos/cargar" enctype="multipart/form-data" class="formulario"
+        id="FormularioInterno">
 
         <fieldset class="formulario__fieldset">
             <div class="formulario__campo">
                 <label for="csv_file" class="formulario__label">Cargar CSV de boletas de pago:</label>
-                <input type="file" class="formulario__input" name="csv_file" id="csv_file" placeholder="boleta de la Empresa" accept=".csv">
+                <input type="file" class="formulario__input" name="csv_file" id="csv_file"
+                    placeholder="boleta de la Empresa" accept=".csv">
                 <div id="passwordHelpBlock" class="form-text">
                     Aqui debe cargar su su archivo csv.
                 </div>
             </div>
 
 
-            <input class="formulario__submit formulario__submit--registrar" type="submit" value="Cargar CSV">
+            <input class="formulario__submit formulario__submit--registrar" id="botonSubmit" type="submit"
+                value="Cargar CSV">
     </form>
+
+
+    <div class="modal" id="exito" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <i class="fa-solid fa-bell" id="icono-exito"></i>
+                    <h5 class="modal-title titulo-modal">Mensaje</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="modal-mensaje">Accion Realizada con Exito</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary btn-modal" data-bs-dismiss="modal">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="error" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <i class="fa-solid fa-triangle-exclamation" id="icono-error"></i>
+                    <h5 class="modal-title titulo-modal">Mensaje</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="modal-mensaje">Hubo un error, intentelo mas tarde.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary btn-modal" data-bs-dismiss="modal">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div>

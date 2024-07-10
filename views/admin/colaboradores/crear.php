@@ -14,7 +14,8 @@
 
     <?php include_once __DIR__ . '/../../templates/alertas.php'; ?>
 
-    <form method="POST" action="/admin/colaboradores/crear" enctype="multipart/form-data" class="formulario">
+    <form method="POST" action="/admin/colaboradores/crear" enctype="multipart/form-data" class="formulario"
+        id="FormularioInterno">
 
         <fieldset class="formulario__fieldset">
 
@@ -143,7 +144,8 @@
                     hidden>
             </div>
 
-            <input class="formulario__submit formulario__submit--registrar" type="submit" value="Registrar Colaborador">
+            <input class="formulario__submit formulario__submit--registrar" type="submit" value="Registrar Colaborador"
+                id="botonSubmit">
     </form>
 
 </div>

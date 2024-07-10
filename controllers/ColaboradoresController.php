@@ -267,12 +267,14 @@ class ColaboradoresController
 
         // Escribir encabezados de columna
         fputcsv($output, [
-            'id',
+            'id_colaborador',
             'empresa_id',
             'nombre',
             'apellido_paterno',
             'apellido_materno',
             'cedula',
+            'puesto',
+            'correo_electronico',
             'salario'
         ]);
 
@@ -288,6 +290,8 @@ class ColaboradoresController
                 $dato->apellido_paterno,
                 $dato->apellido_materno,
                 $dato->cedula,
+                $dato->puesto,
+                $dato->correo_electronico,
                 $dato->salario
             ]);
         }

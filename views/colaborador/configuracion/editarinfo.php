@@ -14,7 +14,7 @@
 
     <?php include_once __DIR__ . '/../../templates/alertas.php'; ?>
 
-    <form method="POST" enctype="multipart/form-data" class="formulario">
+    <form method="POST" enctype="multipart/form-data" class="formulario" id="FormularioInterno">
 
         <fieldset class="formulario__fieldset">
             <legend class="formulario__legend">Informacion Contacto</legend>
@@ -51,7 +51,7 @@
         </fieldset>
 
 
-        <input class="formulario__submit formulario__submit--registrar" type="submit" value="Actualizar mi Informacion">
+        <input class="formulario__submit formulario__submit--registrar" type="submit" value="Actualizar mi Informacion" id="botonSubmit">
     </form>
 
 </div>

@@ -1,1 +1,1 @@
-{"version":3,"sources":[],"names":[],"mappings":"","file":"main.js","sourcesContent":[]}
+{"version":3,"sources":["main.js"],"names":["document","addEventListener","e","getElementById","n","disabled","value"],"mappings":"AAAAA,SAASC,iBAAiB,oBAAmB,WAAY,IAAIC,EAAEF,SAASG,eAAe,qBAAqBC,EAAEJ,SAASG,eAAe,eAAeD,EAAED,iBAAiB,UAAS,SAAUC,GAAGE,EAAEC,UAAS,EAAGD,EAAEE,MAAM","file":"main.js","sourcesContent":[]}

@@ -173,6 +173,114 @@ class BoletasPagoController
         ]);
     }
 
+    // public static function cargarDesdeCSV(Router $router)
+    // {
+    //     session_start();
+    //     // Validar que el usuario esté logueado y sea administrador
+    //     if (!isset($_SESSION['admin']) || !$_SESSION['admin']) {
+    //         header('Location: /login');
+    //         return;
+    //     }
+
+    //     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    //         // Verificar si se ha subido un archivo CSV
+    //         if (isset($_FILES['csv_file']) && $_FILES['csv_file']['error'] === UPLOAD_ERR_OK) {
+    //             $fileTmpPath = $_FILES['csv_file']['tmp_name'];
+    //             $fileName = $_FILES['csv_file']['name'];
+    //             $fileSize = $_FILES['csv_file']['size'];
+    //             $fileType = $_FILES['csv_file']['type'];
+    //             $fileNameCmps = explode(".", $fileName);
+    //             $fileExtension = strtolower(end($fileNameCmps));
+
+    //             // Verificar la extensión del archivo
+    //             if ($fileExtension === 'csv') {
+    //                 // Abrir el archivo CSV para lectura
+    //                 if (($handle = fopen($fileTmpPath, 'r')) !== false) {
+    //                     // Leer los encabezados del CSV
+    //                     $headers = fgetcsv($handle, 1000, ",");
+
+    //                     // Procesar cada fila del CSV
+    //                     while (($data = fgetcsv($handle, 1000, ",")) !== false) {
+    //                         // Crear una nueva instancia de BoletasPago
+    //                         $boletapago = new BoletasPago();
+
+    //                         // Asignar los valores del CSV a la instancia, omitiendo los campos no necesarios
+    //                         $boletapago->colaborador_id = $data[0];
+    //                         $boletapago->empresa_id = $data[1];
+    //                         $boletapago->salario_quincenal = $data[7];
+    //                         $boletapago->comisiones = $data[8];
+    //                         $boletapago->feriados = $data[9];
+    //                         $boletapago->total_devengado = $data[10];
+    //                         $boletapago->ccss = $data[11];
+    //                         $boletapago->impuestos_renta = $data[12];
+    //                         $boletapago->otras_deducciones = $data[13];
+    //                         $boletapago->embargo = $data[14];
+    //                         $boletapago->incapacidades = $data[15];
+    //                         $boletapago->total_deducciones = $data[16];
+    //                         $boletapago->primer_quincena = $data[17];
+    //                         $boletapago->segunda_quincena = $data[18];
+    //                         $boletapago->periodo = $data[19];
+    //                         $boletapago->fecha = $data[20];
+
+    //                         // Obtener el colaborador desde la base de datos
+    //                         $colaborador = Colaboradores::find($boletapago->colaborador_id);
+    //                         $empresa = Empresas::find($boletapago->empresa_id);
+
+    //                         if ($colaborador && $empresa) {
+    //                             // Generar el PDF en memoria
+    //                             $pdf = new PDF();
+    //                             $carpetaDestino = __DIR__ . '/../public/uploads/boletasPago/';
+    //                             $nombreArchivoPDF = $pdf->generarPDF([
+    //                                 'nombre_empresa' => $empresa->nombre ?? '',
+    //                                 'Fecha' => date('Y-m-d'),
+    //                                 'Nombre' => $colaborador->nombre ?? '',
+    //                                 'Apellido' => ($colaborador->apellido_paterno ?? '') . ' ' . ($colaborador->apellido_materno ?? ''),
+    //                                 'Cedula' => $colaborador->cedula ?? '',
+    //                                 'Base' => $colaborador->salario ?? '',
+    //                                 'Quincenal' => $boletapago->salario_quincenal,
+    //                                 'Comisiones' => $boletapago->comisiones,
+    //                                 'Incapacidad' => $boletapago->incapacidades,
+    //                                 'Feriados' => $boletapago->feriados,
+    //                                 'devengado' => $boletapago->total_devengado,
+    //                                 'Ccss' => $boletapago->ccss,
+    //                                 'Renta' => $boletapago->impuestos_renta,
+    //                                 'Odeducciones' => $boletapago->otras_deducciones,
+    //                                 'Embargo' => $boletapago->embargo,
+    //                                 'Deducciones' => $boletapago->total_deducciones,
+    //                                 'Quincena1' => $boletapago->primer_quincena,
+    //                                 'Quincena2' => $boletapago->segunda_quincena,
+    //                                 'Periodo' => $boletapago->periodo
+    //                             ], $carpetaDestino);
+
+    //                             // Asignar el nombre del archivo generado al objeto BoletasPago
+    //                             $boletapago->archivo_pdf = 'uploads/boletasPago/' . basename($nombreArchivoPDF);
+
+    //                             // Guardar la boleta de pago en la base de datos
+    //                             $resultado = $boletapago->guardar();
+
+    //                             // Enviar el PDF por correo electrónico
+    //                             $correo_electronico = $colaborador->correo_electronico ?? '';
+    //                             $nombre_colaborador = $colaborador->nombre ?? '';
+    //                             $email = new Email($correo_electronico, $nombre_colaborador, '');
+    //                             $email->enviarConfirmacionBoleta();
+    //                         }
+    //                     }
+    //                     fclose($handle);
+
+    //                     // Redirigir después de procesar el archivo
+    //                     header('Location: /admin/boletaspagos');
+    //                     exit;
+    //                 }
+    //             }
+    //         }
+    //     }
+
+    //     // Renderizar la vista con los datos necesarios
+    //     $router->render('admin/boletaspagos/cargar', [
+    //         'titulo' => 'Crear Boletas Pago CSV'
+    //     ]);
+    // }
+
     public static function cargarDesdeCSV(Router $router)
     {
         session_start();
@@ -181,8 +289,6 @@ class BoletasPagoController
             header('Location: /login');
             return;
         }
-
-        $alertas = [];
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Verificar si se ha subido un archivo CSV
@@ -196,105 +302,100 @@ class BoletasPagoController
 
                 // Verificar la extensión del archivo
                 if ($fileExtension === 'csv') {
-                    // Abrir el archivo CSV para lectura
-                    if (($handle = fopen($fileTmpPath, 'r')) !== false) {
-                        // Leer los encabezados del CSV
-                        $headers = fgetcsv($handle, 1000, ",");
+                    try {
+                        // Abrir el archivo CSV para lectura
+                        if (($handle = fopen($fileTmpPath, 'r')) !== false) {
+                            // Leer los encabezados del CSV
+                            $headers = fgetcsv($handle, 1000, ",");
 
-                        // Procesar cada fila del CSV
-                        while (($data = fgetcsv($handle, 1000, ",")) !== false) {
-                            // Crear una nueva instancia de BoletasPago
-                            $boletapago = new BoletasPago();
+                            // Procesar cada fila del CSV
+                            while (($data = fgetcsv($handle, 1000, ",")) !== false) {
+                                // Crear una nueva instancia de BoletasPago
+                                $boletapago = new BoletasPago();
 
-                            // Asignar los valores del CSV a la instancia, omitiendo los campos no necesarios
-                            $boletapago->colaborador_id = $data[0];
-                            $boletapago->empresa_id = $data[1];
-                            $boletapago->salario_quincenal = $data[7];
-                            $boletapago->comisiones = $data[8];
-                            $boletapago->feriados = $data[9];
-                            $boletapago->total_devengado = $data[10];
-                            $boletapago->ccss = $data[11];
-                            $boletapago->impuestos_renta = $data[12];
-                            $boletapago->otras_deducciones = $data[13];
-                            $boletapago->embargo = $data[14];
-                            $boletapago->incapacidades = $data[15];
-                            $boletapago->total_deducciones = $data[16];
-                            $boletapago->primer_quincena = $data[17];
-                            $boletapago->segunda_quincena = $data[18];
-                            $boletapago->periodo = $data[19];
-                            $boletapago->fecha = $data[20];
+                                // Asignar los valores del CSV a la instancia, omitiendo los campos no necesarios
+                                $boletapago->colaborador_id = $data[0]; //columna A
+                                $boletapago->empresa_id = $data[1]; //columna B
+                                $boletapago->salario_quincenal = $data[9]; //columna J
+                                $boletapago->comisiones = $data[10]; //columna K
+                                $boletapago->feriados = $data[11]; //columna L
+                                $boletapago->total_devengado = $data[12]; //columna M
+                                $boletapago->ccss = $data[13]; //columna N
+                                $boletapago->impuestos_renta = $data[14]; //columna O
+                                $boletapago->otras_deducciones = $data[15]; //columna P
+                                $boletapago->embargo = $data[16]; //columna Q
+                                $boletapago->incapacidades = $data[17]; //columna R
+                                $boletapago->total_deducciones = $data[18]; //columna S
+                                $boletapago->primer_quincena = $data[19]; //columna T
+                                $boletapago->segunda_quincena = $data[20]; //columna U
+                                $boletapago->periodo = $data[21]; //columna V
+                                $boletapago->fecha = date('y-m-d');
 
-                            // Obtener el colaborador desde la base de datos
-                            $colaborador = Colaboradores::find($boletapago->colaborador_id);
-                            $empresa = Empresas::find($boletapago->empresa_id);
+                                // Obtener el colaborador desde la base de datos
+                                $colaborador = Colaboradores::find($boletapago->colaborador_id);
+                                $empresa = Empresas::find($boletapago->empresa_id);
 
-                            if ($colaborador && $empresa) {
-                                // Generar el PDF en memoria
-                                $pdf = new PDF();
-                                $carpetaDestino = __DIR__ . '/../public/uploads/boletasPago/';
-                                $nombreArchivoPDF = $pdf->generarPDF([
-                                    'nombre_empresa' => $empresa->nombre ?? '',
-                                    'Fecha' => date('Y-m-d'),
-                                    'Nombre' => $colaborador->nombre ?? '',
-                                    'Apellido' => ($colaborador->apellido_paterno ?? '') . ' ' . ($colaborador->apellido_materno ?? ''),
-                                    'Cedula' => $colaborador->cedula ?? '',
-                                    'Base' => $colaborador->salario ?? '',
-                                    'Quincenal' => $boletapago->salario_quincenal,
-                                    'Comisiones' => $boletapago->comisiones,
-                                    'Incapacidad' => $boletapago->incapacidades,
-                                    'Feriados' => $boletapago->feriados,
-                                    'devengado' => $boletapago->total_devengado,
-                                    'Ccss' => $boletapago->ccss,
-                                    'Renta' => $boletapago->impuestos_renta,
-                                    'Odeducciones' => $boletapago->otras_deducciones,
-                                    'Embargo' => $boletapago->embargo,
-                                    'Deducciones' => $boletapago->total_deducciones,
-                                    'Quincena1' => $boletapago->primer_quincena,
-                                    'Quincena2' => $boletapago->segunda_quincena,
-                                    'Periodo' => $boletapago->periodo
-                                ], $carpetaDestino);
+                                if ($colaborador && $empresa) {
+                                    // Generar el PDF en memoria
+                                    $pdf = new PDF();
+                                    $carpetaDestino = __DIR__ . '/../public/uploads/boletasPago/';
+                                    $nombreArchivoPDF = $pdf->generarPDF([
+                                        'nombre_empresa' => $empresa->nombre ?? '',
+                                        'Fecha' => $boletapago->fecha,
+                                        'Nombre' => $colaborador->nombre ?? '',
+                                        'Apellido' => ($colaborador->apellido_paterno ?? '') . ' ' . ($colaborador->apellido_materno ?? ''),
+                                        'Cedula' => $colaborador->cedula ?? '',
+                                        'Base' => $colaborador->salario ?? '',
+                                        'Quincenal' => $boletapago->salario_quincenal,
+                                        'Comisiones' => $boletapago->comisiones,
+                                        'Incapacidad' => $boletapago->incapacidades,
+                                        'Feriados' => $boletapago->feriados,
+                                        'devengado' => $boletapago->total_devengado,
+                                        'Ccss' => $boletapago->ccss,
+                                        'Renta' => $boletapago->impuestos_renta,
+                                        'Odeducciones' => $boletapago->otras_deducciones,
+                                        'Embargo' => $boletapago->embargo,
+                                        'Deducciones' => $boletapago->total_deducciones,
+                                        'Quincena1' => $boletapago->primer_quincena,
+                                        'Quincena2' => $boletapago->segunda_quincena,
+                                        'Periodo' => $boletapago->periodo
+                                    ], $carpetaDestino);
 
-                                // Asignar el nombre del archivo generado al objeto BoletasPago
-                                $boletapago->archivo_pdf = 'uploads/boletasPago/' . basename($nombreArchivoPDF);
+                                    // Asignar el nombre del archivo generado al objeto BoletasPago
+                                    $boletapago->archivo_pdf = 'uploads/boletasPago/' . basename($nombreArchivoPDF);
 
-                                // Guardar la boleta de pago en la base de datos
-                                $resultado = $boletapago->guardar();
+                                    // Guardar la boleta de pago en la base de datos
+                                    $resultado = $boletapago->guardar();
 
-                                // Enviar el PDF por correo electrónico
-                                $correo_electronico = $colaborador->correo_electronico ?? '';
-                                $nombre_colaborador = $colaborador->nombre ?? '';
-                                $email = new Email($correo_electronico, $nombre_colaborador, '');
-                                $email->enviarConfirmacionBoleta();
-
-                                if (!$resultado) {
-                                    $alertas[] = "Error al guardar la boleta de pago para el colaborador ID: {$boletapago->colaborador_id}";
+                                    // Enviar el PDF por correo electrónico
+                                    $correo_electronico = $colaborador->correo_electronico ?? '';
+                                    $nombre_colaborador = $colaborador->nombre ?? '';
+                                    $email = new Email($correo_electronico, $nombre_colaborador, '');
+                                    $email->enviarConfirmacionBoleta();
                                 }
-                            } else {
-                                $alertas[] = "No se encontró el colaborador o la empresa para el colaborador ID: {$boletapago->colaborador_id}";
                             }
-                        }
-                        fclose($handle);
+                            fclose($handle);
 
-                        // Redirigir después de procesar el archivo
-                        header('Location: /admin/boletaspagos');
+                            // Redirigir después de procesar el archivo con éxito
+                            header('Location: /admin/boletaspagos/cargar?estado=exito');
+                            exit;
+                        }
+                    } catch (\Exception $e) {
+                        // En caso de cualquier error, redirigir a la URL de error
+                        header('Location: /admin/boletaspagos/cargar?estado=error');
                         exit;
-                    } else {
-                        $alertas[] = 'No se pudo abrir el archivo CSV.';
                     }
-                } else {
-                    $alertas[] = 'El archivo debe ser de tipo CSV.';
                 }
-            } else {
-                $alertas[] = 'Error al cargar el archivo CSV.';
             }
         }
 
         // Renderizar la vista con los datos necesarios
         $router->render('admin/boletaspagos/cargar', [
-            'titulo' => 'Crear Boletas Pago CSV',
-            'alertas' => $alertas
+            'titulo' => 'Crear Boletas Pago CSV'
         ]);
     }
+
+
 
     //------------------------------------------------------------------------------//
     //Colaboradores
