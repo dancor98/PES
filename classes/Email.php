@@ -40,9 +40,9 @@ class Email
         $mail->CharSet = 'UTF-8';
 
         $contenido = '<html>';
-        $contenido .= "<p><strong>Hola " . $this->nombre .  "</strong> Se ha creado tu cuenta exitosamente, Tu contrasena temporal es: 1234567CCM ,Recuerda cambiarla una vez ingresado al sistema; pero es necesario confirmarla</p>";
-        $contenido .= "<p>Presiona aquí: <a href='" . $_ENV['HOST'] . "/confirmar-cuenta?token=" . $this->token . "'>Confirmar Cuenta</a>";
-        $contenido .= "<p>Si tu no creaste esta cuenta; puedes ignorar el mensaje</p>";
+        $contenido .= "<p><strong>Hola " . $this->nombre .  "</strong> <br> <br> Se ha creado tu cuenta exitosamente, Tu contrasena temporal es: 1234567CCM ,Recuerda cambiarla una vez ingresado al sistema; pero es necesario confirmarla.</p>";
+        $contenido .= "<p><br>Presiona aquí: <a href='" . $_ENV['HOST'] . "/confirmar-cuenta?token=" . $this->token . "'>Confirmar Cuenta</a>";
+        $contenido .= "<p><br><br>Si tu no creaste esta cuenta; puedes ignorar el mensaje</p>";
         $contenido .= '</html>';
         $mail->Body = $contenido;
 
@@ -71,9 +71,9 @@ class Email
         $mail->CharSet = 'UTF-8';
 
         $contenido = '<html>';
-        $contenido .= "<p><strong>Hola " . $this->nombre .  "</strong> Has solicitado reestablecer tu password, sigue el siguiente enlace para hacerlo.</p>";
-        $contenido .= "<p>Presiona aquí: <a href='" . $_ENV['HOST'] . "/reestablecer?token=" . $this->token . "'>Reestablecer Password</a>";
-        $contenido .= "<p>Si tu no solicitaste este cambio, puedes ignorar el mensaje</p>";
+        $contenido .= "<p><strong>Hola " . $this->nombre .  "</strong> <br><br> Has solicitado reestablecer tu password, sigue el siguiente enlace para hacerlo.</p>";
+        $contenido .= "<p><br>Presiona aquí: <a href='" . $_ENV['HOST'] . "/reestablecer?token=" . $this->token . "'>Reestablecer Password</a>";
+        $contenido .= "<p><br><br>Si tu no solicitaste este cambio, puedes ignorar el mensaje</p>";
         $contenido .= '</html>';
         $mail->Body = $contenido;
 
@@ -102,7 +102,7 @@ class Email
         $mail->CharSet = 'UTF-8';
 
         $contenido = '<html>';
-        $contenido .= "<p><strong>Hola " . $this->nombre .  " </br> </br> </strong> Ya esta generada tu boleta de pago, puedes ingresar al sistema y descargarla.</p>";
+        $contenido .= "<p><strong>Hola " . $this->nombre .  " <br> <br> </strong> Ya esta generada tu boleta de pago, puedes ingresar al sistema y descargarla.</p>";
         $contenido .= '</html>';
         $mail->Body = $contenido;
 
@@ -130,7 +130,7 @@ class Email
         $mail->CharSet = 'UTF-8';
 
         $contenido = '<html>';
-        $contenido .= "<p><strong>Hola " . $this->nombre .  " </br> </br> </strong> Se acaba de actualizar el estado de tu solicitud, ya podes ingresar y ver el estado.</p>";
+        $contenido .= "<p><strong>Hola " . $this->nombre .  " <br> <br> </strong> Se acaba de actualizar el estado de tu solicitud, ya podes ingresar y ver el estado.</p>";
         $contenido .= '</html>';
         $mail->Body = $contenido;
 
@@ -159,7 +159,7 @@ class Email
         $mail->CharSet = 'UTF-8';
 
         $contenido = '<html>';
-        $contenido .= "<p><strong>Hola Administrador </strong> </br> </br> El Colaborador" . $this->nombre .  ",acaba de realizar una solicitud de vacaciones, ya podes ingresar y ver la solicitud.</p>";
+        $contenido .= "<p><strong>Hola Administrador </strong> <br> <br> El Colaborador" . $this->nombre .  ",acaba de realizar una solicitud de vacaciones, ya podes ingresar y ver la solicitud.</p>";
         $contenido .= '</html>';
         $mail->Body = $contenido;
 
