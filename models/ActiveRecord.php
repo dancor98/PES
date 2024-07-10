@@ -229,6 +229,16 @@ class ActiveRecord
         return array_shift($total);
     }
 
+    //Traer un total de registros
+    public static function totalPostulaciones()
+    {
+        $query = "SELECT COUNT(*) FROM " . static::$tabla;
+        $resultado = self::$db->query($query);
+        $total = $resultado->fetch_array();
+
+        return array_shift($total);
+    }
+
 
     // crea un nuevo registro
     public function crear()

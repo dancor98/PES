@@ -41,7 +41,7 @@
                     Nuevas Postulaciones
                 </h2>
                 <h2 class="contenedor-admin__fecha">
-                    <?php echo $colaboradoresTotal; ?>
+                    <?php echo $postulacionesTotal; ?>
                 </h2>
             </div>
         </div>

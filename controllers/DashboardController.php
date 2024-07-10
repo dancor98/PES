@@ -2,6 +2,7 @@
 
 namespace Controllers;
 
+use Model\Carreras;
 use Model\Colaboradores;
 use Model\Vacaciones;
 use MVC\Router;
@@ -20,11 +21,13 @@ class DashboardController
 
         $colaboradoresTotal = Colaboradores::totalGeneral();
         $solicitudvacacionesN = Vacaciones::totalVacacionesN();
+        $postulacionesTotal = Carreras::totalPostulaciones();
 
         $router->render('admin/dashboard/index', [
             'titulo' => 'Modulos Disponibles',
             'colaboradoresTotal' => $colaboradoresTotal,
-            'solicitudvacacionesN' => $solicitudvacacionesN
+            'solicitudvacacionesN' => $solicitudvacacionesN,
+            'postulacionesTotal' => $postulacionesTotal
         ]);
     }
 }

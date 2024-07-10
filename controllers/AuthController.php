@@ -35,13 +35,13 @@ class AuthController
                         $_SESSION['puesto'] = $usuario->puesto;
                         $_SESSION['fecha_ingreso'] = $usuario->fecha_ingreso;
                         $_SESSION['foto'] = $usuario->foto;
-                        $_SESSION['dias_acumulados'] = $usuario->dias_acumulados;
+                        $_SESSION['dias_utilizados'] = $usuario->dias_utilizados;
 
                         $colaborador = Colaboradores::find($_SESSION['id']);
 
                         if (session_start() === true) {
                             //Redireccionamiento
-                            if ($usuario->admin) {
+                            if ($_SESSION['admin'] === "1") {
                                 header('Location: /admin/dashboard');
                             } else {
 
@@ -57,7 +57,6 @@ class AuthController
                                 $months = $interval->y * 12 + $interval->m;
 
                                 $colaborador->meses_trabajados = $months;
-
 
                                 $resultado = $colaborador->guardar();
 
