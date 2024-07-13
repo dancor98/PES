@@ -265,13 +265,21 @@ visibility: hidden;
 
 .img-marcas{
     width: 20rem;
-    border-radius: 50%;
-    -webkit-box-shadow: 10px 10px 26px -5px rgba(0,0,0,0.75);
--moz-box-shadow: 10px 10px 26px -5px rgba(0,0,0,0.75);
-box-shadow: 10px 10px 26px -5px rgba(0,0,0,0.75);
-@include m.tablet {
-     width: 25rem; 
-}
+    border-radius: 5%;
+    transition: filter 0.5s ease-in-out, opacity 0.5s ease-in-out;
+    filter: grayscale(100%);
+    opacity: 0.5;
+
+    &:hover{
+        -webkit-box-shadow: 10px 10px 26px -5px rgba(0,0,0,0.75);
+        -moz-box-shadow: 10px 10px 26px -5px rgba(0,0,0,0.75);
+        box-shadow: 10px 10px 26px -5px rgba(0,0,0,0.75);
+        filter: grayscale(0%);
+        opacity: 1;
+    }
+    @include m.tablet {
+         width: 25rem; 
+    }
 }
 
 .espacio{

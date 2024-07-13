@@ -729,8 +729,15 @@ h3 {
 
 .img-marcas {
   width: 20rem;
-  border-radius: 50%;
+  border-radius: 5%;
+  transition: filter 0.5s ease-in-out, opacity 0.5s ease-in-out;
+  filter: grayscale(100%);
+  opacity: 0.5;
+}
+.img-marcas:hover {
   box-shadow: 10px 10px 26px -5px rgba(0, 0, 0, 0.75);
+  filter: grayscale(0%);
+  opacity: 1;
 }
 @media (min-width: 768px) {
   .img-marcas {

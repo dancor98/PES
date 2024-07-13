@@ -6,7 +6,7 @@
 
     <h1 class="titulo-inicio titulo-inicio--3">Nuestras Marcas</h1>
 
-    <div class="principal-container">
+    <div class="principal-container espacio-2">
         <div class="columna1">
             <img class="img-marcas" src="build/img/specialized.png" alt="">
         </div>
@@ -20,8 +20,8 @@
             <img class="img-marcas" src="build/img/ceramicspeed_logo.png" alt="">
         </div>
     </div>
-    <br>
-    <div class="principal-container">
+
+    <div class="principal-container espacio-2">
         <div class="columna1">
             <img class="img-marcas" src="build/img/sram.png" alt="">
         </div>
@@ -33,6 +33,21 @@
         </div>
         <div class="columna2">
             <img class="img-marcas" src="build/img/retul_logo.png" alt="">
+        </div>
+    </div>
+
+    <div class="principal-container espacio-2">
+        <div class="columna1">
+            <img class="img-marcas" src="build/img/zipp.png" alt="">
+        </div>
+        <div class="columna2">
+            <img class="img-marcas" src="build/img/quarq.png" alt="">
+        </div>
+        <div class="columna1">
+            <img class="img-marcas" src="build/img/hammerhead.png" alt="">
+        </div>
+        <div class="columna2">
+            <img class="img-marcas" src="build/img/time.png" alt="">
         </div>
     </div>
 
