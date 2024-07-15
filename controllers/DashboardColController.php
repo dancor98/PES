@@ -163,6 +163,17 @@ class DashboardColController
 
                 $nombre_imagen = md5(uniqid(rand(), true));
 
+                // Eliminar imagen anterior si existe
+                if ($colaborador->imagen_actual) {
+                    $ruta_imagen_anterior_png = $_SERVER['DOCUMENT_ROOT'] . '/' . $colaborador->imagen_actual . '.png';
+                    $ruta_imagen_anterior_webp = $_SERVER['DOCUMENT_ROOT'] . '/' . $colaborador->imagen_actual . '.webp';
+
+                    // debuguear($ruta_imagen_anterior_png);
+
+                    unlink($ruta_imagen_anterior_png);
+                    unlink($ruta_imagen_anterior_webp);
+                }
+
                 $_POST['foto'] = "img/colaboradores/" . $nombre_imagen;
             } else {
                 $_POST['foto'] = $colaborador->imagen_actual;
@@ -181,8 +192,10 @@ class DashboardColController
 
                 if ($resultado) {
                     header('Location: /colaborador/configuracion?estado=exito');
+                    exit;
                 } else {
                     header('Location: /colaborador/configuracion?estado=error');
+                    exit;
                 }
             }
         }
