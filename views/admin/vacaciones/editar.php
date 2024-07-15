@@ -15,7 +15,7 @@
 
     <form method="POST" enctype="multipart/form-data" class="formulario" id="FormularioInterno">
         <fieldset class="formulario__fieldset">
-            <legend class="formulario__legend">Editar Estado de Solicitud</legend>
+            <legend class="formulario__legend">Informacion de Solicitud</legend>
 
             <div class="row row-campo">
                 <div class="col">
@@ -31,10 +31,19 @@
             </div>
 
             <div class="formulario__campo">
+                <label for="cantidad" class="formulario__label">Cantidad de dias:</label>
+                <input type="text" class="form-control formulario__input" id="cantidad" name="cantidad"
+                    value="<?php echo $vacacion->cantidad; ?>" readonly>
+            </div>
+
+            <div class="formulario__campo">
                 <label for="detalle" class="formulario__label">Detalle:</label>
                 <textarea name="detalle" id="detalle" class="formulario__textarea"
                     readonly><?php echo $vacacion->detalle; ?></textarea>
             </div>
+        </fieldset>
+        <fieldset class="formulario__fieldset">
+            <legend class="formulario__legend">Informacion de Estado</legend>
 
             <div class="formulario__campo">
                 <label for="estado" class="formulario__label">Estado:</label>
@@ -63,6 +72,8 @@
             </div>
 
         </fieldset>
+
+
 
         <input class="formulario__submit formulario__submit--registrar" type="submit" value="Actualizar Estado"
             id="botonSubmit">
