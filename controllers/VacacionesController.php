@@ -4,6 +4,7 @@ namespace Controllers;
 
 use Classes\Email;
 use Classes\Paginacion;
+use Classes\PDF;
 use Model\Colaboradores;
 use MVC\Router;
 use Intervention\Image\ImageManagerStatic as Image;
@@ -96,8 +97,9 @@ class VacacionesController
 
                 // Enviar email
                 $colaborador = Colaboradores::find($vacacion->colaborador_id);
+                $estado_nuevo = $_POST['estado'];
 
-                $email = new Email($colaborador->correo_electronico, $colaborador->nombre, '');
+                $email = new Email($colaborador->correo_electronico, $colaborador->nombre, $estado_nuevo);
                 $email->enviarEstadoVacaciones();
 
                 if ($resultado) {
