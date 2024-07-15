@@ -31,15 +31,37 @@ class PDF
         define('HEADER_TITLE', $data['nombre_empresa']);
         define('PDF_TITLE', 'COMPROBANTE DE PAGO');
 
+        // Ruta del logo
+        $logoPath = __DIR__ . '/../public/build/img/specialized.png';
+
+        // Verificar si el archivo existe
+        if (file_exists($logoPath)) {
+            // Añadir imagen del logo al PDF
+            $pdf->Image($logoPath, 150, 10, 50, '', '', '', 'T', false, 300, '', false, false, 0, false, false, false);
+        } else {
+            // Manejar el caso cuando el archivo no existe
+            $pdf->writeHTML('<p>Error: Logo no encontrado en la ruta especificada.</p>', true, false, true, false, '');
+        }
+
+        // Posicionar el cursor para el texto del encabezado
+        $pdf->SetXY(10, 10);
+
+        // HTML para el contenido del encabezado
+        $headerHTML = "
+            <h1 style='text-align:left;'>" . HEADER_TITLE . "</h1>
+            <h2 style='text-align:left;'>" . PDF_TITLE . "</h2>
+        ";
+
+        // Output the HTML content
+        $pdf->writeHTMLCell(140, '', '', '', $headerHTML, 0, 1, 0, true, 'L', true);
+
         // HTML para el contenido del PDF
         $html = "
-            <h1 style='text-align:center'>" . HEADER_TITLE . "</h1>
-            <h2 style='text-align:center'>" . PDF_TITLE . "</h2>
-        
+
+            </br>
             <p style='text-align:center;'>Fecha Creacion: {$data['Fecha']}</p>
             <p style='text-align:center;'>Periodo: {$data['Periodo']} </br></p>
             
-
             <table cellspacing='0' cellpadding='1' border='1'>
                 <tr>
                     <td>Nombre:</td>
@@ -92,9 +114,9 @@ class PDF
                     <td>¢{$data['Ccss']}</td>
                 </tr>
                 <tr>
-                <td>Incapacidad / Días no laborados:</td>
-                <td>¢{$data['Incapacidad']}</td>
-            </tr>
+                    <td>Incapacidad / Días no laborados:</td>
+                    <td>¢{$data['Incapacidad']}</td>
+                </tr>
                 <tr>
                     <td>Impuesto de renta:</td>
                     <td>¢{$data['Renta']}</td>
@@ -116,8 +138,6 @@ class PDF
             </br>
             <hr>
             </br>
-
-            
 
             <h3>Salario a pagar I quincena</h3>
             <p>¢{$data['Quincena1']}</p>

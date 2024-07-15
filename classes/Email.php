@@ -83,7 +83,6 @@ class Email
 
     public function enviarConfirmacionBoleta()
     {
-
         // create a new object
         $mail = new PHPMailer();
         $mail->isSMTP();
@@ -102,9 +101,12 @@ class Email
         $mail->CharSet = 'UTF-8';
 
         $contenido = '<html>';
-        $contenido .= "<p><strong>Hola " . $this->nombre .  " <br> <br> </strong> Ya esta generada tu boleta de pago, puedes ingresar al sistema y descargarla.</p>";
+        $contenido .= "<p><strong>Hola " . $this->nombre .  " <br> <br> </strong> Ya esta generada tu boleta de pago, la cual viene adjunta a este correo. Recuerda que puedes ver el historico de boletas de pago en la plataforma.</p>";
         $contenido .= '</html>';
         $mail->Body = $contenido;
+
+        $rutaPDF = $this->token;
+        $mail->addAttachment($rutaPDF);
 
         //Enviar el mail
         $mail->send();

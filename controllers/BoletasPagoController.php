@@ -143,8 +143,12 @@ class BoletasPagoController
                 // Guardar la boleta de pago en la base de datos
                 $resultado = $boletapago->guardar();
 
+
+
                 // Enviar el PDF por correo electrónico
-                $email = new Email($correo_electronico, $nombre_colaborador, '');
+                $ruta_archivo = $boletapago->archivo_pdf ?? '';
+
+                $email = new Email($correo_electronico, $nombre_colaborador, $ruta_archivo);
                 $email->enviarConfirmacionBoleta();
 
 
@@ -370,7 +374,8 @@ class BoletasPagoController
                                     // Enviar el PDF por correo electrónico
                                     $correo_electronico = $colaborador->correo_electronico ?? '';
                                     $nombre_colaborador = $colaborador->nombre ?? '';
-                                    $email = new Email($correo_electronico, $nombre_colaborador, '');
+                                    $ruta_archivo = $boletapago->archivo_pdf ?? '';
+                                    $email = new Email($correo_electronico, $nombre_colaborador, $ruta_archivo);
                                     $email->enviarConfirmacionBoleta();
                                 }
                             }
