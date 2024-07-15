@@ -283,6 +283,10 @@ class BoletasPagoController
                         header('Location: /admin/boletaspagos/cargar?estado=error');
                         exit;
                     }
+                } else {
+                    // En caso de cualquier error, redirigir a la URL de error
+                    header('Location: /admin/boletaspagos/cargar?estado=error');
+                    exit;
                 }
             }
         }

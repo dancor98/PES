@@ -154,7 +154,7 @@ class EmpresasController
             }
             $resultado = $empresa->eliminar();
             if ($resultado) {
-                header('Location: /admin/empresa');
+                header('Location: /admin/empresas');
                 return;
             }
         }
