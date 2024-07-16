@@ -8,46 +8,53 @@
 
     <div class="principal-container espacio-2">
         <div class="columna1">
-            <img class="img-marcas" src="build/img/specialized.png" alt="">
+            <a href="">
+                <img class="img-marcas" src="build/img/specialized.png" alt="Logo de Specialized">
+            </a>
         </div>
         <div class="columna2">
-            <img class="img-marcas" src="build/img/castelli.png" alt="">
+            <a href="">
+                <img class="img-marcas" src="build/img/castelli.png" alt="Logo de Castelli">
+            </a>
         </div>
         <div class="columna1">
-            <img class="img-marcas" src="build/img/100perc.png" alt="">
+            <img class="img-marcas" src="build/img/100perc.png" alt="Logo de 100%">
         </div>
         <div class="columna2">
-            <img class="img-marcas" src="build/img/ceramicspeed_logo.png" alt="">
+            <img class="img-marcas" src="build/img/ceramicspeed_logo.png" alt="Logo de Ceramicspeed">
         </div>
     </div>
 
     <div class="principal-container espacio-2">
         <div class="columna1">
-            <img class="img-marcas" src="build/img/sram.png" alt="">
+            <img class="img-marcas" src="build/img/sram.png" alt="Logo de Sram">
         </div>
         <div class="columna2">
-            <img class="img-marcas" src="build/img/amp.png" alt="">
+            <img class="img-marcas" src="build/img/amp.png" alt="Logo de AMP">
         </div>
         <div class="columna1">
-            <img class="img-marcas" src="build/img/unior.png" alt="">
+            <img class="img-marcas" src="build/img/unior.png" alt="Logo de Unior">
         </div>
         <div class="columna2">
-            <img class="img-marcas" src="build/img/retul_logo.png" alt="">
+            <img class="img-marcas" src="build/img/retul_logo.png" alt="Logo de Retul">
         </div>
     </div>
 
     <div class="principal-container espacio-2">
         <div class="columna1">
-            <img class="img-marcas" src="build/img/zipp.png" alt="">
+            <a href="">
+                <img class="img-marcas" src="build/img/zipp.png" alt="Logo de Zipp">
+            </a>
+
         </div>
         <div class="columna2">
-            <img class="img-marcas" src="build/img/quarq.png" alt="">
+            <img class="img-marcas" src="build/img/quarq.png" alt="Logo de Quarq">
         </div>
         <div class="columna1">
-            <img class="img-marcas" src="build/img/hammerhead.png" alt="">
+            <img class="img-marcas" src="build/img/hammerhead.png" alt="Logo de Hammerhead">
         </div>
         <div class="columna2">
-            <img class="img-marcas" src="build/img/time.png" alt="">
+            <img class="img-marcas" src="build/img/time.png" alt="Logo de Time">
         </div>
     </div>
 
