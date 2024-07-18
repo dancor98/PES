@@ -2,7 +2,7 @@
 </div>
 
 <div class="contenedor" id="nosotros">
-    <h1 class="titulo-inicio">Nuentra Historia</h1>
+    <h1 class="titulo-inicio">Nuestra Historia</h1>
     <div class="columna0">
         <p class="descripcion-inicio">✔ Nuestro negocio empezó en 2001 con una tienda llamada Bikestation.</p>
         <p class="descripcion-inicio">✔ CCM Soluciones en Servicios comenzó en 2008, como distribuidor mayorista de
