@@ -148,6 +148,21 @@ class ActiveRecord
         return $resultado;
     }
 
+    public static function paginarUnicos($por_pagina, $offset)
+    {
+        $query = "SELECT  DISTINCT colaborador_id FROM " . static::$tabla . " LIMIT $por_pagina OFFSET $offset";
+        $resultado = self::consultarSQL($query);
+        return $resultado;
+    }
+
+    //paginar registros por ID coalborador
+    public static function paginarID($por_pagina, $offset, $id)
+    {
+        $query = "SELECT * FROM " . static::$tabla . " WHERE colaborador_id = $id ORDER BY fecha DESC LIMIT $por_pagina OFFSET $offset";
+        $resultado = self::consultarSQL($query);
+        return $resultado;
+    }
+
     //paginar registros
     public static function paginarVacaciones($por_pagina, $offset)
     {

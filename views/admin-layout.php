@@ -40,7 +40,10 @@
         integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous">
     </script>
     <script src="/build/js/main.min.js" defer></script>
-
+    <script>
+    // Inyectar la variable de rol del usuario en JavaScript
+    var rolUsuario = '<?php echo $rol_usuario; ?>';
+    </script>
 
 
 </body>

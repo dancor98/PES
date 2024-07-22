@@ -70,16 +70,19 @@ $router->post('/admin/empresas/eliminar', [EmpresasController::class, 'eliminar'
 
 $router->get('/admin/incapacidades', [IncapacidadesController::class, 'index']);
 $router->get('/admin/incapacidades/observar', [IncapacidadesController::class, 'observar']);
+$router->get('/admin/incapacidades/lista', [IncapacidadesController::class, 'lista']);
 
 $router->get('/admin/vacaciones', [VacacionesController::class, 'index']);
 $router->get('/admin/vacaciones/editar', [VacacionesController::class, 'editar']);
 $router->post('/admin/vacaciones/editar', [VacacionesController::class, 'editar']);
+$router->get('/admin/vacaciones/lista', [VacacionesController::class, 'lista']);
 
 $router->get('/admin/boletaspagos', [BoletasPagoController::class, 'index']);
 $router->get('/admin/boletaspagos/crear', [BoletasPagoController::class, 'crear']);
 $router->post('/admin/boletaspagos/crear', [BoletasPagoController::class, 'crear']);
 $router->get('/admin/boletaspagos/cargar', [BoletasPagoController::class, 'cargarDesdeCSV']);
 $router->post('/admin/boletaspagos/cargar', [BoletasPagoController::class, 'cargarDesdeCSV']);
+$router->get('/admin/boletaspagos/lista', [BoletasPagoController::class, 'lista']);
 
 $router->get('/admin/postulaciones', [PostulacionesController::class, 'index']);
 $router->get('/admin/postulaciones/ver', [PostulacionesController::class, 'observar']);

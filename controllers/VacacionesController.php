@@ -24,6 +24,8 @@ class VacacionesController
             return;
         }
 
+        $rol_usuario = $_SESSION['admin'];
+
         $pagina_actual = $_GET['page'];
         $pagina_actual = filter_var($pagina_actual, FILTER_VALIDATE_INT);
 
@@ -39,7 +41,7 @@ class VacacionesController
             header('Location: /admin/vacaciones?page=1');
         }
 
-        $vacaciones = Vacaciones::paginarVacaciones($registros_por_paginas, $paginacion->offset());
+        $vacaciones = Vacaciones::paginarUnicos($registros_por_paginas, $paginacion->offset());
 
         //Extrae las llaves foraneas
         foreach ($vacaciones as $vacacion) {
@@ -49,6 +51,58 @@ class VacacionesController
         $router->render('admin/vacaciones/index', [
             'titulo' => 'Vacaciones Solicitadas',
             'vacaciones' => $vacaciones,
+            'rol_usuario' => $rol_usuario,
+            'paginacion' => $paginacion->paginacion()
+        ]);
+    }
+
+    public static function lista(Router $router)
+    {
+        session_start();
+        // Validar que el usuario esté logueado y sea administrador
+        if (!isset($_SESSION['admin']) || !$_SESSION['admin']) {
+            header('Location: /login');
+            return;
+        }
+
+        $rol_usuario = $_SESSION['admin'];
+
+        // Extraer el parámetro 'page' y validar
+        $pagina_actual = isset($_GET['page']) ? filter_var($_GET['page'], FILTER_VALIDATE_INT) : 1;
+        if (!$pagina_actual || $pagina_actual < 1) {
+            $pagina_actual = 1;
+        }
+
+        // Extraer el parámetro 'id'
+        $id = isset($_GET['id']) ? filter_var($_GET['id'], FILTER_VALIDATE_INT) : null;
+
+        // Configuración de paginación
+        $registros_por_paginas = 10;
+        $total = Vacaciones::total();
+        $paginacion = new Paginacion($pagina_actual, $registros_por_paginas, $total, $id);
+
+        // Redirigir si la página solicitada es mayor que el total de páginas
+        if ($paginacion->total_paginas() < $pagina_actual) {
+            header('Location: /admin/vacaciones/lista?page=1' . ($id ? "&id={$id}" : ''));
+            return;
+        }
+
+        // Obtener los registros paginados
+        if ($id) {
+            $vacaciones = Vacaciones::paginarID($registros_por_paginas, $paginacion->offset(), $id);
+        } else {
+            header('Location: /admin/vacaciones?page=1');
+        }
+
+        // Extraer las llaves foráneas
+        foreach ($vacaciones as $vacacion) {
+            $vacacion->colaborador = Colaboradores::find($vacacion->colaborador_id);
+        }
+
+        $router->render('admin/vacaciones/lista', [
+            'titulo' => 'Vacaciones Solicitadas',
+            'vacaciones' => $vacaciones,
+            'rol_usuario' => $rol_usuario,
             'paginacion' => $paginacion->paginacion()
         ]);
     }
@@ -62,6 +116,8 @@ class VacacionesController
             header('Location: /login');
             return;
         }
+
+        $rol_usuario = $_SESSION['admin'];
 
         $alertas = [];
 
@@ -117,6 +173,7 @@ class VacacionesController
         $router->render('admin/vacaciones/editar', [
             'titulo' => 'Editar el estado de la solicitud',
             'alertas' => $alertas,
+            'rol_usuario' => $rol_usuario,
             'vacacion' => $vacacion
         ]);
     }
@@ -132,6 +189,8 @@ class VacacionesController
             header('Location: /login');
             return;
         }
+
+        $rol_usuario = $_SESSION['admin'];
 
         $pagina_actual = $_GET['page'];
         $pagina_actual = filter_var($pagina_actual, FILTER_VALIDATE_INT);
@@ -163,6 +222,7 @@ class VacacionesController
             'titulo' => 'Vacaciones Solicitadas',
             'vacaciones' => $vacaciones,
             'paginacion' => $paginacion->paginacion(),
+            'rol_usuario' => $rol_usuario,
             'colaborador' => $colaborador
         ]);
     }
@@ -175,6 +235,8 @@ class VacacionesController
             header('Location: /login');
             return;
         }
+
+        $rol_usuario = $_SESSION['admin'];
 
         $alertas = [];
         $vacacion = new Vacaciones();
@@ -210,6 +272,7 @@ class VacacionesController
             'titulo' => 'Solicitar Vacaciones',
             'alertas' => $alertas,
             'vacacion' => $vacacion,
+            'rol_usuario' => $rol_usuario,
             'colaborador' => $colaborador
         ]);
     }
@@ -223,6 +286,8 @@ class VacacionesController
             header('Location: /login');
             return;
         }
+
+        $rol_usuario = $_SESSION['admin'];
 
         $alertas = [];
 
@@ -274,6 +339,7 @@ class VacacionesController
             'titulo' => 'Editar Solicitud',
             'alertas' => $alertas,
             'vacacion' => $vacacion,
+            'rol_usuario' => $rol_usuario,
             'colaborador' => $colaborador
         ]);
     }

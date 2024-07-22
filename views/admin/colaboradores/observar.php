@@ -4,7 +4,7 @@
     <div class="row justify-content-end botones-acciones">
         <div class="col-12 col-md-auto mb-2 mb-md-0">
             <div class="boton-acciones">
-                <a href="/admin/colaboradores" class="boton-acciones__texto">
+                <a href="javascript:void(0);" id="backButton" class="boton-acciones__texto">
                     <i class="fa-solid fa-rotate-left icono-admin"></i>
                     Volver
                 </a>
@@ -128,5 +128,18 @@
 
         </fieldset>
     </form>
+
+    <a href="/admin/boletaspagos/lista?page=1&id=<?php echo $colaborador->id; ?>"
+        class="btn boton-carta  mb-2 w-100 boton-carta--editar">
+        Boletas de pago
+    </a>
+    <a href="/admin/vacaciones/lista?page=1&id=<?php echo $colaborador->id; ?>"
+        class="btn boton-carta  mb-2 w-100 boton-carta--editar">
+        vacaciones
+    </a>
+    <a href="/admin/incapacidades/lista?page=1&id=<?php echo $colaborador->id; ?>"
+        class="btn boton-carta  mb-2 w-100 boton-carta--editar">
+        Incapacidades
+    </a>
 
 </div>

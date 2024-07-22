@@ -18,10 +18,13 @@ class ReservasController
             return;
         }
 
+        $rol_usuario = $_SESSION['admin'];
+
         $colaborador = Colaboradores::find($_SESSION['id']);
 
         $router->render('colaborador/reservaciones/index', [
             'titulo' => 'Reservacion de Salas',
+            'rol_usuario' => $rol_usuario,
             'colaborador' => $colaborador
         ]);
     }

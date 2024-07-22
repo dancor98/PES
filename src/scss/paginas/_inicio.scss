@@ -18,6 +18,32 @@
          height: 90vh; 
     }
 }
+.hero2{
+    width: 100%; /* Ancho del div */
+    height: 50vh; /* Altura del div */
+    
+    background-image: url('../img/fondo.webp'); /* Ruta a la imagen */
+    background-size: cover; /* Escalar la imagen para cubrir el div */
+    background-position: top center; /* Centrar la imagen en el div */
+    background-repeat: no-repeat; /* Evitar que la imagen se repita */
+    border-radius: 0 0 2rem 2rem;
+    @include m.desktop {
+         height: 90vh; 
+    }
+}
+.hero3{
+    width: 100%; /* Ancho del div */
+    height: 50vh; /* Altura del div */
+    
+    background-image: url('../img/productosservicios.webp'); /* Ruta a la imagen */
+    background-size: cover; /* Escalar la imagen para cubrir el div */
+    background-position: top center; /* Centrar la imagen en el div */
+    background-repeat: no-repeat; /* Evitar que la imagen se repita */
+    border-radius: 0 0 2rem 2rem;
+    @include m.desktop {
+         height: 90vh; 
+    }
+}
 
 .subtitulo-inicio{
     text-decoration: underline;

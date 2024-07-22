@@ -17,6 +17,8 @@ class DepartamentosController
             header('Location: /login');
             return;
         }
+
+        $rol_usuario = $_SESSION['admin'];
         $pagina_actual = $_GET['page'];
         $pagina_actual = filter_var($pagina_actual, FILTER_VALIDATE_INT);
 
@@ -38,6 +40,7 @@ class DepartamentosController
         $router->render('admin/departamentos/index', [
             'titulo' => 'Departamentos',
             'departamentos' => $departamentos,
+            'rol_usuario' => $rol_usuario,
             'paginacion' => $paginacion->paginacion()
         ]);
     }
@@ -50,6 +53,8 @@ class DepartamentosController
             header('Location: /login');
             return;
         }
+
+        $rol_usuario = $_SESSION['admin'];
 
         $alertas = [];
         $departamento = new Departamentos();
@@ -74,11 +79,12 @@ class DepartamentosController
         $router->render('admin/departamentos/crear', [
             'titulo' => 'Registrar Departamento',
             'alertas' => $alertas,
+            'rol_usuario' => $rol_usuario,
             'departamento' => $departamento
         ]);
     }
 
-    //funcion para editar un ponente
+    //funcion para editar
     public static function editar(Router $router)
     {
         $alertas = [];
@@ -88,6 +94,8 @@ class DepartamentosController
             header('Location: /login');
             return;
         }
+
+        $rol_usuario = $_SESSION['admin'];
 
         //Validar ID
         $id = $_GET['id'];
@@ -128,6 +136,7 @@ class DepartamentosController
         $router->render('admin/departamentos/editar', [
             'titulo' => 'Editar Departamento',
             'alertas' => $alertas,
+            'rol_usuario' => $rol_usuario,
             'departamento' => $departamento
         ]);
     }

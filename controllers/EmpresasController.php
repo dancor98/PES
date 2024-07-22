@@ -17,6 +17,8 @@ class EmpresasController
             header('Location: /login');
             return;
         }
+
+        $rol_usuario = $_SESSION['admin'];
         $pagina_actual = $_GET['page'];
         $pagina_actual = filter_var($pagina_actual, FILTER_VALIDATE_INT);
 
@@ -38,6 +40,7 @@ class EmpresasController
         $router->render('admin/empresas/index', [
             'titulo' => 'Empresas Activas',
             'empresas' => $empresas,
+            'rol_usuario' => $rol_usuario,
             'paginacion' => $paginacion->paginacion()
         ]);
     }
@@ -51,6 +54,8 @@ class EmpresasController
             return;
         }
 
+
+        $rol_usuario = $_SESSION['admin'];
         $alertas = [];
         $empresa = new Empresas();
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -76,11 +81,12 @@ class EmpresasController
         $router->render('admin/empresas/crear', [
             'titulo' => 'Registrar Empresa',
             'alertas' => $alertas,
+            'rol_usuario' => $rol_usuario,
             'empresa' => $empresa
         ]);
     }
 
-    //funcion para editar un ponente
+    //funcion para editar empresa
     public static function editar(Router $router)
     {
         $alertas = [];
@@ -90,6 +96,8 @@ class EmpresasController
             header('Location: /login');
             return;
         }
+
+        $rol_usuario = $_SESSION['admin'];
 
         //Validar ID
         $id = $_GET['id'];
@@ -131,6 +139,7 @@ class EmpresasController
         $router->render('admin/empresas/editar', [
             'titulo' => 'Editar Empresa',
             'alertas' => $alertas,
+            'rol_usuario' => $rol_usuario,
             'empresa' => $empresa
         ]);
     }

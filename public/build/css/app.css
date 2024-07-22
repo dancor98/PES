@@ -467,6 +467,36 @@ h3 {
   }
 }
 
+.hero2 {
+  width: 100%; /* Ancho del div */
+  height: 50vh; /* Altura del div */
+  background-image: url("../img/fondo.webp"); /* Ruta a la imagen */
+  background-size: cover; /* Escalar la imagen para cubrir el div */
+  background-position: top center; /* Centrar la imagen en el div */
+  background-repeat: no-repeat; /* Evitar que la imagen se repita */
+  border-radius: 0 0 2rem 2rem;
+}
+@media (min-width: 1024px) {
+  .hero2 {
+    height: 90vh;
+  }
+}
+
+.hero3 {
+  width: 100%; /* Ancho del div */
+  height: 50vh; /* Altura del div */
+  background-image: url("../img/productosservicios.webp"); /* Ruta a la imagen */
+  background-size: cover; /* Escalar la imagen para cubrir el div */
+  background-position: top center; /* Centrar la imagen en el div */
+  background-repeat: no-repeat; /* Evitar que la imagen se repita */
+  border-radius: 0 0 2rem 2rem;
+}
+@media (min-width: 1024px) {
+  .hero3 {
+    height: 90vh;
+  }
+}
+
 .subtitulo-inicio {
   text-decoration: underline;
   font-size: 2.5rem;

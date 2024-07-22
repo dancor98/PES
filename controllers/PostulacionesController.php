@@ -22,6 +22,8 @@ class PostulacionesController
             return;
         }
 
+        $rol_usuario = $_SESSION['admin'];
+
         $pagina_actual = $_GET['page'];
         $pagina_actual = filter_var($pagina_actual, FILTER_VALIDATE_INT);
 
@@ -47,6 +49,7 @@ class PostulacionesController
         $router->render('admin/postulaciones/index', [
             'titulo' => 'Postulaciones',
             'postulaciones' => $postulaciones,
+            'rol_usuario' => $rol_usuario,
             'paginacion' => $paginacion->paginacion()
         ]);
     }
@@ -60,6 +63,8 @@ class PostulacionesController
             header('Location: /login');
             return;
         }
+
+        $rol_usuario = $_SESSION['admin'];
 
         $alertas = [];
 
@@ -85,6 +90,7 @@ class PostulacionesController
         $router->render('admin/postulaciones/ver', [
             'titulo' => 'Observar Postulacion',
             'alertas' => $alertas,
+            'rol_usuario' => $rol_usuario,
             'postulacion' => $postulacion
 
         ]);

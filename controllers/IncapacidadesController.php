@@ -17,6 +17,9 @@ class IncapacidadesController
             header('Location: /login');
             return;
         }
+
+        $rol_usuario = $_SESSION['admin'];
+
         $pagina_actual = $_GET['page'];
         $pagina_actual = filter_var($pagina_actual, FILTER_VALIDATE_INT);
 
@@ -32,7 +35,7 @@ class IncapacidadesController
             header('Location: /admin/incapacidades?page=1');
         }
 
-        $incapacidades = Incapacidades::paginar($registros_por_paginas, $paginacion->offset());
+        $incapacidades = Incapacidades::paginarUnicos($registros_por_paginas, $paginacion->offset());
 
         foreach ($incapacidades as $incapacidad) {
             $incapacidad->colaborador = Colaboradores::find($incapacidad->colaborador_id);
@@ -41,6 +44,58 @@ class IncapacidadesController
         $router->render('admin/incapacidades/index', [
             'titulo' => 'Incapacidades Cargadas',
             'incapacidades' => $incapacidades,
+            'rol_usuario' => $rol_usuario,
+            'paginacion' => $paginacion->paginacion()
+        ]);
+    }
+
+    public static function lista(Router $router)
+    {
+        session_start();
+        // Validar que el usuario esté logueado y sea administrador
+        if (!isset($_SESSION['admin']) || !$_SESSION['admin']) {
+            header('Location: /login');
+            return;
+        }
+
+        $rol_usuario = $_SESSION['admin'];
+
+        // Extraer el parámetro 'page' y validar
+        $pagina_actual = isset($_GET['page']) ? filter_var($_GET['page'], FILTER_VALIDATE_INT) : 1;
+        if (!$pagina_actual || $pagina_actual < 1) {
+            $pagina_actual = 1;
+        }
+
+        // Extraer el parámetro 'id'
+        $id = isset($_GET['id']) ? filter_var($_GET['id'], FILTER_VALIDATE_INT) : null;
+
+        // Configuración de paginación
+        $registros_por_paginas = 5;
+        $total = Incapacidades::total();
+        $paginacion = new Paginacion($pagina_actual, $registros_por_paginas, $total, $id);
+
+        // Redirigir si la página solicitada es mayor que el total de páginas
+        if ($paginacion->total_paginas() < $pagina_actual) {
+            header('Location: /admin/incapacidades/lista?page=1' . ($id ? "&id={$id}" : ''));
+            return;
+        }
+
+        // Obtener los registros paginados
+        if ($id) {
+            $incapacidades = Incapacidades::paginarID($registros_por_paginas, $paginacion->offset(), $id);
+        } else {
+            header('Location: /admin/incapacidades?page=1');
+        }
+
+        // Extraer las llaves foráneas
+        foreach ($incapacidades as $incapacidad) {
+            $incapacidad->colaborador = Colaboradores::find($incapacidad->colaborador_id);
+        }
+
+        $router->render('admin/incapacidades/lista', [
+            'titulo' => 'Incapacidades Cargadas',
+            'incapacidades' => $incapacidades,
+            'rol_usuario' => $rol_usuario,
             'paginacion' => $paginacion->paginacion()
         ]);
     }
@@ -54,6 +109,8 @@ class IncapacidadesController
             return;
         }
 
+
+        $rol_usuario = $_SESSION['admin'];
         $alertas = [];
 
         //Validar ID
@@ -79,6 +136,7 @@ class IncapacidadesController
             'titulo' => 'Observar Incapacidad',
             'alertas' => $alertas,
             'incapacidad' => $incapacidad,
+            'rol_usuario' => $rol_usuario
 
         ]);
     }
@@ -95,6 +153,8 @@ class IncapacidadesController
             header('Location: /login');
             return;
         }
+
+        $rol_usuario = $_SESSION['admin'];
         $pagina_actual = $_GET['page'];
         $pagina_actual = filter_var($pagina_actual, FILTER_VALIDATE_INT);
 
@@ -123,6 +183,7 @@ class IncapacidadesController
             'titulo' => 'Incapacidades Cargadas',
             'incapacidades' => $incapacidades,
             'paginacion' => $paginacion->paginacion(),
+            'rol_usuario' => $rol_usuario,
             'colaborador' => $colaborador
         ]);
     }
@@ -135,6 +196,8 @@ class IncapacidadesController
             header('Location: /login');
             return;
         }
+
+        $rol_usuario = $_SESSION['admin'];
 
         $alertas = [];
         $incapacidad = new Incapacidades();
@@ -195,6 +258,7 @@ class IncapacidadesController
             'titulo' => 'Registrar Incapacidad',
             'alertas' => $alertas,
             'incapacidad' => $incapacidad,
+            'rol_usuario' => $rol_usuario,
             'colaborador' => $colaborador
         ]);
     }

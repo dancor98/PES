@@ -19,11 +19,16 @@ class DashboardColController
             return;
         }
 
+
+        $rol_usuario = $_SESSION['admin'];
+        $rol_usuario = $_SESSION['admin'];
+
         $colaborador = Colaboradores::find($_SESSION['id']);
 
 
         $router->render('colaborador/dashboard/index', [
             'titulo' => 'Panel de Colaborador',
+            'rol_usuario' => $rol_usuario,
             'colaborador' => $colaborador
         ]);
     }
@@ -38,17 +43,21 @@ class DashboardColController
             return;
         }
 
+
+        $rol_usuario = $_SESSION['admin'];
+
         $colaborador = Colaboradores::find($_SESSION['id']);
 
 
         $router->render('colaborador/configuracion/index', [
             'titulo' => 'Panel de Configuracion',
+            'rol_usuario' => $rol_usuario,
             'colaborador' => $colaborador
         ]);
     }
 
 
-    //funcion para editar un ponente
+    //funcion para editar un colaborador
     public static function reestablecer(Router $router)
     {
 
@@ -60,6 +69,8 @@ class DashboardColController
             header('Location: /login');
             return;
         }
+
+        $rol_usuario = $_SESSION['admin'];
 
         //Validar ID
         $id = $_GET['id'];
@@ -108,6 +119,7 @@ class DashboardColController
         $router->render('colaborador/configuracion/cambiocontrasena', [
             'titulo' => 'Editar mi Informacion',
             'alertas' => $alertas,
+            'rol_usuario' => $rol_usuario,
             'colaborador' => $colaborador
         ]);
     }
@@ -124,6 +136,8 @@ class DashboardColController
             header('Location: /login');
             return;
         }
+
+        $rol_usuario = $_SESSION['admin'];
 
         // Validar ID
         $id = $_GET['id'];
@@ -202,6 +216,7 @@ class DashboardColController
 
         $router->render('colaborador/configuracion/editarinfo', [
             'titulo' => 'Editar mi Informacion',
+            'rol_usuario' => $rol_usuario,
             'alertas' => $alertas,
             'colaborador' => $colaborador
         ]);

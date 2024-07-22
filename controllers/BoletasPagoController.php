@@ -17,11 +17,14 @@ class BoletasPagoController
     public static function index(Router $router)
     {
         session_start();
+
         // Validar que el usuario esté logueado y sea administrador
         if (!isset($_SESSION['admin']) || !$_SESSION['admin']) {
             header('Location: /login');
             return;
         }
+
+        $rol_usuario = $_SESSION['admin'];
 
         $pagina_actual = $_GET['page'];
         $pagina_actual = filter_var($pagina_actual, FILTER_VALIDATE_INT);
@@ -38,17 +41,67 @@ class BoletasPagoController
             header('Location: /admin/boletaspagos?page=1');
         }
 
-        $boletaspagos = BoletasPago::paginar($registros_por_paginas, $paginacion->offset());
+        $boletaspagos = BoletasPago::paginarUnicos($registros_por_paginas, $paginacion->offset());
 
-        // Extrae las llaves foraneas
         foreach ($boletaspagos as $boletapago) {
             $boletapago->colaborador = Colaboradores::find($boletapago->colaborador_id);
-            $boletapago->empresa = Empresas::find($boletapago->empresa_id);
         }
 
         $router->render('admin/boletaspagos/index', [
-            'titulo' => 'Boletas de pago creadas',
+            'titulo' => 'Boletas Pagos',
             'boletaspagos' => $boletaspagos,
+            'rol_usuario' => $rol_usuario,
+            'paginacion' => $paginacion->paginacion()
+        ]);
+    }
+
+    public static function lista(Router $router)
+    {
+        session_start();
+        // Validar que el usuario esté logueado y sea administrador
+        if (!isset($_SESSION['admin']) || !$_SESSION['admin']) {
+            header('Location: /login');
+            return;
+        }
+
+        $rol_usuario = $_SESSION['admin'];
+
+        // Extraer el parámetro 'page' y validar
+        $pagina_actual = isset($_GET['page']) ? filter_var($_GET['page'], FILTER_VALIDATE_INT) : 1;
+        if (!$pagina_actual || $pagina_actual < 1) {
+            $pagina_actual = 1;
+        }
+
+        // Extraer el parámetro 'id'
+        $id = isset($_GET['id']) ? filter_var($_GET['id'], FILTER_VALIDATE_INT) : null;
+
+        // Configuración de paginación
+        $registros_por_paginas = 15;
+        $total = BoletasPago::total();
+        $paginacion = new Paginacion($pagina_actual, $registros_por_paginas, $total, $id);
+
+        // Redirigir si la página solicitada es mayor que el total de páginas
+        if ($paginacion->total_paginas() < $pagina_actual) {
+            header('Location: /admin/boletaspagos/lista?page=1' . ($id ? "&id={$id}" : ''));
+            return;
+        }
+
+        // Obtener los registros paginados
+        if ($id) {
+            $boletaspagos = BoletasPago::paginarID($registros_por_paginas, $paginacion->offset(), $id);
+        } else {
+            header('Location: /admin/boletaspagos?page=1');
+        }
+
+        // Extraer las llaves foráneas
+        foreach ($boletaspagos as $boletapago) {
+            $boletapago->colaborador = Colaboradores::find($boletapago->colaborador_id);
+        }
+
+        $router->render('admin/boletaspagos/lista', [
+            'titulo' => 'Boletas de Pago',
+            'boletaspagos' => $boletaspagos,
+            'rol_usuario' => $rol_usuario,
             'paginacion' => $paginacion->paginacion()
         ]);
     }
@@ -72,6 +125,8 @@ class BoletasPagoController
         $cedula = '';
         $correo_electronico = '';
         $salario = '';
+
+        $rol_usuario = $_SESSION['admin'];
 
         // Capturar el ID del colaborador desde la URL
         $colaborador_id = $_GET['id'] ?? null;
@@ -105,6 +160,9 @@ class BoletasPagoController
                 header('Location: /login');
                 return;
             }
+
+
+            $rol_usuario = $_SESSION['admin'];
 
             // Sincronizar y validar datos de la boleta de pago
             $boletapago->sincronizar($_POST);
@@ -174,6 +232,7 @@ class BoletasPagoController
             'cedula' => $cedula,
             'correo_electronico' => $correo_electronico,
             'salario' => $salario,
+            'rol_usuario' => $rol_usuario
         ]);
     }
 
@@ -186,6 +245,8 @@ class BoletasPagoController
             header('Location: /login');
             return;
         }
+
+        $rol_usuario = $_SESSION['admin'];
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Verificar si se ha subido un archivo CSV
@@ -293,7 +354,8 @@ class BoletasPagoController
 
         // Renderizar la vista con los datos necesarios
         $router->render('admin/boletaspagos/cargar', [
-            'titulo' => 'Crear Boletas Pago CSV'
+            'titulo' => 'Crear Boletas Pago CSV',
+            'rol_usuario' => $rol_usuario
         ]);
     }
 
@@ -311,6 +373,8 @@ class BoletasPagoController
             header('Location: /login');
             return;
         }
+
+        $rol_usuario = $_SESSION['admin'];
 
         $colaborador = Colaboradores::find($_SESSION['id']);
 
@@ -341,6 +405,7 @@ class BoletasPagoController
         $router->render('colaborador/boletapago/index', [
             'titulo' => 'Mis boletas de pago',
             'boletaspagos' => $boletaspagos,
+            'rol_usuario' => $rol_usuario,
             'paginacion' => $paginacion->paginacion(),
             'colaborador' => $colaborador
         ]);

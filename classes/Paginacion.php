@@ -7,12 +7,14 @@ class Paginacion
     public $pagina_actual;
     public $registros_por_pagina;
     public $total_registros;
+    public $id; // Propiedad para el ID
 
-    public function __construct($pagina_actual = 1, $registros_por_pagina = 10, $total_registros = 0)
+    public function __construct($pagina_actual = 1, $registros_por_pagina = 10, $total_registros = 0, $id = null)
     {
         $this->pagina_actual = (int) $pagina_actual;
         $this->registros_por_pagina = (int) $registros_por_pagina;
         $this->total_registros = (int) $total_registros;
+        $this->id = $id; // Inicializamos el ID
     }
 
     public function offset()
@@ -39,11 +41,20 @@ class Paginacion
         return ($siguiente <= $this->total_paginas()) ? $siguiente : false;
     }
 
+    private function generar_enlace($pagina)
+    {
+        $url = "?page={$pagina}";
+        if ($this->id !== null) {
+            $url .= "&id={$this->id}";
+        }
+        return $url;
+    }
+
     public function enlace_anterior()
     {
         $html = '';
         if ($this->pagina_anterior()) {
-            $html .= "<a class=\"paginacion__enlace paginacion__enlace--texto\" href=\"?page={$this->pagina_anterior()}\">&laquo; Anterior </a>";
+            $html .= "<a class=\"paginacion__enlace paginacion__enlace--texto\" href=\"" . $this->generar_enlace($this->pagina_anterior()) . "\">&laquo; Anterior </a>";
         }
         return $html;
     }
@@ -52,7 +63,7 @@ class Paginacion
     {
         $html = '';
         if ($this->pagina_siguiente()) {
-            $html .= "<a class=\"paginacion__enlace paginacion__enlace--texto\" href=\"?page={$this->pagina_siguiente()}\">Siguiente &raquo;</a>";
+            $html .= "<a class=\"paginacion__enlace paginacion__enlace--texto\" href=\"" . $this->generar_enlace($this->pagina_siguiente()) . "\">Siguiente &raquo;</a>";
         }
         return $html;
     }
@@ -64,7 +75,7 @@ class Paginacion
             if ($i === $this->pagina_actual) {
                 $html .= "<span class=\"paginacion__enlace paginacion__enlace--actual \">{$i}</span>";
             } else {
-                $html .= "<a class=\"paginacion__enlace paginacion__enlace--numero \" href=\"?page={$i}\">{$i}</a>";
+                $html .= "<a class=\"paginacion__enlace paginacion__enlace--numero \" href=\"" . $this->generar_enlace($i) . "\">{$i}</a>";
             }
         }
 

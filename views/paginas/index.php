@@ -84,7 +84,7 @@
             </div>
         </div>
         <div class="columna2 columna1--card">
-            <img src="build/img/imagen1.webp" class="imagen-card" alt="">
+            <img src="build/img/productosservicios.webp" class="imagen-card" alt="">
             <h2 class="titulo-card"> NUESTROS PRODUCTOS Y SERVICIOS </h2>
             <div class="botones-contenedor">
                 <a href="productos-servicios#productos" class="botones-ver">CONOCER MAS</a>

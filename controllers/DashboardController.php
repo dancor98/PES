@@ -19,6 +19,8 @@ class DashboardController
             return;
         }
 
+        $rol_usuario = $_SESSION['admin'];
+
         $colaboradoresTotal = Colaboradores::totalGeneral();
         $solicitudvacacionesN = Vacaciones::totalVacacionesN();
         $postulacionesTotal = Carreras::totalPostulaciones();
@@ -27,6 +29,7 @@ class DashboardController
             'titulo' => 'Modulos Disponibles',
             'colaboradoresTotal' => $colaboradoresTotal,
             'solicitudvacacionesN' => $solicitudvacacionesN,
+            'rol_usuario' => $rol_usuario,
             'postulacionesTotal' => $postulacionesTotal
         ]);
     }

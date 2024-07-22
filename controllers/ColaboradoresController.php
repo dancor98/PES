@@ -22,6 +22,8 @@ class ColaboradoresController
             return;
         }
 
+        $rol_usuario = $_SESSION['admin'];
+
         $pagina_actual = $_GET['page'];
         $pagina_actual = filter_var($pagina_actual, FILTER_VALIDATE_INT);
 
@@ -48,6 +50,7 @@ class ColaboradoresController
         $router->render('admin/colaboradores/index', [
             'titulo' => 'Colaboradores Activos',
             'colaboradores' => $colaboradores,
+            'rol_usuario' => $rol_usuario,
             'paginacion' => $paginacion->paginacion()
         ]);
     }
@@ -63,6 +66,8 @@ class ColaboradoresController
             header('Location: /login');
             return;
         }
+
+        $rol_usuario = $_SESSION['admin'];
 
         $departamentos = Departamentos::all('ASC');
         $empresas = Empresas::all('ASC');
@@ -113,11 +118,12 @@ class ColaboradoresController
             'departamentos' => $departamentos,
             'empresas' => $empresas,
             'colaborador' => $usuario,
+            'rol_usuario' => $rol_usuario,
             'alertas' => $alertas
         ]);
     }
 
-    //funcion para editar un ponente
+    //funcion para editar un colaborador
     public static function editar(Router $router)
     {
         session_start();
@@ -127,6 +133,8 @@ class ColaboradoresController
             return;
         }
 
+
+        $rol_usuario = $_SESSION['admin'];
         $alertas = [];
 
         //Validar ID
@@ -174,6 +182,7 @@ class ColaboradoresController
             'alertas' => $alertas,
             'colaborador' => $colaborador,
             'departamentos' => $departamentos,
+            'rol_usuario' => $rol_usuario,
             'empresas' => $empresas
         ]);
     }
@@ -186,6 +195,8 @@ class ColaboradoresController
             header('Location: /login');
             return;
         }
+
+        $rol_usuario = $_SESSION['admin'];
 
         $alertas = [];
 
@@ -216,6 +227,7 @@ class ColaboradoresController
             'alertas' => $alertas,
             'colaborador' => $colaborador,
             'departamento' => $departamentos,
+            'rol_usuario' => $rol_usuario,
             'empresa' => $empresas
         ]);
     }
@@ -231,6 +243,7 @@ class ColaboradoresController
                 header('Location: /login');
                 return;
             }
+
             $id = $_POST['id'];
             $colaborador = Colaboradores::find($id);
             if (!isset($colaborador)) {

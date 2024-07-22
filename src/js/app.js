@@ -33,3 +33,24 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 
+document.addEventListener('DOMContentLoaded', function() {
+    var backButton = document.getElementById('backButton');
+    if (backButton) {
+        backButton.addEventListener('click', function() {
+            if (document.referrer !== '') {
+                window.history.go(-1);
+            } else {
+                // Redirigir según el rol del usuario
+                if (rolUsuario === '1') {
+                    window.location.href = '/admin/dashboard';
+                } else if (rolUsuario === '0') {
+                    window.location.href = '/colaborador/dashboard';
+                } else {
+                    // Fallback en caso de rol no identificado
+                    window.location.href = '/';
+                }
+            }
+        });
+    }
+});
+
