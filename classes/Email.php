@@ -140,6 +140,61 @@ class Email
         $mail->send();
     } //Notifica al colaborador que ya se actualizo el estado de la solicitud de vacaciones
 
+    public function enviarIncapacidad()
+    {
+        // create a new object
+        $mail = new PHPMailer();
+        $mail->isSMTP();
+        $mail->Host = $_ENV['EMAIL_HOST'];
+        $mail->SMTPAuth = true;
+        $mail->Port = $_ENV['EMAIL_PORT'];
+        $mail->Username = $_ENV['EMAIL_USER'];
+        $mail->Password = $_ENV['EMAIL_PASS'];
+
+        $mail->setFrom('bot@specialized.co.cr', 'Bot');
+        $mail->addAddress('bot@specialized.co.cr', $this->nombre);
+        $mail->Subject = 'Nueva Incapacidad Registrada';
+
+        // Set HTML
+        $mail->isHTML(TRUE);
+        $mail->CharSet = 'UTF-8';
+
+        $contenido = '<html>';
+        $contenido .= "<p><strong>Hola, <br> <br> </strong> El colaborador $this->nombre, ha ingresado una incapacidad. <br> </p>";
+        $contenido .= '</html>';
+        $mail->Body = $contenido;
+
+        //Enviar el mail
+        $mail->send();
+    } //Notifica al colaborador que ya se actualizo el estado de la solicitud de vacaciones
+    public function enviarEstadoIncapacidad()
+    {
+        // create a new object
+        $mail = new PHPMailer();
+        $mail->isSMTP();
+        $mail->Host = $_ENV['EMAIL_HOST'];
+        $mail->SMTPAuth = true;
+        $mail->Port = $_ENV['EMAIL_PORT'];
+        $mail->Username = $_ENV['EMAIL_USER'];
+        $mail->Password = $_ENV['EMAIL_PASS'];
+
+        $mail->setFrom('bot@specialized.co.cr', 'Bot');
+        $mail->addAddress($this->email, $this->nombre);
+        $mail->Subject = 'Actualizacion de estado en Incapacidad';
+
+        // Set HTML
+        $mail->isHTML(TRUE);
+        $mail->CharSet = 'UTF-8';
+
+        $contenido = '<html>';
+        $contenido .= "<p><strong>Hola " . $this->nombre .  " <br> <br> </strong> El estado de tu incapacidad paso a: $this->token . <br> </p>";
+        $contenido .= '</html>';
+        $mail->Body = $contenido;
+
+        //Enviar el mail
+        $mail->send();
+    } //Notifica al colaborador que ya se actualizo el estado de la solicitud de vacaciones
+
 
     public function enviarSolicitud()
     {

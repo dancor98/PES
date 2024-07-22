@@ -3,6 +3,7 @@
 namespace Controllers;
 
 use Classes\Paginacion;
+use Classes\Email;
 use Model\Colaboradores;
 use Model\Incapacidades;
 use MVC\Router;
@@ -100,6 +101,7 @@ class IncapacidadesController
         ]);
     }
 
+    //funcion para editar el etado de las Vacaciones
     public static function observar(Router $router)
     {
         session_start();
@@ -121,23 +123,49 @@ class IncapacidadesController
             header('Location: /admin/incapacidades');
         }
 
-        //Obtener Colaborador a Editar
+        //Obtener Solicitud a Editar
         $incapacidad = Incapacidades::find($id);
-
         $incapacidad->colaborador = Colaboradores::find($incapacidad->colaborador_id);
-
 
         if (!$incapacidad) {
             header('Location: /admin/incapacidades');
         }
 
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            session_start();
+            // Validar que el usuario esté logueado y sea administrador
+            if (!isset($_SESSION['admin']) || !$_SESSION['admin']) {
+                header('Location: /login');
+                return;
+            }
+
+            $incapacidad->sincronizar($_POST);
+            $alertas = $incapacidad->validar();
+
+
+            if (empty($alertas)) {
+
+                $resultado = $incapacidad->guardar();
+
+                // Enviar email
+                $colaborador = Colaboradores::find($incapacidad->colaborador_id);
+                $estado_nuevo = $_POST['estado'];
+
+                $email = new Email($colaborador->correo_electronico, $colaborador->nombre, $estado_nuevo);
+                $email->enviarEstadoincapacidad();
+
+                if ($resultado) {
+                    header('Location: /admin/incapacidades?estado=exito');
+                }
+            }
+        }
+
 
         $router->render('admin/incapacidades/observar', [
-            'titulo' => 'Observar Incapacidad',
+            'titulo' => 'Editar el estado de la solicitud',
             'alertas' => $alertas,
-            'incapacidad' => $incapacidad,
-            'rol_usuario' => $rol_usuario
-
+            'rol_usuario' => $rol_usuario,
+            'incapacidad' => $incapacidad
         ]);
     }
 

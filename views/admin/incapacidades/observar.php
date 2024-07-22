@@ -16,7 +16,7 @@
 
     <?php include_once __DIR__ . '/../../templates/alertas.php'; ?>
 
-    <form class="formulario">
+    <form method="POST" enctype="multipart/form-data" class="formulario" id="FormularioInterno">
 
         <!-- Informacion Colaborador -->
         <fieldset class="formulario__fieldset">
@@ -67,6 +67,20 @@
             </a>
             </legend>
         </fieldset>
+        <fieldset class="formulario__fieldset">
+            <legend class="formulario__legend">Informacion de Estado</legend>
+
+            <div class="formulario__campo">
+                <label for="estado" class="formulario__label">Estado:</label>
+                <select class="formulario__select" id="estado" name="estado">
+                    <option value="" disabled selected><?php echo $incapacidad->estado; ?></option>
+                    <option value="Recibida">Recibida</option>
+                </select>
+            </div>
+        </fieldset>
+        <input class="formulario__submit formulario__submit--registrar" type="submit" value="Actualizar Estado"
+            id="botonSubmit">
+
     </form>
 
 </div>

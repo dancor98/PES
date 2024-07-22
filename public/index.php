@@ -70,6 +70,7 @@ $router->post('/admin/empresas/eliminar', [EmpresasController::class, 'eliminar'
 
 $router->get('/admin/incapacidades', [IncapacidadesController::class, 'index']);
 $router->get('/admin/incapacidades/observar', [IncapacidadesController::class, 'observar']);
+$router->post('/admin/incapacidades/observar', [IncapacidadesController::class, 'observar']);
 $router->get('/admin/incapacidades/lista', [IncapacidadesController::class, 'lista']);
 
 $router->get('/admin/vacaciones', [VacacionesController::class, 'index']);

@@ -30,6 +30,19 @@
                     value="<?php echo date('Y-m-d'); ?>" readonly>
             </div>
 
+            <div class="row row-campo">
+                <div class="col">
+                    <label for="desde" class="formulario__label">desde:</label>
+                    <input type="date" class="form-control formulario__input" id="desde" name="desde"
+                        value="<?php echo $incapacidad->desde; ?>" require>
+                </div>
+                <div class="col">
+                    <label for="hasta" class="formulario__label">hasta:</label>
+                    <input type="date" class="form-control formulario__input" id="hasta" name="hasta"
+                        value="<?php echo $incapacidad->hasta; ?>" require>
+                </div>
+            </div>
+
             <div class="formulario__campo">
                 <label for="boleta" class="formulario__label">Cargar Boleta:</label>
                 <input type="file" class="formulario__input" name="boleta" id="boleta"

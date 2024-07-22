@@ -24,7 +24,7 @@ class VacacionesController
             return;
         }
 
-        $rol_usuario = $_SESSION['admin'];
+        $rol_usuario = $_SESSION['rol'];
 
         $pagina_actual = $_GET['page'];
         $pagina_actual = filter_var($pagina_actual, FILTER_VALIDATE_INT);
@@ -51,7 +51,6 @@ class VacacionesController
         $router->render('admin/vacaciones/index', [
             'titulo' => 'Vacaciones Solicitadas',
             'vacaciones' => $vacaciones,
-            'rol_usuario' => $rol_usuario,
             'paginacion' => $paginacion->paginacion()
         ]);
     }
@@ -117,8 +116,8 @@ class VacacionesController
             return;
         }
 
-        $rol_usuario = $_SESSION['admin'];
 
+        $rol_usuario = $_SESSION['admin'];
         $alertas = [];
 
         //Validar ID
@@ -189,7 +188,6 @@ class VacacionesController
             header('Location: /login');
             return;
         }
-
         $rol_usuario = $_SESSION['admin'];
 
         $pagina_actual = $_GET['page'];
@@ -235,7 +233,6 @@ class VacacionesController
             header('Location: /login');
             return;
         }
-
         $rol_usuario = $_SESSION['admin'];
 
         $alertas = [];
@@ -286,7 +283,6 @@ class VacacionesController
             header('Location: /login');
             return;
         }
-
         $rol_usuario = $_SESSION['admin'];
 
         $alertas = [];

@@ -11,7 +11,10 @@ class Incapacidades extends ActiveRecord
         'fecha',
         'boleta',
         'motivo',
-        'cantidad_dias'
+        'cantidad_dias',
+        'estado',
+        'desde',
+        'hasta'
     ];
 
     public $id;
@@ -20,6 +23,9 @@ class Incapacidades extends ActiveRecord
     public $boleta;
     public $motivo;
     public $cantidad_dias;
+    public $estado;
+    public $desde;
+    public $hasta;
 
     public function __construct($args = [])
     {
@@ -29,6 +35,9 @@ class Incapacidades extends ActiveRecord
         $this->boleta = $args['boleta'] ?? '';
         $this->motivo = $args['motivo'] ?? '';
         $this->cantidad_dias = $args['cantidad_dias'] ?? 0;
+        $this->estado = $args['estado'] ?? 'Pendiente';
+        $this->desde = $args['desde'] ?? '';
+        $this->hasta = $args['hasta'] ?? '';
     }
 
     // Mensajes de Validación

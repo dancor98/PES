@@ -24,6 +24,9 @@
                         <th class="table__th" scope="col">Cedula</th>
                         <th class="table__th" scope="col">Creada</th>
                         <th class="table__th" scope="col">Cant de Dias</th>
+                        <th class="table__th" scope="col">Desde</th>
+                        <th class="table__th" scope="col">Hasta</th>
+                        <th class="table__th" scope="col">Estado</th>
                         <th class="table__th" scope="col"></th>
                     </tr>
                 </thead>
@@ -41,6 +44,15 @@
                             </td>
                             <td class="table__td">
                                 <?php echo $incapacidad->cantidad_dias; ?>
+                            </td>
+                            <td class="table__td">
+                                <?php echo $incapacidad->desde; ?>
+                            </td>
+                            <td class="table__td">
+                                <?php echo $incapacidad->hasta; ?>
+                            </td>
+                            <td class="table__td">
+                                <?php echo $incapacidad->estado; ?>
                             </td>
                             <td class="table__td">
                                 <a class="table__accion table__accion--editar" href="/../<?php echo $incapacidad->boleta; ?>" download="Boleta incapacidad <?php echo $incapacidad->colaborador->nombre . ' ' . $incapacidad->colaborador->apellido_paterno . '-' . $incapacidad->fecha; ?>">
