@@ -86,7 +86,8 @@ $router->post('/admin/boletaspagos/cargar', [BoletasPagoController::class, 'carg
 $router->get('/admin/boletaspagos/lista', [BoletasPagoController::class, 'lista']);
 
 $router->get('/admin/postulaciones', [PostulacionesController::class, 'index']);
-$router->get('/admin/postulaciones/ver', [PostulacionesController::class, 'observar']);
+$router->get('/admin/postulaciones/observar', [PostulacionesController::class, 'observar']);
+$router->post('/admin/postulaciones/observar', [PostulacionesController::class, 'observar']);
 
 //Area publica
 $router->get('/', [PaginasController::class, 'index']);

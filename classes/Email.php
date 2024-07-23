@@ -112,6 +112,33 @@ class Email
         $mail->send();
     } //Notifica al colaborador que ya se genero la boleta de pago del mes
 
+    public function enviarEstadoPostulacion()
+    {
+        // create a new object
+        $mail = new PHPMailer();
+        $mail->isSMTP();
+        $mail->Host = $_ENV['EMAIL_HOST'];
+        $mail->SMTPAuth = true;
+        $mail->Port = $_ENV['EMAIL_PORT'];
+        $mail->Username = $_ENV['EMAIL_USER'];
+        $mail->Password = $_ENV['EMAIL_PASS'];
+
+        $mail->setFrom('bot@specialized.co.cr', 'Bot');
+        $mail->addAddress($this->email, $this->nombre);
+        $mail->Subject = 'Actualizacion de estado en solicitud';
+
+        // Set HTML
+        $mail->isHTML(TRUE);
+        $mail->CharSet = 'UTF-8';
+
+        $contenido = '<html>';
+        $contenido .= "<p><strong>Hola " . $this->nombre .  " <br> <br> </strong> El encargado de Recursos Humanos marco tu postulacion como: $this->token . <br> </p>";
+        $contenido .= '</html>';
+        $mail->Body = $contenido;
+
+        //Enviar el mail
+        $mail->send();
+    } //Notifica al colaborador que ya se actualizo el estado de la solicitud de vacaciones
     public function enviarEstadoVacaciones()
     {
         // create a new object
@@ -166,7 +193,7 @@ class Email
 
         //Enviar el mail
         $mail->send();
-    } //Notifica al colaborador que ya se actualizo el estado de la solicitud de vacaciones
+    } //Notifica al administrador que se genero una nueva incapacidad
     public function enviarEstadoIncapacidad()
     {
         // create a new object
@@ -193,7 +220,7 @@ class Email
 
         //Enviar el mail
         $mail->send();
-    } //Notifica al colaborador que ya se actualizo el estado de la solicitud de vacaciones
+    } //Notifica al colaborador que ya se actualizo el estado de la incapacidad
 
 
     public function enviarSolicitud()
@@ -371,4 +398,6 @@ class Email
         //Enviar el mail
         $mail->send();
     } // Notifica al administrador que un colaborador solicito vacaciones
+
+
 }

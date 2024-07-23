@@ -20,7 +20,8 @@ class Carreras extends ActiveRecord
         'pretencion_salarial',
         'mensaje',
         'cv',
-        'fecha_postulacion'
+        'fecha_postulacion',
+        'estado'
 
     ];
 
@@ -38,6 +39,7 @@ class Carreras extends ActiveRecord
     public $mensaje;
     public $cv;
     public $fecha_postulacion;
+    public $estado;
 
 
     public function __construct($args = [])
@@ -56,6 +58,7 @@ class Carreras extends ActiveRecord
         $this->mensaje = $args['mensaje'] ?? '';
         $this->cv = $args['cv'] ?? '';
         $this->fecha_postulacion = $args['fecha_postulacion'] ?? '';
+        $this->estado = $args['estado'] ?? 'Pendiente';
     }
 
     //Mensajes de Validacion

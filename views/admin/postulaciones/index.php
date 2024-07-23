@@ -16,8 +16,11 @@
                             <p class="card-text carta-descripcion">Departamento de Interes:
                                 <?php echo $postulacion->departamento->nombre; ?>
                             </p>
+                            <p class="card-text carta-descripcion">Estado:
+                                <?php echo $postulacion->estado; ?>
+                            </p>
 
-                            <a href="/admin/postulaciones/ver?id=<?php echo $postulacion->id; ?>" class="btn boton-carta btn-primary mb-2 w-100">
+                            <a href="/admin/postulaciones/observar?id=<?php echo $postulacion->id; ?>" class="btn boton-carta btn-primary mb-2 w-100">
                                 <i class="fa-solid fa-user-pen"></i>
                                 Ver
                             </a>

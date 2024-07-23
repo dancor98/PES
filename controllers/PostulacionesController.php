@@ -5,6 +5,7 @@ namespace Controllers;
 
 use Model\Carreras;
 use Classes\Paginacion;
+use Classes\Email;
 use Model\Departamentos;
 use MVC\Router;
 
@@ -54,7 +55,7 @@ class PostulacionesController
         ]);
     }
 
-
+    //funcion para editar el etado de las Vacaciones
     public static function observar(Router $router)
     {
         session_start();
@@ -64,8 +65,8 @@ class PostulacionesController
             return;
         }
 
-        $rol_usuario = $_SESSION['admin'];
 
+        $rol_usuario = $_SESSION['admin'];
         $alertas = [];
 
         //Validar ID
@@ -76,23 +77,45 @@ class PostulacionesController
             header('Location: /admin/postulaciones');
         }
 
-        //Obtener Colaborador a Editar
+        //Obtener Postulacion a Editar
         $postulacion = Carreras::find($id);
-
         $postulacion->departamento = Departamentos::find($postulacion->departamento_id);
-
 
         if (!$postulacion) {
             header('Location: /admin/postulaciones');
         }
 
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            session_start();
+            // Validar que el usuario esté logueado y sea administrador
+            if (!isset($_SESSION['admin']) || !$_SESSION['admin']) {
+                header('Location: /login');
+                return;
+            }
 
-        $router->render('admin/postulaciones/ver', [
-            'titulo' => 'Observar Postulacion',
+            $estado_data = ['estado' => $_POST['estado']];
+            $postulacion->sincronizar($estado_data);
+            $alertas = $postulacion->validar();
+
+            if (empty($alertas)) {
+                $resultado = $postulacion->guardar();
+
+                if ($resultado) {
+                    // Enviar email
+                    $estado_nuevo = $_POST['estado'];
+                    $email = new Email($postulacion->correo, $postulacion->nombre, $estado_nuevo);
+                    $email->enviarEstadoPostulacion();
+                    header('Location: /admin/postulaciones?estado=exito');
+                }
+            }
+        }
+
+
+        $router->render('admin/postulaciones/observar', [
+            'titulo' => 'Postulacion',
             'alertas' => $alertas,
             'rol_usuario' => $rol_usuario,
             'postulacion' => $postulacion
-
         ]);
     }
 }
