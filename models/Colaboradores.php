@@ -153,9 +153,10 @@ class Colaboradores extends ActiveRecord
         if (!$this->salario) {
             self::$alertas['error'][] = 'El salario es obligatorio';
         }
-        if (!preg_match('/^[0-9]+$/', $this->salario)) {
-            self::$alertas['error'][] = 'El salario debe contener solo números, verifique que no existan espacios';
+        if (!preg_match('/^\d+(\.\d+)?$/', $this->salario)) {
+            self::$alertas['error'][] = 'El salario debe ser un número válido, incluyendo decimales separados por punto. Verifique que no existan espacios.';
         }
+
         if (!$this->contrasena) {
             self::$alertas['error'][] = 'La contrasena es obligatoria';
         }

@@ -133,59 +133,64 @@ class ColaboradoresController
             return;
         }
 
-
-        $rol_usuario = $_SESSION['admin'];
         $alertas = [];
+        $rol_usuario = $_SESSION['admin'];
 
-        //Validar ID
-        $id = $_GET['id'];
-        $id = filter_var($id, FILTER_VALIDATE_INT); //vALIDA QUE REALMENTE SEA UN ENTERO
+        // Validar ID
+        $id = $_GET['id'] ?? null;
+        $id = filter_var($id, FILTER_VALIDATE_INT); // Validar que sea un entero
 
         if (!$id) {
             header('Location: /admin/colaboradores');
+            return;
         }
 
         $departamentos = Departamentos::all('ASC');
         $empresas = Empresas::all('ASC');
 
-        //Obtener Colaborador a Editar
+        // Obtener Colaborador a Editar
         $colaborador = Colaboradores::find($id);
 
         if (!$colaborador) {
             header('Location: /admin/colaboradores');
+            return;
         }
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
-            session_start();
-            // Validar que el usuario esté logueado y sea administrador
-            if (!isset($_SESSION['admin']) || !$_SESSION['admin']) {
-                header('Location: /login');
-                return;
-            }
-
+            // Sincronizar y validar datos del colaborador
             $colaborador->sincronizar($_POST);
-            $alertas = $colaborador->validar();
+            $alertas = $colaborador->Validar_cuenta();
 
             if (empty($alertas)) {
-
                 $resultado = $colaborador->guardar();
 
                 if ($resultado) {
-                    header('Location: /admin/colaboradores');
+                    // Redirigir con estado de éxito
+                    header('Location: /admin/colaboradores?page=1&estado=exito');
+                    exit;
+                } else {
+                    // Redirigir con estado de error
+                    header('Location: /admin/colaboradores?page=1&estado=error');
+                    exit;
                 }
             }
         }
 
+        // Manejar el parámetro 'estado' en la URL
+        $estado = isset($_GET['estado']) ? filter_var($_GET['estado'], FILTER_SANITIZE_STRING) : null;
+
+        // Renderizar la vista con los datos necesarios
         $router->render('admin/colaboradores/editar', [
             'titulo' => 'Editar Colaborador',
             'alertas' => $alertas,
             'colaborador' => $colaborador,
             'departamentos' => $departamentos,
             'rol_usuario' => $rol_usuario,
-            'empresas' => $empresas
+            'empresas' => $empresas,
+            'estado' => $estado // Incluir el estado en los datos de la vista
         ]);
     }
+
 
     public static function observar(Router $router)
     {
@@ -235,7 +240,6 @@ class ColaboradoresController
 
     public static function eliminar()
     {
-
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             session_start();
             // Validar que el usuario esté logueado y sea administrador

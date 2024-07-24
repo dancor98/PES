@@ -18,8 +18,7 @@
 
         <?php include_once __DIR__ . '/formulario.php'; ?>
 
-        <input class="formulario__submit formulario__submit--registrar" type="submit" value="Actualizar Colaborador"
-            id="botonSubmit">
+        <input class="formulario__submit formulario__submit--registrar" type="submit" value="Actualizar Colaborador" id="botonSubmit">
     </form>
 
 </div>

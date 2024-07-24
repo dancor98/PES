@@ -21,5 +21,4 @@
         <input class="formulario__submit formulario__submit--registrar" type="submit" value="Crear Boleta"
             id="botonSubmit">
     </form>
-
 </div>

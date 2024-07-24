@@ -47,8 +47,10 @@ class Paginacion
         if ($this->id !== null) {
             $url .= "&id={$this->id}";
         }
+
         return $url;
     }
+
 
     public function enlace_anterior()
     {

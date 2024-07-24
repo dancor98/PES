@@ -110,7 +110,7 @@
     <br>
     <div class="principal-container">
         <div class="columna1 columna1__invertir">
-            <h2 class="subtitulo-inicio">Gran Fondo Guanacaste</h2>
+            <h2 class="subtitulo-inicio">GRAN FONDO GUANACASTE</h2>
             <p class="descripcion-inicio">✔ Es un evento de ciclismo de ruta que se lleva a cabo en Liberia, Guanacaste.
             </p>
             <p class="descripcion-inicio">✔ La carrera ofrece dos tipos de distancias, 90km que es la distancia no

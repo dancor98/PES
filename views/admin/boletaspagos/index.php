@@ -32,7 +32,7 @@
                     <a href="/admin/boletaspagos/lista?page=1&id=<?php echo $boletapago->colaborador_id; ?>"
                         class="btn boton-carta  mb-2 w-100 boton-carta--editar">
                         <i class="fa-solid fa-eye"></i>
-                        Ver Incapacidades
+                        Ver Boletas de pago
                     </a>
                 </div>
             </div>
@@ -44,5 +44,93 @@
     <p class="text-center">No hay Boletas de Pago Registradas</p>
     <?php } ?>
     <?php echo $paginacion; ?>
+
+
+    <div class="modal" id="exito" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <i class="fa-solid fa-bell" id="icono-exito"></i>
+                    <h5 class="modal-title titulo-modal">Mensaje</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="modal-mensaje">Se creo la boleta con exito.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary btn-modal" data-bs-dismiss="modal">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="error_guardar" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <i class="fa-solid fa-triangle-exclamation" id="icono-error"></i>
+                    <h5 class="modal-title titulo-modal">Mensaje</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="modal-mensaje">Hubo un error al guardarlo, intentelo mas tarde.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary btn-modal" data-bs-dismiss="modal">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="error_abrir_archivo" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <i class="fa-solid fa-triangle-exclamation" id="icono-error"></i>
+                    <h5 class="modal-title titulo-modal">Mensaje</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="modal-mensaje">Hubo un error al abrir el archivo, intentelo mas tarde.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary btn-modal" data-bs-dismiss="modal">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="error_procesamiento" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <i class="fa-solid fa-triangle-exclamation" id="icono-error"></i>
+                    <h5 class="modal-title titulo-modal">Mensaje</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="modal-mensaje">Hubo un error en el procesamiento, intentelo mas tarde.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary btn-modal" data-bs-dismiss="modal">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="error_desconocido" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <i class="fa-solid fa-triangle-exclamation" id="icono-error"></i>
+                    <h5 class="modal-title titulo-modal">Mensaje</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="modal-mensaje">Hubo un error desconocido, intentelo mas tarde.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary btn-modal" data-bs-dismiss="modal">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div>

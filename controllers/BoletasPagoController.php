@@ -106,137 +106,6 @@ class BoletasPagoController
         ]);
     }
 
-
-    public static function crear(Router $router)
-    {
-        session_start();
-        // Validar que el usuario esté logueado y sea administrador
-        if (!isset($_SESSION['admin']) || !$_SESSION['admin']) {
-            header('Location: /login');
-            return;
-        }
-        $alertas = [];
-        $boletapago = new BoletasPago();
-        $empresa_id = '';
-        $empresa_nombre = '';
-        $nombre_colaborador = '';
-        $apellido_paterno = '';
-        $apellido_materno = '';
-        $cedula = '';
-        $correo_electronico = '';
-        $salario = '';
-
-        $rol_usuario = $_SESSION['admin'];
-
-        // Capturar el ID del colaborador desde la URL
-        $colaborador_id = $_GET['id'] ?? null;
-
-        // Verificar si se proporcionó un ID válido
-        if ($colaborador_id) {
-            // Obtener el colaborador desde la base de datos
-            $colaborador = Colaboradores::find($colaborador_id);
-
-            if ($colaborador) {
-                // Obtener datos del colaborador
-                $nombre_colaborador = $colaborador->nombre;
-                $apellido_paterno = $colaborador->apellido_paterno;
-                $apellido_materno = $colaborador->apellido_materno;
-                $cedula = $colaborador->cedula;
-                $correo_electronico = $colaborador->correo_electronico;
-                $salario = $colaborador->salario;
-
-                // Obtener el ID y nombre de la empresa asociada al colaborador
-                $empresa_id = $colaborador->empresa_id;
-                $empresa = Empresas::find($empresa_id);
-                $empresa_nombre = $empresa->nombre ?? '';
-            }
-        }
-
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
-            session_start();
-            // Validar que el usuario esté logueado y sea administrador
-            if (!isset($_SESSION['admin']) || !$_SESSION['admin']) {
-                header('Location: /login');
-                return;
-            }
-
-
-            $rol_usuario = $_SESSION['admin'];
-
-            // Sincronizar y validar datos de la boleta de pago
-            $boletapago->sincronizar($_POST);
-            $alertas = $boletapago->validar();
-
-            if (empty($alertas)) {
-
-                // Generar el PDF en memoria
-                $pdf = new PDF();
-                $carpetaDestino = __DIR__ . '/../public/uploads/boletasPago/';
-                $nombreArchivoPDF = $pdf->generarPDF([
-                    'nombre_empresa' => $empresa_nombre,
-                    'Fecha' => date('Y-m-d'),
-                    'Nombre' => $nombre_colaborador,
-                    'Apellido' => $apellido_paterno . ' ' . $apellido_materno,
-                    'Cedula' => $cedula,
-                    'Base' => $salario,
-                    'Quincenal' => $boletapago->salario_quincenal, // Añadir el salario quincenal al PDF
-                    'Comisiones' => $boletapago->comisiones,
-                    'Incapacidad' => $boletapago->incapacidades,
-                    'Feriados' => $boletapago->feriados,
-                    'devengado' => $boletapago->total_devengado,
-                    'Ccss' => $boletapago->ccss,
-                    'Renta' => $boletapago->impuestos_renta,
-                    'Odeducciones' => $boletapago->otras_deducciones,
-                    'Embargo' => $boletapago->embargo,
-                    'Deducciones' => $boletapago->total_deducciones,
-                    'Quincena1' => $boletapago->primer_quincena,
-                    'Quincena2' => $boletapago->segunda_quincena,
-                    'Periodo' => $boletapago->periodo
-                ], $carpetaDestino);
-
-                // Asignar el nombre del archivo generado al objeto BoletasPago
-                $boletapago->archivo_pdf = 'uploads/boletasPago/' . basename($nombreArchivoPDF);
-
-                // Guardar la boleta de pago en la base de datos
-                $resultado = $boletapago->guardar();
-
-
-
-                // Enviar el PDF por correo electrónico
-                $ruta_archivo = $boletapago->archivo_pdf ?? '';
-
-                $email = new Email($correo_electronico, $nombre_colaborador, $ruta_archivo);
-                $email->enviarConfirmacionBoleta();
-
-
-                if ($resultado) {
-                    // Redirigir después de guardar y enviar el correo
-                    header('Location: /admin/boletaspagos');
-                    exit;
-                }
-            }
-        }
-
-        // Renderizar la vista con los datos necesarios
-        $router->render('admin/boletaspagos/crear', [
-            'titulo' => 'Registrar Boleta de Pago',
-            'alertas' => $alertas,
-            'boletapago' => $boletapago,
-            'colaborador_id' => $colaborador_id,
-            'empresa_id' => $empresa_id,
-            'empresa_nombre' => $empresa_nombre,
-            'nombre_colaborador' => $nombre_colaborador,
-            'apellido_paterno' => $apellido_paterno,
-            'apellido_materno' => $apellido_materno,
-            'cedula' => $cedula,
-            'correo_electronico' => $correo_electronico,
-            'salario' => $salario,
-            'rol_usuario' => $rol_usuario
-        ]);
-    }
-
-
     public static function cargarDesdeCSV(Router $router)
     {
         session_start();
@@ -338,23 +207,167 @@ class BoletasPagoController
                             // Redirigir después de procesar el archivo con éxito
                             header('Location: /admin/boletaspagos/cargar?estado=exito');
                             exit;
+                        } else {
+                            // Error al abrir el archivo
+                            header('Location: /admin/boletaspagos/cargar?estado=error_abrir_archivo');
+                            exit;
                         }
                     } catch (\Exception $e) {
                         // En caso de cualquier error, redirigir a la URL de error
-                        header('Location: /admin/boletaspagos/cargar?estado=error');
+                        header('Location: /admin/boletaspagos/cargar?estado=error_procesamiento');
                         exit;
                     }
                 } else {
-                    // En caso de cualquier error, redirigir a la URL de error
-                    header('Location: /admin/boletaspagos/cargar?estado=error');
+                    // Error de extensión del archivo
+                    header('Location: /admin/boletaspagos/cargar?estado=error_extension');
                     exit;
                 }
+            } else {
+                // Error en la carga del archivo
+                header('Location: /admin/boletaspagos/cargar?estado=error_carga');
+                exit;
             }
         }
 
         // Renderizar la vista con los datos necesarios
         $router->render('admin/boletaspagos/cargar', [
             'titulo' => 'Crear Boletas Pago CSV',
+            'rol_usuario' => $rol_usuario
+        ]);
+    }
+
+    public static function crear(Router $router)
+    {
+        session_start();
+        // Validar que el usuario esté logueado y sea administrador
+        if (!isset($_SESSION['admin']) || !$_SESSION['admin']) {
+            header('Location: /login');
+            return;
+        }
+        $alertas = [];
+        $boletapago = new BoletasPago();
+        $empresa_id = '';
+        $empresa_nombre = '';
+        $nombre_colaborador = '';
+        $apellido_paterno = '';
+        $apellido_materno = '';
+        $cedula = '';
+        $correo_electronico = '';
+        $salario = '';
+
+        $rol_usuario = $_SESSION['admin'];
+
+        // Capturar el ID del colaborador desde la URL
+        $colaborador_id = $_GET['id'] ?? null;
+
+        // Verificar si se proporcionó un ID válido
+        if ($colaborador_id) {
+            // Obtener el colaborador desde la base de datos
+            $colaborador = Colaboradores::find($colaborador_id);
+
+            if ($colaborador) {
+                // Obtener datos del colaborador
+                $nombre_colaborador = $colaborador->nombre;
+                $apellido_paterno = $colaborador->apellido_paterno;
+                $apellido_materno = $colaborador->apellido_materno;
+                $cedula = $colaborador->cedula;
+                $correo_electronico = $colaborador->correo_electronico;
+                $salario = $colaborador->salario;
+
+                // Obtener el ID y nombre de la empresa asociada al colaborador
+                $empresa_id = $colaborador->empresa_id;
+                $empresa = Empresas::find($empresa_id);
+                $empresa_nombre = $empresa->nombre ?? '';
+            }
+        }
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // Validar que el usuario esté logueado y sea administrador
+            if (!isset($_SESSION['admin']) || !$_SESSION['admin']) {
+                header('Location: /login');
+                return;
+            }
+
+            $rol_usuario = $_SESSION['admin'];
+
+            // Sincronizar y validar datos de la boleta de pago
+            $boletapago->sincronizar($_POST);
+            $alertas = $boletapago->validar();
+
+            if (empty($alertas)) {
+                try {
+                    // Generar el PDF en memoria
+                    $pdf = new PDF();
+                    $carpetaDestino = __DIR__ . '/../public/uploads/boletasPago/';
+                    $nombreArchivoPDF = $pdf->generarPDF([
+                        'nombre_empresa' => $empresa_nombre,
+                        'Fecha' => date('Y-m-d'),
+                        'Nombre' => $nombre_colaborador,
+                        'Apellido' => $apellido_paterno . ' ' . $apellido_materno,
+                        'Cedula' => $cedula,
+                        'Base' => $salario,
+                        'Quincenal' => $boletapago->salario_quincenal, // Añadir el salario quincenal al PDF
+                        'Comisiones' => $boletapago->comisiones,
+                        'Incapacidad' => $boletapago->incapacidades,
+                        'Feriados' => $boletapago->feriados,
+                        'devengado' => $boletapago->total_devengado,
+                        'Ccss' => $boletapago->ccss,
+                        'Renta' => $boletapago->impuestos_renta,
+                        'Odeducciones' => $boletapago->otras_deducciones,
+                        'Embargo' => $boletapago->embargo,
+                        'Deducciones' => $boletapago->total_deducciones,
+                        'Quincena1' => $boletapago->primer_quincena,
+                        'Quincena2' => $boletapago->segunda_quincena,
+                        'Periodo' => $boletapago->periodo
+                    ], $carpetaDestino);
+
+                    // Asignar el nombre del archivo generado al objeto BoletasPago
+                    $boletapago->archivo_pdf = 'uploads/boletasPago/' . basename($nombreArchivoPDF);
+
+                    // Guardar la boleta de pago en la base de datos
+                    $resultado = $boletapago->guardar();
+
+                    if ($resultado) {
+                        // Enviar el PDF por correo electrónico
+                        $ruta_archivo = $boletapago->archivo_pdf ?? '';
+                        $email = new Email($correo_electronico, $nombre_colaborador, $ruta_archivo);
+                        $email->enviarConfirmacionBoleta();
+
+                        // Redirigir después de guardar y enviar el correo
+                        header('Location: /admin/boletaspagos?page=1&estado=exito');
+                        exit;
+                    } else {
+                        header('Location: /admin/boletaspagos?page=1&estado=error_guardar');
+                        exit;
+                    }
+                } catch (\Exception $e) {
+                    // Manejo de errores específicos
+                    if (strpos($e->getMessage(), 'No such file or directory') !== false) {
+                        header('Location: /admin/boletaspagos?page=1&estado=error_abrir_archivo');
+                    } elseif (strpos($e->getMessage(), 'Error generating PDF') !== false) {
+                        header('Location: /admin/boletaspagos?page=1&estado=error_procesamiento');
+                    } else {
+                        header('Location: /admin/boletaspagos?page=1&estado=error_desconocido');
+                    }
+                    exit;
+                }
+            }
+        }
+
+        // Renderizar la vista con los datos necesarios
+        $router->render('admin/boletaspagos/crear', [
+            'titulo' => 'Registrar Boleta de Pago',
+            'alertas' => $alertas,
+            'boletapago' => $boletapago,
+            'colaborador_id' => $colaborador_id,
+            'empresa_id' => $empresa_id,
+            'empresa_nombre' => $empresa_nombre,
+            'nombre_colaborador' => $nombre_colaborador,
+            'apellido_paterno' => $apellido_paterno,
+            'apellido_materno' => $apellido_materno,
+            'cedula' => $cedula,
+            'correo_electronico' => $correo_electronico,
+            'salario' => $salario,
             'rol_usuario' => $rol_usuario
         ]);
     }
