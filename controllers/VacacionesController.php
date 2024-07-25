@@ -75,20 +75,24 @@ class VacacionesController
         // Extraer el parámetro 'id'
         $id = isset($_GET['id']) ? filter_var($_GET['id'], FILTER_VALIDATE_INT) : null;
 
+
+        // Extraer el parámetro 'estado'
+        $estado = isset($_GET['estado']) ? filter_var($_GET['estado'], FILTER_SANITIZE_STRING) : '';
+
         // Configuración de paginación
         $registros_por_paginas = 10;
         $total = Vacaciones::total();
-        $paginacion = new Paginacion($pagina_actual, $registros_por_paginas, $total, $id);
+        $paginacion = new Paginacion($pagina_actual, $registros_por_paginas, $total, $id, $estado);
 
         // Redirigir si la página solicitada es mayor que el total de páginas
         if ($paginacion->total_paginas() < $pagina_actual) {
-            header('Location: /admin/vacaciones/lista?page=1' . ($id ? "&id={$id}" : ''));
+            header('Location: /admin/vacaciones/lista?page=1' . ($id ? "&id={$id}" : '') . ($estado ? "&estado={$estado}" : ''));
             return;
         }
 
         // Obtener los registros paginados
         if ($id) {
-            $vacaciones = Vacaciones::paginarID($registros_por_paginas, $paginacion->offset(), $id);
+            $vacaciones = Vacaciones::paginarID_Estado($registros_por_paginas, $paginacion->offset(), $id, $estado);
         } else {
             header('Location: /admin/vacaciones?page=1');
         }

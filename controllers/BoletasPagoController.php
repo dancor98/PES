@@ -75,20 +75,24 @@ class BoletasPagoController
         // Extraer el parámetro 'id'
         $id = isset($_GET['id']) ? filter_var($_GET['id'], FILTER_VALIDATE_INT) : null;
 
+        // Extraer el parámetro 'periodo'
+        $periodo = isset($_GET['periodo']) ? filter_var($_GET['periodo'], FILTER_SANITIZE_STRING) : '';
+
+
         // Configuración de paginación
         $registros_por_paginas = 15;
         $total = BoletasPago::total();
-        $paginacion = new Paginacion($pagina_actual, $registros_por_paginas, $total, $id);
+        $paginacion = new Paginacion($pagina_actual, $registros_por_paginas, $total, $id, $periodo);
 
         // Redirigir si la página solicitada es mayor que el total de páginas
         if ($paginacion->total_paginas() < $pagina_actual) {
-            header('Location: /admin/boletaspagos/lista?page=1' . ($id ? "&id={$id}" : ''));
+            header('Location: /admin/boletaspagos/lista?page=1' . ($id ? "&id={$id}" : '') . ($periodo ? "&periodo={$periodo}" : ''));
             return;
         }
 
         // Obtener los registros paginados
         if ($id) {
-            $boletaspagos = BoletasPago::paginarID($registros_por_paginas, $paginacion->offset(), $id);
+            $boletaspagos = BoletasPago::paginarID_Periodo($registros_por_paginas, $paginacion->offset(), $id, $periodo);
         } else {
             header('Location: /admin/boletaspagos?page=1');
         }
@@ -105,6 +109,8 @@ class BoletasPagoController
             'paginacion' => $paginacion->paginacion()
         ]);
     }
+
+
 
     public static function cargarDesdeCSV(Router $router)
     {

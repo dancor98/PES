@@ -69,21 +69,24 @@ class IncapacidadesController
 
         // Extraer el parámetro 'id'
         $id = isset($_GET['id']) ? filter_var($_GET['id'], FILTER_VALIDATE_INT) : null;
+        // Extraer el parámetro 'estado'
+        $estado = isset($_GET['estado']) ? filter_var($_GET['estado'], FILTER_SANITIZE_STRING) : '';
+
 
         // Configuración de paginación
         $registros_por_paginas = 5;
         $total = Incapacidades::total();
-        $paginacion = new Paginacion($pagina_actual, $registros_por_paginas, $total, $id);
+        $paginacion = new Paginacion($pagina_actual, $registros_por_paginas, $total, $id, $estado);
 
         // Redirigir si la página solicitada es mayor que el total de páginas
         if ($paginacion->total_paginas() < $pagina_actual) {
-            header('Location: /admin/incapacidades/lista?page=1' . ($id ? "&id={$id}" : ''));
+            header('Location: /admin/incapacidades/lista?page=1' . ($id ? "&id={$id}" : '') . ($estado ? "&estado={$estado}" : ''));
             return;
         }
 
         // Obtener los registros paginados
         if ($id) {
-            $incapacidades = Incapacidades::paginarID($registros_por_paginas, $paginacion->offset(), $id);
+            $incapacidades = Incapacidades::paginarID_Estado($registros_por_paginas, $paginacion->offset(), $id, $estado);
         } else {
             header('Location: /admin/incapacidades?page=1');
         }

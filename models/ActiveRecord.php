@@ -155,13 +155,32 @@ class ActiveRecord
         return $resultado;
     }
 
-    //paginar registros por ID coalborador
-    public static function paginarID($por_pagina, $offset, $id)
+
+    //paginar registros por ID colaborador y filtro periodo
+    public static function paginarID_Periodo($por_pagina, $offset, $id, $periodo = '')
     {
-        $query = "SELECT * FROM " . static::$tabla . " WHERE colaborador_id = $id ORDER BY fecha DESC LIMIT $por_pagina OFFSET $offset";
+        $query = "SELECT * FROM " . static::$tabla . " WHERE colaborador_id = $id";
+        if ($periodo) {
+            $query .= " AND periodo LIKE '%$periodo%'";
+        }
+
+        $query .= " ORDER BY fecha DESC LIMIT $por_pagina OFFSET $offset";
         $resultado = self::consultarSQL($query);
         return $resultado;
     }
+    //paginar registros por ID colaborador y filtro estado
+    public static function paginarID_Estado($por_pagina, $offset, $id, $estado = '')
+    {
+        $query = "SELECT * FROM " . static::$tabla . " WHERE colaborador_id = $id";
+        if ($estado) {
+            $query .= " AND estado LIKE '%$estado%'";
+        }
+
+        $query .= " ORDER BY fecha DESC LIMIT $por_pagina OFFSET $offset";
+        $resultado = self::consultarSQL($query);
+        return $resultado;
+    }
+
 
     //paginar registros
     public static function paginarVacaciones($por_pagina, $offset)

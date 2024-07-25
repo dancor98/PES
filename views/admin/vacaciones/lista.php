@@ -15,6 +15,23 @@
         </div>
     </div>
 
+    <!-- Dropdown de filtro de meses -->
+    <div class="row">
+        <div class="col">
+            <div class="formulario__campo">
+                <label for="estado" class="formulario__label">Estado:</label>
+                <select class="formulario__select" id="filtroEstado">
+                    <option value="">Todas</option>
+                    <option value="Pendiente">Pendientes</option>
+                    <option value="En Revision">En Revision</option>
+                    <option value="Aprobadas">Aprobadas</option>
+                    <option value="Rechazadas">Rechazadas</option>
+                    <option value="Rebajadas">Rebajadas</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
     <?php if (!empty($vacaciones)) { ?>
         <div class="table-responsive">
             <table class="table">

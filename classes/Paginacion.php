@@ -8,13 +8,18 @@ class Paginacion
     public $registros_por_pagina;
     public $total_registros;
     public $id; // Propiedad para el ID
+    public $periodo; // Propiedad para el filtro
+    public $estado; // Propiedad para el filtro
 
-    public function __construct($pagina_actual = 1, $registros_por_pagina = 10, $total_registros = 0, $id = null)
+
+    public function __construct($pagina_actual = 1, $registros_por_pagina = 10, $total_registros = 0, $id = null, $periodo = null, $estado = null)
     {
         $this->pagina_actual = (int) $pagina_actual;
         $this->registros_por_pagina = (int) $registros_por_pagina;
         $this->total_registros = (int) $total_registros;
         $this->id = $id; // Inicializamos el ID
+        $this->periodo = $periodo; // Inicializamos el filtro
+        $this->estado = $estado; // Inicializamos el filtro
     }
 
     public function offset()
@@ -47,10 +52,15 @@ class Paginacion
         if ($this->id !== null) {
             $url .= "&id={$this->id}";
         }
+        if ($this->periodo !== null) {
+            $url .= "&periodo={$this->periodo}";
+        }
+        if ($this->estado !== null) {
+            $url .= "&estado={$this->estado}";
+        }
 
         return $url;
     }
-
 
     public function enlace_anterior()
     {

@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
         submitButton.value =
         'Cargando...'; // Opcional: Cambia el texto del botón para indicar que está en proceso.
     });
-});
+}); //bloquea el boton de submit para emitar carga doble
 
 
 
@@ -77,5 +77,58 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
+}); //boton de volver
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    var filtroPeriodo = document.getElementById('filtroPeriodo');
+
+    // Leer el valor del parámetro 'periodo' de la URL y establecer el valor en el dropdown
+    var urlParams = new URLSearchParams(window.location.search);
+    var mes = urlParams.get('periodo');
+    if (mes) {
+        filtroPeriodo.value = mes;
+    }
+
+
+    // Actualizar la URL cuando se selecciona un mes en el filtro
+    filtroPeriodo.addEventListener('change', function() {
+        var filtro = filtroPeriodo.value;
+        var url = new URL(window.location.href);
+        if (filtro) {
+            url.searchParams.set('periodo', filtro);
+        } else {
+            url.searchParams.delete('periodo');
+        }
+        window.history.pushState({}, '', url);
+        window.location.reload(); // Recargar la página con el nuevo filtro
+    });
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    var filtroEstado = document.getElementById('filtroEstado');
+
+    // Leer el valor del parámetro 'estado' de la URL y establecer el valor en el dropdown
+    var urlParams = new URLSearchParams(window.location.search);
+    var status = urlParams.get('estado');
+    if (status) {
+        filtroEstado.value = status;
+    }
+
+    // Actualizar la URL cuando se selecciona un estado en el filtro
+    filtroEstado.addEventListener('change', function() {
+        var filtro = filtroEstado.value;
+        var url = new URL(window.location.href);
+        if (filtro) {
+            url.searchParams.set('estado', filtro);
+        } else {
+            url.searchParams.delete('estado');
+        }
+        window.history.pushState({}, '', url);
+        window.location.reload(); // Recargar la página con el nuevo filtro
+    });
+});
+
+
 
