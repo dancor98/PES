@@ -61,7 +61,8 @@
             <div class="formulario__campo">
                 <label for="cantidad_dias" class="formulario__label">Cantidad de dias:</label>
                 <input type="number" class="formulario__input" name="cantidad_dias" id="cantidad_dias"
-                    placeholder="Cantidad Dias Incapacitado" value="<?php echo $incapacidad->cantidad_dias; ?>">
+                    placeholder="Cantidad Dias Incapacitado" value="<?php echo $incapacidad->cantidad_dias; ?>" require
+                    readonly>
             </div>
 
             <input class="formulario__submit formulario__submit--registrar" type="submit" value="Crear Incapacidad"
