@@ -4,7 +4,7 @@ namespace Model;
 
 class Incapacidades extends ActiveRecord
 {
-    protected static $tabla = 'boletas_Incapacidad';
+    protected static $tabla = 'boletas_incapacidad';
     protected static $columnasDB = [
         'id',
         'colaborador_id',

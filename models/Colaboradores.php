@@ -27,7 +27,9 @@ class Colaboradores extends ActiveRecord
         'meses_trabajados',
         'confirmado',
         'nombre_emergencia',
-        'telefono_emergencia'
+        'telefono_emergencia',
+        'alergias_medicamento',
+        'tipo_sangre'
     ];
 
     public $id;
@@ -53,6 +55,8 @@ class Colaboradores extends ActiveRecord
     public $confirmado;
     public $nombre_emergencia;
     public $telefono_emergencia;
+    public $alergias_medicamento;
+    public $tipo_sangre;
 
 
     public $contrasena_nueva;
@@ -83,6 +87,8 @@ class Colaboradores extends ActiveRecord
         $this->confirmado = $args['confirmado'] ?? 0;
         $this->nombre_emergencia = $args['nombre_emergencia'] ?? null;
         $this->telefono_emergencia = $args['telefono_emergencia'] ?? null;
+        $this->alergias_medicamento = $args['alergias_medicamento'] ?? '';
+        $this->tipo_sangre = $args['tipo_sangre'] ?? '';
     }
 
     //validar el login de Usuarios
