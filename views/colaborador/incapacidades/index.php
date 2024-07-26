@@ -15,6 +15,7 @@
             </div>
         </div>
     </div>
+
     <?php if (!empty($incapacidades)) { ?>
         <div class="table-responsive">
             <table class="table">
