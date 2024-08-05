@@ -266,7 +266,7 @@ class ActiveRecord
     //Traer un total de registros
     public static function totalPostulaciones()
     {
-        $query = "SELECT COUNT(*) FROM " . static::$tabla;
+        $query = "SELECT COUNT(*) FROM " . static::$tabla . " WHERE estado LIKE 'Pendiente%'";
         $resultado = self::$db->query($query);
         $total = $resultado->fetch_array();
 
