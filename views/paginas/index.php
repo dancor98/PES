@@ -6,11 +6,16 @@
     <div class="principal-container">
         <div class="columna1">
             <p class="texto-ccm">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Non laborum architecto aperiam, adipisci
-                voluptas
-                tempore iusto? Optio quasi facilis pariatur cumque ducimus alias magnam dicta odit ipsum, fugiat
-                molestias
-                repudiandae?
+                En Grupo CCM, creemos que somos más que un simple equipo de trabajo; somos una familia
+                unida por una pasión común. Desde nuestro compromiso con la distribución a nivel nacional de marcas de
+                renombre, hasta el cuidado que ponemos en cada detalle, nuestra misión es reflejar los valores de unión,
+                dedicación y excelencia.
+            </p>
+            <p class="texto-ccm">
+                Me enorgullece decir que cada miembro de nuestro equipo aporta algo valioso, y juntos
+                enfrentamos los desafíos con determinación y espíritu colaborativo. Esta fortaleza en unidad es lo que
+                nos permite ofrecer lo mejor a nuestros clientes y mantener nuestra posición como líderes en la
+                industria.
             </p>
             <p class="firma-ceo">- CEO Carlos Campos M.</p>
         </div>
