@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 }); //bloquea el boton de submit para emitar carga doble
 
+//estado Exito o Error
 document.addEventListener("DOMContentLoaded", function () {
   function getQueryParams() {
     let params = {};
@@ -75,6 +76,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 }); //boton de volver
 
+//filtro periodo
 document.addEventListener("DOMContentLoaded", function () {
   var filtroPeriodo = document.getElementById("filtroPeriodo");
 
@@ -99,6 +101,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
+//filtro estado
 document.addEventListener("DOMContentLoaded", function () {
   var filtroEstado = document.getElementById("filtroEstado");
 
@@ -123,6 +126,8 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
+//vacaciones
+//vacaciones
 document.addEventListener("DOMContentLoaded", function () {
   var hoy = new Date();
   hoy.setDate(hoy.getDate() + 1); // Sumamos un día a la fecha actual para obtener mañana
@@ -139,6 +144,7 @@ document.addEventListener("DOMContentLoaded", function () {
     desde.setAttribute("min", manana);
 
     desde.addEventListener("change", function () {
+      validarFecha(desde);
       // Establecemos el valor mínimo para el campo "hasta" como el valor seleccionado en "desde"
       if (hasta) {
         hasta.setAttribute("min", desde.value);
@@ -149,6 +155,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   if (hasta) {
     hasta.addEventListener("change", function () {
+      validarFecha(hasta);
       actualizarCantidadDias();
     });
   }
@@ -170,14 +177,39 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  function validarFecha(campo) {
+    var fechaSeleccionada = new Date(campo.value);
+    var diaSemana = fechaSeleccionada.getDay();
+
+    // Si el día seleccionado es sábado (6) o domingo (0)
+    if (diaSemana === 5 || diaSemana === 6) {
+      alert("No se pueden seleccionar sábados ni domingos.");
+      // Restablece el campo a vacío
+      campo.value = "";
+    }
+  }
+
   function actualizarCantidadDias() {
     if (desde && hasta && desde.value && hasta.value) {
       var fechaDesde = new Date(desde.value);
       var fechaHasta = new Date(hasta.value);
 
+      // Asegúrate de que la fechaHasta incluya el final del día
+      fechaHasta.setHours(23, 59, 59, 999);
+
       if (fechaHasta >= fechaDesde) {
-        var diferencia =
-          Math.floor((fechaHasta - fechaDesde) / (1000 * 60 * 60 * 24)) + 1;
+        var diferencia = 0;
+        var fechaTemp = new Date(fechaDesde);
+
+        // Iterar a través de cada día en el rango de fechas
+        while (fechaTemp <= fechaHasta) {
+          var diaSemana = fechaTemp.getDay();
+          if (diaSemana !== 5 && diaSemana !== 6) {
+            // Excluye sábados (6) y domingos (0)
+            diferencia++;
+          }
+          fechaTemp.setDate(fechaTemp.getDate() + 1);
+        }
 
         if (cantidad) {
           cantidad.value = diferencia;
