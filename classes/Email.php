@@ -52,7 +52,6 @@ class Email
 
     public function enviarInstrucciones()
     {
-
         // create a new object
         $mail = new PHPMailer();
         $mail->isSMTP();
@@ -138,7 +137,8 @@ class Email
 
         //Enviar el mail
         $mail->send();
-    } //Notifica al colaborador que ya se actualizo el estado de la solicitud de vacaciones
+    } //Notifica al postulante que ya se actualizo el estado de la postulacion
+
     public function enviarEstadoVacaciones()
     {
         // create a new object
